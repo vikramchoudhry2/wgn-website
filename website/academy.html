@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://team.html -->
+<html class="w-mod-js w-mod-ix wf-playfairdisplay-i6-active wf-playfairdisplay-i8-active wf-playfairdisplay-i4-active wf-playfairdisplay-i7-active wf-playfairdisplay-i5-active wf-playfairdisplay-i9-active wf-playfairdisplay-n4-active wf-playfairdisplay-n5-active wf-playfairdisplay-n7-active wf-playfairdisplay-n6-active wf-playfairdisplay-n9-active wf-playfairdisplay-n8-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style>
+  
+  <title>Team</title>
+  <meta content="Team" property="og:title">
+  <meta content="Team" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="./assets/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./assets/webflow.css" rel="stylesheet" type="text/css">
+  <link href="./assets/styles.webflow.css" rel="stylesheet" type="text/css">
+  <script src="./assets/webfont.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="./assets/css" media="all"><script type="text/javascript">WebFont.load({  google: {    families: ["Playfair Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic:cyrillic,latin,latin-ext,vietnamese"]  }});</script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="assets/WeGotNext-logo.png" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/webclip.png" rel="apple-touch-icon">
+  <style>
+    /* Wave Animation Styles */
+    .section-combined {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(315deg, rgba(10,0,20,1) 3%, rgba(15,15,30,1) 38%, rgba(20,20,40,1) 68%, rgba(30,0,30,1) 98%);
+      animation: gradient 15s ease infinite;
+      background-size: 400% 400%;
+      background-attachment: fixed;
+      padding: 4rem 0;
+      color: #f2f2f2;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    .wave-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .wave {
+      background: rgb(255 255 255 / 10%);
+      border-radius: 1000% 1000% 0 0;
+      position: absolute;
+      width: 200%;
+      height: 15em;
+      animation: wave 10s -3s linear infinite;
+      transform: translate3d(0, 0, 0);
+      opacity: 0.8;
+      bottom: 0;
+      left: 0;
+    }
+
+    .wave:nth-of-type(2) {
+      bottom: -1.25em;
+      animation: wave 18s linear reverse infinite;
+      opacity: 0.8;
+    }
+
+    .wave:nth-of-type(3) {
+      bottom: -2.5em;
+      animation: wave 20s -1s reverse infinite;
+      opacity: 0.9;
+    }
+
+    @keyframes wave {
+      2% {
+        transform: translateX(1);
+      }
+      25% {
+        transform: translateX(-25%);
+      }
+      50% {
+        transform: translateX(-50%);
+      }
+      75% {
+        transform: translateX(-25%);
+      }
+      100% {
+        transform: translateX(1);
+      }
+    }
+
+    .combined-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-divider {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: 4rem 0;
+    }
+
+    /* Color Drip Animation Styles */
+    .section-members {
+      position: relative;
+      overflow: hidden;
+      background-color: #111;
+      color: #f2f2f2;
+      padding: 2rem 0 12rem;
+      min-height: 120vh;
+      margin-bottom: 0;
+      height: auto;
+    }
+
+    .section-members::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      margin: auto;
+      width: 90vw;
+      display: flex;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .line {
+      position: relative;
+      width: 1px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .line::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 15vh;
+      width: 100%;
+      top: -50%;
+      left: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+      animation: drop 7s 0s infinite;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+    }
+
+    .line:nth-child(1)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF4500 75%, #FF4500 100%);
+      animation-delay: 0.5s;
+    }
+
+    .line:nth-child(2)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #32CD32 75%, #32CD32 100%);
+      animation-delay: 1s;
+    }
+
+    .line:nth-child(3)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #1E90FF 75%, #1E90FF 100%);
+      animation-delay: 1.5s;
+    }
+
+    .line:nth-child(4)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFD700 75%, #FFD700 100%);
+      animation-delay: 2s;
+    }
+
+    .line:nth-child(5)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #8A2BE2 75%, #8A2BE2 100%);
+      animation-delay: 2.5s;
+    }
+
+    .line:nth-child(6)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #20B2AA 75%, #20B2AA 100%);
+      animation-delay: 3s;
+    }
+
+    .line:nth-child(7)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #DC143C 75%, #DC143C 100%);
+      animation-delay: 3.5s;
+    }
+
+    .line:nth-child(8)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00FA9A 75%, #00FA9A 100%);
+      animation-delay: 4s;
+    }
+
+    .line:nth-child(9)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FF1493 75%, #FF1493 100%);
+      animation-delay: 4.5s;
+    }
+
+    .line:nth-child(10)::after {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #00BFFF 75%, #00BFFF 100%);
+      animation-delay: 5s;
+    }
+
+    @keyframes drop {
+      0% {
+        top: -50%;
+      }
+      100% {
+        top: 110%;
+      }
+    }
+
+    .members-container {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    /* Event Details Modal Styles */
+    .event-details {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2147483647;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .event-details-content {
+      position: relative;
+      background: #0a0a0a;
+      padding: 3rem;
+      border-radius: 20px;
+      max-width: 700px;
+      width: 90%;
+      color: #f2f2f2;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 2147483647;
+    }
+
+    .event-details-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(315deg, rgba(10,0,20,0.95) 3%, rgba(15,15,30,0.95) 38%, rgba(20,20,40,0.95) 68%, rgba(30,0,30,0.95) 98%);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .event-details-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .event-details-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 2;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 3;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    /* Remove the visibility hiding of other content */
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Ensure modal content is visible */
+    .event-details.active {
+      display: flex;
+    }
+
+    /* FAQ Styles */
+    .faq-heading {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem 1rem;
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .faq-question:hover {
+      color: rgba(255, 255, 255, 0.8);
+      padding-left: 1.5rem;
+    }
+
+    .faq-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+      padding: 0 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0 0 8px 8px;
+      margin: 0 1rem 1rem 1rem;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      color: #fff;
+    }
+
+    .faq-item.active .faq-question {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px 8px 0 0;
+      margin: 0 1rem;
+    }
+
+    .faq-answer a {
+      color: #fff;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    .faq-answer a:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Timeline Event Styles */
+    .timeline-event {
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-event:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .coaches {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      padding: 2rem 0;
+    }
+
+    .coaches h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 3rem;
+    }
+
+    .coaches-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem;
+      padding: 0 4rem 6rem;
+      max-width: 2000px;
+      margin: 0 auto;
+      min-height: auto;
+    }
+
+    .coach-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      aspect-ratio: 3/4;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .coach-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .coach-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .coach-card:hover .coach-text {
+      opacity: 1;
+    }
+
+    .coach-card:hover .coach-image {
+      transform: scale(1.1);
+    }
+
+    .coach-text h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    .coach-text .paragragh {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.4rem;
+      line-height: 1.6;
+    }
+
+    @media screen and (max-width: 1800px) {
+      .coaches-grid {
+        max-width: 1600px;
+        gap: 3rem;
+      }
+      
+      .coach-card {
+        max-width: 700px;
+      }
+
+      .coach-text {
+        padding: 3rem;
+      }
+
+      .coach-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .coach-text .paragragh {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media screen and (max-width: 1400px) {
+      .coaches-grid {
+        gap: 2.5rem;
+        max-width: 1200px;
+      }
+      
+      .coach-card {
+        max-width: 550px;
+      }
+
+      .coach-text {
+        padding: 2.5rem;
+      }
+
+      .coach-text h1 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .coach-text .paragragh {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      .coaches-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 2rem 4rem;
+        max-width: 800px;
+      }
+      
+      .coach-card {
+        max-width: 500px;
+      }
+
+      .coach-text {
+        padding: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .section-members {
+        padding: 2rem 0 4rem;
+      }
+      
+      .coaches-grid {
+        padding: 0 1.5rem 4rem;
+        max-width: 500px;
+      }
+      
+      .coach-card {
+        max-width: 450px;
+      }
+
+      .coach-text h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .coach-text .paragragh {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      .coaches-grid {
+        padding: 0 1rem 3rem;
+      }
+      
+      .coach-card {
+        max-width: 350px;
+      }
+
+      .coach-text {
+        padding: 1.5rem;
+      }
+    }
+
+    .section-footer {
+      position: relative;
+      z-index: 2;
+      background-color: #111;
+      width: 100%;
+      margin-top: 0;
+      padding-top: 2rem;
+      clear: both;
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .footer-container-1 {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      background-color: #111;
+    }
+
+    /* Current Players Section */
+    .current-players {
+      background-color: #111;
+      color: #f2f2f2;
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 120vh;
+    }
+
+    .current-players h1 {
+      text-align: center;
+      font-size: 3.5rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 4rem;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      padding: 0 4rem 6rem;
+      max-width: 2000px;
+      margin: 0 auto;
+    }
+
+    .player-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      aspect-ratio: 3/4;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .player-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .player-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .player-card:hover .player-info {
+      opacity: 1;
+    }
+
+    .player-card:hover .player-image {
+      transform: scale(1.1);
+    }
+
+    .player-name {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      font-family: Roxboroughcf, sans-serif;
+    }
+
+    .player-details {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .player-details p {
+      margin-bottom: 0.8rem;
+    }
+
+    @media screen and (max-width: 1800px) {
+      .players-grid {
+        max-width: 1600px;
+        gap: 3rem;
+      }
+      
+      .player-card {
+        max-width: 500px;
+      }
+
+      .player-info {
+        padding: 2.5rem;
+      }
+
+      .player-name {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .player-details {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media screen and (max-width: 1400px) {
+      .players-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        max-width: 1200px;
+      }
+      
+      .player-card {
+        max-width: 550px;
+      }
+    }
+
+    @media screen and (max-width: 991px) {
+      .players-grid {
+        gap: 2rem;
+        padding: 0 2rem 4rem;
+      }
+      
+      .player-card {
+        max-width: 450px;
+      }
+
+      .player-info {
+        padding: 2rem;
+      }
+
+      .player-name {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .player-details {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .current-players {
+        padding: 4rem 0;
+      }
+
+      .current-players h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      
+      .players-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem 4rem;
+        max-width: 500px;
+      }
+      
+      .player-card {
+        max-width: 450px;
+      }
+
+      .player-name {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      .players-grid {
+        padding: 0 1rem 3rem;
+      }
+      
+      .player-card {
+        max-width: 350px;
+      }
+
+      .player-info {
+        padding: 1.5rem;
+      }
+
+      .player-name {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .player-details {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+    }
+
+    /* Season Awards Section */
+    .season-awards {
+      background-color: #111;
+      color: #f2f2f2;
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .season-awards h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: 3rem;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      padding: 0 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .award-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .award-image {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translateY(0px);
+      object-fit: cover;         /* scales and crops */
+      object-position: -20% 30%;
+    }
+
+    .award-content {
+      padding: 1.5rem;
+    }
+
+    .award-title {
+      font-size: 1.75rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .award-winner {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    @media screen and (max-width: 991px) {
+      .players-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .players-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1rem;
+      }
+      
+      .player-card {
+        max-width: 400px;
+      }
+
+      .player-info {
+        padding: 2rem;
+      }
+
+      .player-name {
+        font-size: 1.4rem;
+      }
+
+      .player-details {
+        font-size: 1rem;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .award-image {
+        height: 250px;
+      }
+    }
+
+    /* Mobile Optimizations */
+    @media screen and (max-width: 767px) {
+      /* Header/Nav */
+      .navbar-final {
+        padding: 1rem;
+      }
+
+      .nav-container02 {
+        padding: 0;
+      }
+
+      .h1-header {
+        font-size: 2rem;
+        padding: 0 1rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      .container--team {
+        padding: 2rem 1rem;
+        min-height: 50vh;
+      }
+
+      /* Timeline Section */
+      .combined-container {
+        padding: 2rem 1rem;
+      }
+
+      .timeline-heading {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .timeline {
+        margin: 0;
+        padding: 0;
+      }
+
+      .timeline-event {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+      }
+
+      /* FAQ Section */
+      .faq-heading {
+        font-size: 1.8rem;
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .faq-question {
+        font-size: 1.1rem;
+        padding: 1rem;
+      }
+
+      .faq-answer {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 1rem;
+        margin: 0 0.5rem 1rem 0.5rem;
+      }
+
+      /* Coaches Section */
+      .section-members {
+        padding: 2rem 0;
+      }
+
+      .coaches {
+        margin-top: 0;
+        padding: 0 1rem;
+      }
+
+      .coaches h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .coaches-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .coach-card {
+        max-width: 100%;
+        aspect-ratio: 3/4;
+        margin: 0;
+      }
+
+      .coach-text {
+        padding: 1.5rem;
+      }
+
+      .coach-text h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .coach-text .paragragh {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* Players Section */
+      .current-players {
+        padding: 3rem 1rem;
+      }
+
+      .current-players h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .players-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .player-card {
+        max-width: 100%;
+        aspect-ratio: 3/4;
+        margin: 0;
+      }
+
+      .player-info {
+        padding: 1.5rem;
+      }
+
+      .player-name {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .player-details {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* Awards Section */
+      .season-awards {
+        padding: 3rem 1rem;
+      }
+
+      .season-awards h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .award-card {
+        max-width: 100%;
+        margin: 0;
+      }
+
+      .award-image {
+        height: 250px;
+        object-position: center;
+      }
+
+      .award-content {
+        padding: 1.25rem;
+      }
+
+      .award-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .award-winner {
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      .section-footer {
+        padding: 2rem 1rem;
+      }
+
+      .footer-container {
+        padding: 0;
+      }
+
+      .footer-link, .footer-link-1 {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .team-link {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+      }
+
+      .footer-text {
+        font-size: 0.9rem;
+        padding: 1rem;
+        text-align: center;
+      }
+    }
+
+    /* Small Mobile Devices */
+    @media screen and (max-width: 480px) {
+      .h1-header {
+        font-size: 1.8rem;
+      }
+
+      .coach-card, .player-card {
+        aspect-ratio: 2/3;
+      }
+
+      .award-image {
+        height: 200px;
+      }
+
+      .coach-text, .player-info {
+        padding: 1.25rem;
+      }
+
+      .coach-text h1, .player-name {
+        font-size: 1.3rem;
+      }
+
+      .coach-text .paragragh, .player-details {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Landscape Mode */
+    @media screen and (max-width: 767px) and (orientation: landscape) {
+      .coaches-grid, .players-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        gap: 1.5rem;
+      }
+
+      .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        gap: 1.5rem;
+      }
+
+      .coach-card, .player-card {
+        aspect-ratio: 3/4;
+      }
+    }
+
+    /* Academy Overview Styles */
+    .academy-overview {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .overview-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .core-values {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .core-values h3 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .core-values ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .core-values li {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .core-values li:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    @media screen and (max-width: 767px) {
+      .academy-overview {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .overview-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left;
+      }
+
+      .core-values {
+        padding: 1.2rem;
+      }
+
+      .core-values h3 {
+        font-size: 1.2rem;
+      }
+
+      .core-values ul {
+        gap: 1rem;
+      }
+
+      .core-values li {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 479px) {
+      .academy-overview {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .overview-text {
+        font-size: 0.95rem;
+      }
+
+      .core-values {
+        padding: 1rem;
+      }
+
+      .core-values li {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-final w-nav" style="background-color: rgba(0, 0, 0, 0);">
+    <div class="nav-container02 w-container">
+      <a href="index.html" class="brand w-nav-brand"><img src="./assets/WGN.png" loading="lazy" width="90" alt="" class="logo-image"></a>
+      <nav role="navigation" class="nav-menu-3 w-nav-menu">
+        <a href="index.html" class="nav-item w-nav-link" style="max-width: 940px;">Home</a>
+        <a href="shop.html" class="nav-item w-nav-link" style="max-width: 940px;">Shop</a>
+        <a href="academy.html" class="nav-item w-nav-link" style="max-width: 940px;">Academy</a>
+        <a href="celebs.html" class="nav-item w-nav-link" style="max-width: 940px;">Community</a>
+        <a href="donate.html" class="nav-item w-nav-link" style="max-width: 940px;">Donate</a>
+      </nav>
+      <div class="menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+        <div class="icon-2 w-icon-nav-menu"></div>
+      </div>
+      <!-- backdrop-filter: blur(10px); /* Blurs the background behind text */
+  background: rgba(0, 0, 0, 0.2); /* Subtle transparent black */
+  border-radius: 10px; /* Smooth edges */-->
+    </div>
+  <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div></div>
+  <div class="section-team wf-section team-background" style="background: url('./assets/banner2.png') no-repeat center/cover;">
+    <div class="team-bg"></div>
+    <div data-w-id="09bf403a-a5fb-0a42-e413-bca025a577a2" class="container--team top dunkd" 
+     style="will-change: transform; transform: translate3d(0px, -10.421px, 0px) scale3d(1, 1, 1) 
+            rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); 
+            transform-style: preserve-3d;">
+      <div class="overlay"></div>
+      <h1 class="h1-header blurred-text"><strong>Sikh Youth All Stars</strong></h1>
+      <img src="./assets/tick.png" loading="lazy" alt="" class="image-11">
+</div>
+    <div class="image-container-people"><img src="./assets/circle.png" loading="lazy" width="600" data-w-id="534dd50e-f517-35bb-b631-a74d0d0aa099" srcset="images/circle-p-500.png 500w, images/circle.png 537w" sizes="(max-width: 479px) 400px, (max-width: 767px) 500px, 600px" alt="" style="will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(13.9558deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+    <div class="image-container-people-copy"><img src="./assets/circle.png" loading="lazy" width="600" data-w-id="051c0da7-cb50-3bcf-bcf3-cbf795502719" srcset="images/circle-p-500.png 500w, images/circle.png 537w" sizes="(max-width: 479px) 100vw, (max-width: 767px) 527.680908203125px, (max-width: 991px) 791.5178833007812px, 80vw" alt="" style="will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(11.4631deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+  </div>
+
+  <div class="section-combined wf-section">
+    <div class="wave-container">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    <div class="combined-container">
+      <!-- Academy Overview Section -->
+      <h1 class="timeline-heading">🏀 Academy Overview</h1>
+      <div class="academy-overview">
+        <p class="overview-text">
+          WeGotNext Basketball Academy offers a fun and innovative approach for players to enhance their basketball skills while learning new techniques and strategies. Enjoyment is key to mastering new skills, and our basketball camps provide an engaging environment where players can develop their abilities. These camps blend learning with enjoyment, focusing on all facets of the game and the overall development of each player. Key skills taught at our camps include ball handling, shooting, competitive league play, and much more.
+        </p>
+        <p class="overview-text">
+          In addition to skill development, basketball camps serve as excellent social environments for players. Participants share common goals and interests, fostering opportunities to build lifelong friendships and connections that might not otherwise occur. These new relationships also present challenges, as players compete against others with varying skill levels. Throughout the experience, players will learn the importance of teamwork and collaboration with teammates of diverse talents, gaining a deeper appreciation for sportsmanship and becoming effective team players.
+        </p>
+        <div class="core-values">
+          <h3>Our Core Values</h3>
+          <ul>
+            <li>Teamwork</li>
+            <li>Sportsmanship</li>
+            <li>Respect</li>
+            <li>Discipline</li>
+            <li>Hard Work</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <h1 class="timeline-heading">🏀 Upcoming Events & Key Dates</h1>
+      <div class="timeline">
+        <!-- Event 1 -->
+        <div class="timeline-event" onclick="showEventDetails(1)">
+          <div class="event-content">
+            <span class="event-date">May 25, 2025</span>
+            <h3 class="event-title">🏀 Spring Camp Registration Open</h3>
+          </div>
+        </div>
+        <!-- Event 2 -->
+        <div class="timeline-event" onclick="showEventDetails(2)">
+          <div class="event-content">
+            <span class="event-date">May 11, 2025</span>
+            <h3 class="event-title">⛹️‍♂️ 3v3 Tournament</h3>
+          </div>
+        </div>
+        <!-- Event 3 -->
+        <div class="timeline-event" onclick="showEventDetails(3)">
+          <div class="event-content">
+            <span class="event-date">June 6-8, 2025</span>
+            <h3 class="event-title">🏀 PBA LA Tournament</h3>
+          </div>
+        </div>
+        <!-- Event 4 -->
+        <div class="timeline-event" onclick="showEventDetails(4)">
+          <div class="event-content">
+            <span class="event-date">July, 2025</span>
+            <h3 class="event-title">🏆 Celebrity/All Star Game</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <h1 class="faq-heading">Basketball Camp FAQs</h1>
+      <div class="faq-item">
+        <button class="faq-question">
+          🏀 Who can join the basketball camp?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The camp is open to boys and girls ages 5-18 of all skill levels. Our experienced coaches will tailor drills based on individual experience.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          📅 When and where is the camp held?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Currently practicies are held in Rancho Cordova and we are openly exploring options for a facility in Natomas. The camp runs year long, and sessions are 8 weeks long, followed by a 2 week break. All practices will take place on Sunday evenings.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          🎽 What should my child bring?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Campers should bring basketball shoes, comfortable athletic wear, a water bottle, and a positive attitude!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          📞 How can I register?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Visit our <a href=" https://form.jotform.com/243635309022147" target="_blank">registration page</a> or contact us via email at harpinder@singhdreamhomes@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Details Modal -->
+  <div id="event-details" class="event-details">
+    <div class="event-details-content">
+      <span class="close-btn" onclick="closeEventDetails()">×</span>
+      <h2 id="event-title"></h2>
+      <p id="event-description"></p>
+    </div>
+  </div>
+
+  <script>
+    const eventDescriptions = {
+      1: {
+          title: "🏀 Spring Camp Registration Opens",
+          description: "Sign up for our highly anticipated Spring Basketball Camp! Open to all skill levels. Secure your spot now."
+      },
+      2: {
+          title: "⛹️‍♂️ 3v3 Tournament",
+          description: "Join us for our first ever 3v3 tournament in collaboration with Jakara Movement. Stay tuned for more information coming soon!"
+      },
+      3: {
+          title: "🏀 PBA LA Tournament",
+          description: "Our biggest event of the year! Compete against top players and showcase your skills on the court."
+      },
+      4: {
+          title: "🏆 Celebrity/All Star Game",
+          description: "Bringing your our 3rd annual celebrity and all star basketball game. Stay tuned for the announcement of Celebrities and All Stars"
+      }
+    };
+  
+    function showEventDetails(eventId) {
+      const modal = document.getElementById("event-details");
+      document.getElementById("event-title").textContent = eventDescriptions[eventId].title;
+      document.getElementById("event-description").textContent = eventDescriptions[eventId].description;
+      modal.classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+  
+    function closeEventDetails() {
+      const modal = document.getElementById("event-details");
+      modal.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('event-details').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeEventDetails();
+      }
+    });
+
+    // Close modal when pressing ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeEventDetails();
+      }
+    });
+
+    // FAQ Functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Toggle current FAQ
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+  </script>
+  
+  
+
+
+  <div class="section-members wf-section">
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="members-container">
+      <div class='coaches'><h1>Meet the Coaches!</h1></div>
+      <div class="coaches-grid">
+        <div data-w-id="d0c47c94-02d1-d6d0-6116-c38fb1912d14" class="coach-card" style="will-change: transform; transform: translate3d(0px, 100px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <img src="./assets/u14.png" loading="lazy" width="500" sizes="(max-width: 991px) 300px, 500px" srcset="assets/u14.png 500w, assets/u14.png 702w" alt="" class="coach-image">
+          <div class="coach-text">
+            <h1 class="h1-header h2 memer"><strong>Harpinder Singh</strong></h1>
+            <div class="paragragh member">Founding WeGotNext in 2017, Harpinder sought to change the life of kids through basketball like his was by his first coach, Creighton Lane. His passion for basketball has never waivered, and in the process has led WeGotNext from an app, to a basketball camp in Sacramento and San Jose. The camp has seen more than 200 kids come through, and continues to expand year over year.</div>
+          </div>
+        </div>
+        <div data-w-id="f6731d34-ce2c-a472-b5a5-7f1214f0872c" class="coach-card" style="will-change: transform; transform: translate3d(0px, 100px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <img src="./assets/magic.png" loading="lazy" width="500" sizes="(max-width: 767px) 100vw, (max-width: 991px) 300px, 500px" srcset="assets/magic.png 500w, assets/magic.png 701w" alt="" class="coach-image">
+          <div class="coach-text">
+            <h1 class="h1-header h2 memer"><strong>Mandeep Sahota</strong></h1>
+            <div class="paragragh member">Mandeep Sahota has been a coach at the WeGotNext Basketball camp in Sacramento since 2021. A 4 year starter for Wilcox High School basketball in Santa Clara, she now teaches in Elk Grove, and is the coach for the school basketball team.</div>
+          </div>
+        </div>
+        <div data-w-id="coach-card-3" class="coach-card" style="will-change: transform; transform: translate3d(0px, 100px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <img src="./assets/placeholder-coach.png" loading="lazy" width="500" sizes="(max-width: 767px) 100vw, (max-width: 991px) 300px, 500px" alt="" class="coach-image">
+          <div class="coach-text">
+            <h1 class="h1-header h2 memer"><strong>Coach Name</strong></h1>
+            <div class="paragragh member">Coach biography and details will be added here. This section will include their background, experience, and contributions to the WeGotNext Basketball program.</div>
+          </div>
+        </div>
+        <div data-w-id="coach-card-4" class="coach-card" style="will-change: transform; transform: translate3d(0px, 100px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <img src="./assets/placeholder-coach.png" loading="lazy" width="500" sizes="(max-width: 767px) 100vw, (max-width: 991px) 300px, 500px" alt="" class="coach-image">
+          <div class="coach-text">
+            <h1 class="h1-header h2 memer"><strong>Coach Name</strong></h1>
+            <div class="paragragh member">Coach biography and details will be added here. This section will include their background, experience, and contributions to the WeGotNext Basketball program.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="current-players">
+      <h1>Current Players</h1>
+      <div class="players-grid">
+        <div class="player-card">
+          <img src="./assets/puneetsingh.png" alt="Player Name" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player Name</h2>
+            <div class="player-details">
+              <p>Age: 16</p>
+              <p>Height: 6'2"</p>
+              <p>High School: School Name</p>
+              <p>Year: Junior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 2" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 2</h2>
+            <div class="player-details">
+              <p>Age: 15</p>
+              <p>Height: 5'11"</p>
+              <p>High School: School Name</p>
+              <p>Year: Sophomore</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 3" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 3</h2>
+            <div class="player-details">
+              <p>Age: 17</p>
+              <p>Height: 6'0"</p>
+              <p>High School: School Name</p>
+              <p>Year: Junior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 4" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 4</h2>
+            <div class="player-details">
+              <p>Age: 16</p>
+              <p>Height: 6'1"</p>
+              <p>High School: School Name</p>
+              <p>Year: Sophomore</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 5" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 5</h2>
+            <div class="player-details">
+              <p>Age: 15</p>
+              <p>Height: 5'10"</p>
+              <p>High School: School Name</p>
+              <p>Year: Freshman</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 6" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 6</h2>
+            <div class="player-details">
+              <p>Age: 17</p>
+              <p>Height: 6'3"</p>
+              <p>High School: School Name</p>
+              <p>Year: Junior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 7" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 7</h2>
+            <div class="player-details">
+              <p>Age: 16</p>
+              <p>Height: 6'0"</p>
+              <p>High School: School Name</p>
+              <p>Year: Sophomore</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 8" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 8</h2>
+            <div class="player-details">
+              <p>Age: 15</p>
+              <p>Height: 5'11"</p>
+              <p>High School: School Name</p>
+              <p>Year: Freshman</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 9" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 9</h2>
+            <div class="player-details">
+              <p>Age: 17</p>
+              <p>Height: 6'2"</p>
+              <p>High School: School Name</p>
+              <p>Year: Junior</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 10" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 10</h2>
+            <div class="player-details">
+              <p>Age: 16</p>
+              <p>Height: 6'1"</p>
+              <p>High School: School Name</p>
+              <p>Year: Sophomore</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-card">
+          <img src="./assets/placeholder-player.png" alt="Player 11" class="player-image">
+          <div class="player-info">
+            <h2 class="player-name">Player 11</h2>
+            <div class="player-details">
+              <p>Age: 15</p>
+              <p>Height: 5'10"</p>
+              <p>High School: School Name</p>
+              <p>Year: Freshman</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="season-awards">
+      <h1>Season Awards</h1>
+      <div class="awards-grid">
+        <div class="award-card">
+          <img src="./assets/gurshan.png" alt="Most Improved" class="award-image">
+          <div class="award-content">
+            <h2 class="award-title">Most Improved</h2>
+            <p class="award-winner">Gurshan Singh</p>
+          </div>
+        </div>
+        <div class="award-card">
+          <img src="./assets/player2.jpg" alt="MVP" class="award-image">
+          <div class="award-content">
+            <h2 class="award-title">MVP</h2>
+            <p class="award-winner">Player Name</p>
+          </div>
+        </div>
+        <div class="award-card">
+          <img src="./assets/player3.jpg" alt="Best Teammate" class="award-image">
+          <div class="award-content">
+            <h2 class="award-title">Best Teammate</h2>
+            <p class="award-winner">Player Name</p>
+          </div>
+        </div>
+        <div class="award-card">
+          <img src="./assets/player4.jpg" alt="Hardest Working" class="award-image">
+          <div class="award-content">
+            <h2 class="award-title">Hardest Working</h2>
+            <p class="award-winner">Player Name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-footer wf-section">
+      <div class="footer-container">
+        <div class="logo-social">
+          <a href="index.html" class="footer-logo w-inline-block"><img src="./assets/WeGotNext-Logo.png" loading="lazy" width="80" alt="" class="image-logo-footer"></a>
+        </div>
+        <div class="footer-link">
+          <a href="shop.html" class="team-link">Shop</a>
+          <a href="academy.html" class="team-link">Academy</a>
+        </div>
+        <div class="footer-link-1">
+          <a href="community.html" class="team-link">Community</a>
+          <a href="donate.html" class="team-link">Donate</a>
+        </div>
+      </div>
+      <div class="footer-container-1">
+        <h1 class="footer-text">© 2025 WeGotNext - All Rights Reserved</a>
+        </h1>
+      </div>
+    </div>
+    <script src="./assets/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="./assets/webflow.js" type="text/javascript"></script>
+<!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+
+</body></html>  
+</body></html>  

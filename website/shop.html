@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html class="w-mod-js w-mod-ix wf-playfairdisplay-n4-active wf-playfairdisplay-n5-active wf-playfairdisplay-n6-active wf-playfairdisplay-n7-active wf-playfairdisplay-n8-active wf-playfairdisplay-n9-active wf-playfairdisplay-i4-active wf-playfairdisplay-i5-active wf-playfairdisplay-i6-active wf-playfairdisplay-i7-active wf-playfairdisplay-i8-active wf-playfairdisplay-i9-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style>
+  
+  <title>We Got Next - Shop</title>
+  <meta content="Idlies" property="og:title">
+  <meta content="Idlies" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="./assets/normalize.css" rel="stylesheet" type="text/css">
+  <link href="./assets/webflow.css" rel="stylesheet" type="text/css">
+  <link href="./assets/styles.webflow.css" rel="stylesheet" type="text/css">
+  <style>@media (min-width:992px) {html.w-mod-js:not(.w-mod-ix) [data-w-id="35491a63-a4af-1073-72c7-edfbe602c01d"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="42105e6a-a678-246d-13c5-5b02f24e3660"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="2af20345-262e-a4dd-d902-0840fb55823f"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="302dc956-337a-938d-162c-70e14d5ad871"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="3909679f-3d54-1467-7ecc-cbca91748bf5"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="5ee18c5f-09bd-1108-acca-882c8d17e074"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="21141fd5-03e9-f9f2-eb42-31640c64fea7"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="ed4d376b-19f6-b43e-b255-a889b0c44cc6"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="e905ce86-2790-eec9-85f0-1310b5444649"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e38d6"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e38de"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e38f8"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e3900"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e3912"] {display:none;opacity:0;}html.w-mod-js:not(.w-mod-ix) [data-w-id="bc64edd9-2b49-e85a-72c0-3921718e391c"] {display:none;opacity:0;}}</style>
+  <script src="./assets/webfont.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="./assets/css" media="all"><script type="text/javascript">WebFont.load({  google: {    families: ["Playfair Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic:cyrillic,latin,latin-ext,vietnamese"]  }});</script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="assets/WeGotNext-logo.png" rel="shortcut icon" type="image/x-icon">
+  <link href="https://houseofidlies.com/assets/webclip.png" rel="apple-touch-icon">
+  <style>
+    .shop-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .shop-hero img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .shop-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .shop-hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-info h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .product-info p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .product-price {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .categories-section {
+      padding: 4rem 2rem;
+      background: #f5f5f5;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .category-card {
+      position: relative;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: white;
+    }
+
+    .category-overlay h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .shop-hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 2rem 1rem;
+      }
+
+      .categories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Basketball Court Showcase */
+    .court-showcase {
+        position: relative;
+        background: #FF6B00;
+        padding: 4rem 2rem;
+        overflow: hidden;
+    }
+
+    .court-floor {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        background: #FF6B00;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .court-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 4px solid white;
+        border-radius: 20px;
+        pointer-events: none;
+    }
+
+    .court-center-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        border: 4px solid white;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .products-court {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .product-spot {
+        position: relative;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .product-spot:hover {
+        transform: translateY(-10px);
+    }
+
+    .product-spot::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(255,107,0,0.1), transparent);
+        z-index: 1;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .product-spot:hover .product-image {
+        transform: scale(1.05);
+    }
+
+    .product-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        color: white;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .product-spot:hover .product-info {
+        transform: translateY(-5px);
+    }
+
+    .product-info h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .product-info p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        opacity: 0.9;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .shop-now-btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background: #FF6B00;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .shop-now-btn:hover {
+        transform: scale(1.05);
+        background: #FF8533;
+    }
+
+    @media (max-width: 1024px) {
+        .products-court {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .product-image {
+            height: 300px;
+        }
+
+        .product-info h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .court-showcase {
+            padding: 2rem 1rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+    }
+
+    .shop-showcase {
+        padding: 6rem 2rem;
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .shop-showcase::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 10% 10%, rgba(255, 107, 0, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 90% 90%, rgba(255, 107, 0, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.05) 0%, transparent 60%),
+            repeating-linear-gradient(45deg, 
+                rgba(255, 107, 0, 0.03) 0px, 
+                rgba(255, 107, 0, 0.03) 1px, 
+                transparent 1px, 
+                transparent 8px
+            ),
+            repeating-linear-gradient(-45deg, 
+                rgba(255, 107, 0, 0.02) 0px, 
+                rgba(255, 107, 0, 0.02) 1px, 
+                transparent 1px, 
+                transparent 12px
+            );
+        pointer-events: none;
+        animation: backgroundShift 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundShift {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 100% 100%;
+        }
+    }
+
+    .shop-showcase::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            linear-gradient(90deg, 
+                rgba(0,0,0,0.2) 0%, 
+                transparent 20%, 
+                transparent 80%, 
+                rgba(0,0,0,0.2) 100%
+            );
+        pointer-events: none;
+    }
+
+    .shop-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        padding: 6rem 2rem;
+        background: linear-gradient(315deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .shop-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 90% 10%, rgba(255, 107, 0, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 10% 90%, rgba(255, 107, 0, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(255, 107, 0, 0.05) 0%, transparent 60%),
+            repeating-linear-gradient(-45deg, 
+                rgba(255, 107, 0, 0.03) 0px, 
+                rgba(255, 107, 0, 0.03) 1px, 
+                transparent 1px, 
+                transparent 8px
+            ),
+            repeating-linear-gradient(45deg, 
+                rgba(255, 107, 0, 0.02) 0px, 
+                rgba(255, 107, 0, 0.02) 1px, 
+                transparent 1px, 
+                transparent 12px
+            );
+        pointer-events: none;
+        animation: backgroundShift 20s ease-in-out infinite alternate;
+    }
+
+    .shop-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            linear-gradient(90deg, 
+                rgba(0,0,0,0.2) 0%, 
+                transparent 20%, 
+                transparent 80%, 
+                rgba(0,0,0,0.2) 100%
+            );
+        pointer-events: none;
+    }
+
+    .shop-heading {
+        position: relative;
+        z-index: 2;
+        color: white;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .shop-heading::after {
+        content: '';
+        width: 100px;
+        height: 4px;
+        background: #FF6B00;
+        margin-top: 1rem;
+    }
+
+    .shop-collection {
+        position: relative;
+        z-index: 2;
+    }
+
+    .shop-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .shop-header h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: white;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .shop-header p {
+        font-size: 1.2rem;
+        color: rgba(255,255,255,0.8);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .product-content {
+        padding: 2rem;
+        background: linear-gradient(
+            to top,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.85)
+        );
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .product-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .product-description {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #FF6B00;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    .shop-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: #FF6B00;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid #FF6B00;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .shop-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: 0.5s;
+    }
+
+    .shop-button:hover::before {
+        left: 100%;
+    }
+
+    .shop-button:hover {
+        background: transparent;
+        color: #FF6B00;
+        transform: translateY(-2px);
+    }
+
+    .product-tag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: #FF6B00;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        box-shadow: 0 2px 10px rgba(255, 107, 0, 0.3);
+        z-index: 2;
+    }
+
+    @media (max-width: 1024px) {
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .product-image {
+            height: 400px;
+        }
+
+        .shop-header h1 {
+            font-size: 2.8rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .shop-showcase {
+            padding: 4rem 1rem;
+        }
+
+        .shop-header h1 {
+            font-size: 2.2rem;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+        }
+    }
+
+    .section-footer {
+        position: relative;
+        width: 100%;
+        padding: 4rem 0;
+        background: #000000;
+        color: #fff;
+        z-index: 1;
+    }
+
+    .footer-container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .footer-logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #FF6B00;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer-social-icon {
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.3s ease;
+    }
+
+    .footer-social-icon:hover {
+        color: #FF6B00;
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+
+    .featured-section {
+        background: #000000;
+        padding: 6rem 2rem;
+        position: relative;
+    }
+
+    .featured-section .shop-heading {
+        color: white;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    .featured-section .shop-collection {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+  </style>
+</head>
+<body class="body-2">
+  <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-final w-nav" style="background-color: rgba(0, 0, 0, 0);">
+    <div class="nav-container02 w-container">
+      <a href="https://houseofidlies.com/index.html" class="brand w-nav-brand"><img src="./assets/WGN.png" loading="lazy" width="90" alt="" class="logo-image"></a>
+      <nav role="navigation" class="nav-menu-3 w-nav-menu">
+        <a href="index.html" class="nav-item w-nav-link" style="max-width: 940px;">Home</a>
+        <a href="shop.html" aria-current="page" class="nav-item w-nav-link w--current" style="max-width: 940px;">Shop</a>
+        <a href="academy.html" class="nav-item w-nav-link" style="max-width: 940px;">Academy</a>
+        <a href="celebs.html" class="nav-item w-nav-link" style="max-width: 940px;">Community</a>
+        <a href="donate.html" class="nav-item w-nav-link" style="max-width: 400px;">Donate</a>
+      </nav>
+      <div class="menu-button w-nav-button" style="-webkit-user-select: text;" aria-label="menu" role="button" tabindex="0" aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+        <div class="icon-2 w-icon-nav-menu"></div>
+      </div>
+    </div>
+  <div class="w-nav-overlay" data-wf-ignore="" id="w-nav-overlay-0"></div></div>
+  <div data-w-id="fa08de6c-509c-40b0-0b44-cab244f28961" class="section-1 wf-section">
+    <div class="back-idly"></div>
+    <div class="video-background">
+        <img src="assets/anamika.png" alt="Background Image" class="background-image">
+    </div>    
+    <div class="back-idly-tab"></div>
+    <div data-w-id="fa08de6c-509c-40b0-0b44-cab244f28963" class="container top" style="will-change: transform; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+        <img src="./assets/wgn-black.png" loading="lazy" width="700" sizes="(max-width: 767px) 60vw, 450px" srcset="assets/wgn-b.png 500w, assets/wgn-black.png 505w" alt="WGN Logo" class="image-11">
+    </div>
+</div>
+<div class="shop-showcase">
+    <div class="shop-container">
+        <div class="shop-header">
+            <h1>WeGotNext Collection</h1>
+            <p>Premium basketball apparel and accessories designed for the modern athlete.</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="product-tag">New Arrival</span>
+                <img src="assets/shorts.png" alt="WeGotNext Shorts" class="product-image">
+                <div class="product-content">
+                    <h2 class="product-title">WeGotNext Shorts v3</h2>
+                    <p class="product-description">Premium basketball shorts designed for performance and comfort. Perfect for both training and game day.</p>
+                    <div class="product-price">$45.00</div>
+                    <a href="#" class="shop-button">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="product-tag">Best Seller</span>
+                <img src="assets/shop-anamika.png" alt="WeGotNext Hoodie" class="product-image">
+                <div class="product-content">
+                    <h2 class="product-title">WeGotNext Hoodie</h2>
+                    <p class="product-description">Lightweight, breathable hoodies that keep you comfortable on and off the court. Available in multiple colors.</p>
+                    <div class="product-price">$65.00</div>
+                    <a href="#" class="shop-button">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="assets/preet.png" alt="WeGotNext Shirt" class="product-image">
+                <div class="product-content">
+                    <h2 class="product-title">WeGotNext Shirt</h2>
+                    <p class="product-description">Premium quality shirts featuring our signature designs. Perfect for everyday wear and team events.</p>
+                    <div class="product-price">$35.00</div>
+                    <a href="#" class="shop-button">Shop Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <span class="product-tag">Popular</span>
+                <img src="assets/vish_sole.png" alt="WeGotNext Backpack" class="product-image">
+                <div class="product-content">
+                    <h2 class="product-title">Hoop Pack</h2>
+                    <p class="product-description">Stylish and functional backpack with dedicated compartments for shoes and accessories. Perfect for the gym or travel.</p>
+                    <div class="product-price">$55.00</div>
+                    <a href="#" class="shop-button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="featured-section">
+    <h1 class="shop-heading">Our Featured Items!</h1>
+    <div class="shop-collection">
+        <div class="shop-card">
+            <a href="shop.html">
+                <img src="assets/hoodie.png" alt="Hoodies">
+                <div class="shop-info">
+                    <h2>Hoodies</h2>
+                </div>
+            </a>
+        </div>
+        <div class="shop-card">
+            <a href="shop.html">
+                <img src="assets/britt-shorts.png" alt="Basketball Shorts">
+                <div class="shop-info">
+                    <h2>Basketball Shorts</h2>
+                </div>
+            </a>
+        </div>
+        <div class="shop-card">
+            <a href="shop.html">
+                <img src="assets/shirt.png" alt="Tees">
+                <div class="shop-info">
+                    <h2>Tees</h2>
+                </div>
+            </a>
+        </div>
+        <div class="shop-card">
+            <a href="shop.html">
+                <img src="assets/spack.png" alt="Backpacks">
+                <div class="shop-info">
+                    <h2>Backpacks</h2>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<body>
+    <div class="left-image-2"><img src="./assets/circle_1.png" loading="lazy" height="" width="600" srcset="assets/circle_1-p-500.png 500w, assets/circle_1.png 515w" sizes="(max-width: 479px) 100vw, (max-width: 991px) 156.01815795898438px, 31vw" alt="" class="image-rotation"></div>
+  </div>
+  <div class="section-footer wf-section">
+    <div class="footer-container">
+      <div class="logo-social">
+        <a href="index.html" class="footer-logo w-inline-block"><img src="./assets/WeGotNext-Logo.png" loading="lazy" width="80" alt="" class="image-logo-footer"></a>
+      </div>
+      <div class="footer-link">
+        <a href="shop.html" class="team-link">Shop</a>
+        <a href="academy.html" class="team-link">Academy</a>
+      </div>
+      <div class="footer-link-1">
+        <a href="community.html" class="team-link">Community</a>
+        <a href="donate.html" class="team-link">Donate</a>
+      </div>
+    </div>
+    <div class="footer-container-1">
+      <h1 class="footer-text">© 2025 WeGotNext - All Rights Reserved</a>
+      </h1>
+    </div>
+  </div>
+  <script src="./assets/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="./assets/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+
+</body></html>
+
