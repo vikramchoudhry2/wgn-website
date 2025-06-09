@@ -5,6 +5,8 @@ import AcademyOverview from '@/components/AcademyOverview';
 import UpcomingEvents from '@/components/UpcomingEvents';
 import CampFAQs from '@/components/CampFAQs';
 import AcademyRegistrationModal from '@/components/AcademyRegistrationModal';
+import CoachesSection from '@/components/CoachesSection';
+import PlayersSection from '@/components/PlayersSection';
 
 export default function Academy() {
   const [isRegistrationModalOpen, setIsRegistrationModalOpen] = useState(false);
@@ -21,8 +23,8 @@ export default function Academy() {
           className="z-0"
           priority
         />
-        <div className="absolute inset-0 flex items-center justify-center z-10">
-          <div className="backdrop-blur-md bg-white/30 rounded-xl px-8 py-4">
+        <div className="absolute inset-0 flex items-end justify-center z-10">
+          <div className="backdrop-blur-md bg-white/30 rounded-xl px-8 py-4 mb-16 md:mb-24">
             <h1 className="text-3xl md:text-5xl font-extrabold text-center text-white drop-shadow-lg">
               Sikh Youth All Stars
             </h1>
@@ -35,6 +37,8 @@ export default function Academy() {
           <AcademyOverview />
           <UpcomingEvents />
           <CampFAQs />
+          <CoachesSection />
+          <PlayersSection />
         </div>
       </div>
       {/* Rest of Academy content */}

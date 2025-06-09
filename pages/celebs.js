@@ -81,7 +81,6 @@ export default function Celebs() {
           loop
           muted
           playsInline
-          poster="/assets/celebs.png"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/20">
           <h1 className="text-5xl md:text-7xl font-extrabold text-center text-white drop-shadow-lg mb-4" style={{fontFamily: 'Roxboroughcf, sans-serif', letterSpacing: '0.05em'}}>

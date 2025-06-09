@@ -1,9 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
 import ShopHero from '@/components/ShopHero';
+import { fetchProducts } from '@/utils/shopify';
+import { useCart } from '@/utils/CartContext';
 
-const products = [
+// Fallback products in case Shopify is not configured
+const fallbackProducts = [
   {
     name: 'WeGotNext Shorts v3',
     description: 'Premium basketball shorts designed for performance and comfort. Perfect for both training and game day.',
@@ -60,7 +63,46 @@ const products = [
 
 export default function Shop() {
   const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [products, setProducts] = useState(fallbackProducts);
+  const [loading, setLoading] = useState(true);
+  const [usingShopify, setUsingShopify] = useState(false);
   const cardRefs = useRef([]);
+  const { addToCart, isLoading: cartLoading, isShopifyConfigured } = useCart();
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        // Check if Shopify is configured
+        if (process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN && process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
+          const shopifyProducts = await fetchProducts();
+          if (shopifyProducts && shopifyProducts.length > 0) {
+            // Transform Shopify products to match our format
+            const transformedProducts = shopifyProducts.map((product, index) => ({
+              id: product.id,
+              name: product.title,
+              description: product.description || 'Premium WeGotNext product',
+              price: product.variants[0]?.price ? `$${product.variants[0].price.amount}` : 'Price TBD',
+              image: product.images[0]?.src || fallbackProducts[index % fallbackProducts.length].image,
+              badge: index === 0 ? 'New Arrival' : index === 1 ? 'Best Seller' : index === 3 ? 'Popular' : '',
+              badgeColor: index === 0 ? 'bg-orange-500' : index === 1 ? 'bg-orange-400' : index === 3 ? 'bg-orange-300' : '',
+              previewImages: product.images.slice(0, 3).map(img => img.src) || fallbackProducts[index % fallbackProducts.length].previewImages,
+              variants: product.variants,
+              handle: product.handle,
+            }));
+            setProducts(transformedProducts);
+            setUsingShopify(true);
+          }
+        }
+      } catch (error) {
+        console.error('Error loading Shopify products:', error);
+        // Keep using fallback products
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
 
   // Helper to get the top offset of a card relative to the grid container
   const getCardOffset = (idx) => {
@@ -69,6 +111,27 @@ export default function Shop() {
     const gridRect = cardRefs.current[0]?.parentNode?.getBoundingClientRect();
     return cardRect.top - (gridRect?.top || 0);
   };
+
+  const handleAddToCart = async (product) => {
+    if (usingShopify && isShopifyConfigured && product.variants && product.variants.length > 0) {
+      // Use Shopify variant ID
+      await addToCart(product.variants[0].id, 1);
+    } else {
+      // For fallback products, show a message
+      alert('This is a demo product. Configure Shopify credentials to enable real purchasing!');
+    }
+  };
+
+  if (loading) {
+    return (
+      <Layout title="We Got Next - Shop">
+        <ShopHero />
+        <div className="min-h-screen py-12 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #181818 0%, #232323 100%)' }}>
+          <div className="text-white text-xl">Loading products...</div>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout title="We Got Next - Shop">
@@ -85,6 +148,13 @@ export default function Shop() {
             <p className="text-lg text-gray-200 mb-6">
               Premium basketball apparel and accessories designed for the modern athlete.
             </p>
+            {!usingShopify && (
+              <div className="bg-blue-500/20 border border-blue-500 rounded-lg p-4 mb-6 max-w-2xl mx-auto">
+                <p className="text-blue-200 text-sm">
+                  <strong>Demo Mode:</strong> You're viewing sample products. To enable real purchasing, follow the setup guide in <code>SHOPIFY_SETUP.md</code>.
+                </p>
+              </div>
+            )}
           </div>
           <div className="relative">
             {/* Preview panel for hovered product */}
@@ -114,7 +184,7 @@ export default function Shop() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, #181818 0%, #232323 100%)' }}>
               {products.map((product, idx) => (
                 <div
-                  key={product.name}
+                  key={product.id || product.name}
                   ref={el => (cardRefs.current[idx] = el)}
                   className="bg-white/95 rounded-xl shadow-lg overflow-hidden relative flex flex-col max-w-sm mx-auto"
                   style={{ minHeight: '520px', width: '100%' }}
@@ -144,8 +214,12 @@ export default function Shop() {
                     </div>
                     <div className="flex items-end justify-between mt-2">
                       <span className="text-lg font-bold text-orange-600">{product.price}</span>
-                      <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-lg shadow transition-colors">
-                        Shop Now
+                      <button 
+                        onClick={() => handleAddToCart(product)}
+                        disabled={cartLoading}
+                        className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold px-5 py-2 rounded-lg shadow transition-colors"
+                      >
+                        {cartLoading ? 'Adding...' : (usingShopify && isShopifyConfigured) ? 'Add to Cart' : 'Demo Product'}
                       </button>
                     </div>
                   </div>
