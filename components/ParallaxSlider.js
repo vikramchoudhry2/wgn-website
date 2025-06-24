@@ -15,7 +15,7 @@ export default function ParallaxSlider() {
   return (
     <section className="w-full bg-black py-24">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>Our Stories & Highlights</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center" style={{fontFamily: 'Playfair Display, serif'}}>Our Stories & Highlights</h2>
         <div
           ref={sliderRef}
           className="overflow-x-auto flex gap-8 scrollbar-hide snap-x snap-mandatory"
@@ -35,7 +35,7 @@ export default function ParallaxSlider() {
                   draggable={false}
                 />
               </div>
-              <div className="p-6 text-white text-center flex flex-col gap-2 w-full" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>
+              <div className="p-6 text-white text-center flex flex-col gap-2 w-full" style={{fontFamily: 'Playfair Display, serif'}}>
                 <div className="text-xl md:text-2xl font-bold mb-1">{card.title}</div>
                 <div className="text-sm md:text-base font-medium">{card.text}</div>
               </div>

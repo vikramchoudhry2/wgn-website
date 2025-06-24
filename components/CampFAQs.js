@@ -29,7 +29,7 @@ export default function CampFAQs() {
   return (
     <section className="w-full mt-20">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 tracking-wide uppercase text-white" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 tracking-wide uppercase text-white" style={{fontFamily: 'Playfair Display, serif'}}>
           Basketball Camp FAQs
         </h2>
         <div className="space-y-4">
@@ -48,7 +48,7 @@ export default function CampFAQs() {
                 >
                   <span className="flex items-center gap-4 text-xl md:text-2xl font-semibold text-white">
                     <span className="text-2xl md:text-3xl">{faq.emoji}</span>
-                    <span className="font-bold" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>{faq.q}</span>
+                    <span className="font-bold" style={{fontFamily: 'Playfair Display, serif'}}>{faq.q}</span>
                   </span>
                   <span className="ml-4 flex items-center">
                     <span className={`transition-transform duration-300 text-3xl text-white/70 group-hover:text-[#FFC24B] ${isOpen ? 'rotate-45 text-[#FFC24B]' : ''}`}>+</span>

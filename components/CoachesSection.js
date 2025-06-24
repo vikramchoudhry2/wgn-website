@@ -26,13 +26,13 @@ const coaches = [
 export default function CoachesSection() {
   return (
     <section className="w-full py-16">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>Meet the Coaches</h2>
+      <h2 className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12" style={{fontFamily: 'Playfair Display, serif'}}>Meet the Coaches</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {coaches.map((coach, idx) => (
           <div key={coach.name} className="group relative rounded-2xl overflow-hidden shadow-lg bg-white/5 border border-white/10 aspect-[3/4] cursor-pointer">
             <img src={coach.image} alt={coach.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>{coach.name}</h3>
+              <h3 className="text-2xl font-bold text-white mb-4" style={{fontFamily: 'Playfair Display, serif'}}>{coach.name}</h3>
               <p className="text-white/90 text-base md:text-lg font-medium">{coach.bio}</p>
             </div>
           </div>

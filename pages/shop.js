@@ -1,101 +1,149 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Layout from '@/components/layout/Layout';
-import Image from 'next/image';
 import ShopHero from '@/components/ShopHero';
+import ProductCard from '@/components/ProductCard';
 import { fetchProducts } from '@/utils/shopify';
 import { useCart } from '@/utils/CartContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Fallback products in case Shopify is not configured
-const fallbackProducts = [
-  {
-    name: 'WeGotNext Shorts v3',
-    description: 'Premium basketball shorts designed for performance and comfort. Perfect for both training and game day.',
-    price: '$45.00',
-    image: '/assets/shorts.png',
-    badge: 'New Arrival',
-    badgeColor: 'bg-orange-500',
-    previewImages: [
-      '/assets/rise.png',
-      '/assets/shorts.png',
-      '/assets/britt-shorts.png',
-    ],
-  },
-  {
-    name: 'WeGotNext Hoodie',
-    description: 'Lightweight, breathable hoodies that keep you comfortable on and off the court. Available in multiple colors.',
-    price: '$65.00',
-    image: '/assets/anamika.png',
-    badge: 'Best Seller',
-    badgeColor: 'bg-orange-400',
-    previewImages: [
-      '/assets/britt-pose.png',
-      '/assets/hoodie.png',
-      '/assets/britt.png',
-    ],
-  },
-  {
-    name: 'WeGotNext Shirt',
-    description: 'Premium quality shirts featuring our signature designs. Perfect for everyday wear and team events.',
-    price: '$35.00',
-    image: '/assets/preet.png',
-    badge: '',
-    badgeColor: '',
-    previewImages: [
-      '/assets/shirt.png',
-      '/assets/shirt.png',
-      '/assets/shirt.png',
-    ],
-  },
-  {
-    name: 'Hoop Pack',
-    description: 'Stylish and functional backpack with dedicated compartments for shoes and accessories. Perfect for the gym or travel.',
-    price: '$55.00',
-    image: '/assets/vish_sole.png',
-    badge: 'Popular',
-    badgeColor: 'bg-orange-300',
-    previewImages: [
-      '/assets/sole.png',
-      '/assets/spack.png',
-      '/assets/vish_sole.png',
-    ],
-  },
+// Categories for filtering
+const categories = [
+  { id: 'all', name: 'All Products' },
+  { id: 'shorts', name: 'Shorts' },
+  { id: 'hoodies', name: 'Hoodies' },
+  { id: 'tees', name: 'Tees' },
+  { id: 'backpacks', name: 'Backpacks' },
+  { id: 'essentials', name: 'Essentials' },
 ];
 
 export default function Shop() {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
-  const [products, setProducts] = useState(fallbackProducts);
+  const router = useRouter();
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [usingShopify, setUsingShopify] = useState(false);
-  const cardRefs = useRef([]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showFilters, setShowFilters] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [email, setEmail] = useState('');
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
   const { addToCart, isLoading: cartLoading, isShopifyConfigured } = useCart();
+
+  // Show email modal after 3 seconds, but only if not already submitted
+  useEffect(() => {
+    const hasSubmittedEmail = localStorage.getItem('wgn_email_submitted');
+    if (!hasSubmittedEmail) {
+      const timer = setTimeout(() => {
+        setShowEmailModal(true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // Handle email submission
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    try {
+      // Send email to Mailchimp API
+      const response = await fetch('/api/mailchimp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Mark as submitted
+        localStorage.setItem('wgn_email_submitted', 'true');
+        setEmailSubmitted(true);
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          setShowEmailModal(false);
+        }, 2000);
+      } else {
+        throw new Error(result.message || 'Failed to subscribe');
+      }
+
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      alert('Failed to subscribe. Please try again later.');
+    }
+  };
+
+  // Set initial category from URL parameter
+  useEffect(() => {
+    if (router.query.category && categories.some(cat => cat.id === router.query.category)) {
+      setSelectedCategory(router.query.category);
+    }
+  }, [router.query.category]);
 
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        // Check if Shopify is configured
         if (process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN && process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
           const shopifyProducts = await fetchProducts();
           if (shopifyProducts && shopifyProducts.length > 0) {
-            // Transform Shopify products to match our format
-            const transformedProducts = shopifyProducts.map((product, index) => ({
-              id: product.id,
-              name: product.title,
-              description: product.description || 'Premium WeGotNext product',
-              price: product.variants[0]?.price ? `$${product.variants[0].price.amount}` : 'Price TBD',
-              image: product.images[0]?.src || fallbackProducts[index % fallbackProducts.length].image,
-              badge: index === 0 ? 'New Arrival' : index === 1 ? 'Best Seller' : index === 3 ? 'Popular' : '',
-              badgeColor: index === 0 ? 'bg-orange-500' : index === 1 ? 'bg-orange-400' : index === 3 ? 'bg-orange-300' : '',
-              previewImages: product.images.slice(0, 3).map(img => img.src) || fallbackProducts[index % fallbackProducts.length].previewImages,
-              variants: product.variants,
-              handle: product.handle,
-            }));
+            const transformedProducts = shopifyProducts.map((product) => {
+              // Better category detection based on product title and type
+              const getProductCategory = (product) => {
+                const title = product.title.toLowerCase();
+                const productType = product.productType?.toLowerCase() || '';
+                const tags = product.tags || [];
+                
+                // Check title and product type for category keywords
+                if (title.includes('short') || productType.includes('short')) {
+                  return 'shorts';
+                } else if (title.includes('hoodie') || title.includes('sweater') || productType.includes('hoodie')) {
+                  return 'hoodies';
+                } else if (title.includes('tee') || title.includes('shirt') || title.includes('t-shirt') || productType.includes('shirt')) {
+                  return 'tees';
+                } else if (title.includes('backpack') || title.includes('bag') || productType.includes('backpack') || productType.includes('bag')) {
+                  return 'backpacks';
+                } else if (title.includes('pack') || title.includes('accessory') || productType.includes('accessory')) {
+                  return 'essentials';
+                }
+                
+                // Fallback: check tags for category match
+                const tagCategory = tags.find(tag => 
+                  categories.some(cat => cat.id === tag.toLowerCase())
+                );
+                
+                return tagCategory?.toLowerCase() || 'all';
+              };
+              
+              return {
+                id: product.id,
+                name: product.title,
+                description: product.description || 'Premium WeGotNext product',
+                price: product.variants[0]?.price ? `$${product.variants[0].price.amount}` : 'Price TBD',
+                image: product.images[0]?.src || '/assets/placeholder.jpg',
+                previewImages: product.images.slice(0, 3).map(img => img.src),
+                badge: product.tags?.includes('new') ? 'New Arrival' : 
+                       product.tags?.includes('bestseller') ? 'Best Seller' : 
+                       product.tags?.includes('popular') ? 'Popular' : '',
+                badgeColor: product.tags?.includes('new') ? 'bg-orange-500' : 
+                           product.tags?.includes('bestseller') ? 'bg-orange-400' : 
+                           product.tags?.includes('popular') ? 'bg-orange-300' : '',
+                variants: product.variants,
+                handle: product.handle,
+                category: getProductCategory(product),
+                colors: (
+                  product.options.find(opt => opt.name.toLowerCase() === 'color')?.values.map(
+                    v => typeof v === 'string' ? v : v.value
+                  ) || ['#000000', '#FFFFFF', '#808080', '#FF6B00']
+                ),
+              };
+            });
             setProducts(transformedProducts);
-            setUsingShopify(true);
           }
         }
       } catch (error) {
         console.error('Error loading Shopify products:', error);
-        // Keep using fallback products
       } finally {
         setLoading(false);
       }
@@ -104,131 +152,220 @@ export default function Shop() {
     loadProducts();
   }, []);
 
-  // Helper to get the top offset of a card relative to the grid container
-  const getCardOffset = (idx) => {
-    if (!cardRefs.current[idx]) return 0;
-    const cardRect = cardRefs.current[idx].getBoundingClientRect();
-    const gridRect = cardRefs.current[0]?.parentNode?.getBoundingClientRect();
-    return cardRect.top - (gridRect?.top || 0);
-  };
+  const filteredProducts = selectedCategory === 'all' 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
 
-  const handleAddToCart = async (product) => {
-    if (usingShopify && isShopifyConfigured && product.variants && product.variants.length > 0) {
-      // Use Shopify variant ID
-      await addToCart(product.variants[0].id, 1);
-    } else {
-      // For fallback products, show a message
-      alert('This is a demo product. Configure Shopify credentials to enable real purchasing!');
-    }
+  // Get product counts for each category
+  const getCategoryCount = (categoryId) => {
+    if (categoryId === 'all') return products.length;
+    return products.filter(product => product.category === categoryId).length;
   };
-
-  if (loading) {
-    return (
-      <Layout title="We Got Next - Shop">
-        <ShopHero />
-        <div className="min-h-screen py-12 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #181818 0%, #232323 100%)' }}>
-          <div className="text-white text-xl">Loading products...</div>
-        </div>
-      </Layout>
-    );
-  }
 
   return (
     <Layout title="We Got Next - Shop">
       <ShopHero />
-      <div
-        className="min-h-screen py-12"
-        style={{
-          background: 'linear-gradient(135deg, #181818 0%, #232323 100%)',
-        }}
-      >
-        <div className="container-center max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-2 text-white">WeGotNext Collection</h1>
-            <p className="text-lg text-gray-200 mb-6">
-              Premium basketball apparel and accessories designed for the modern athlete.
-            </p>
-            {!usingShopify && (
-              <div className="bg-blue-500/20 border border-blue-500 rounded-lg p-4 mb-6 max-w-2xl mx-auto">
-                <p className="text-blue-200 text-sm">
-                  <strong>Demo Mode:</strong> You're viewing sample products. To enable real purchasing, follow the setup guide in <code>SHOPIFY_SETUP.md</code>.
+      
+      {/* Category Navigation */}
+      <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Desktop Categories */}
+            <div className="hidden md:flex space-x-8">
+              {categories.map((category) => {
+                const count = getCategoryCount(category.id);
+                return (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    disabled={count === 0}
+                    className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      selectedCategory === category.id
+                        ? 'text-black border-b-2 border-black'
+                        : count === 0
+                        ? 'text-gray-300 cursor-not-allowed'
+                        : 'text-gray-500 hover:text-gray-900'
+                    }`}
+                  >
+                    {category.name} ({count})
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Mobile Filter Button */}
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="md:hidden px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
+            >
+              Filter
+              <svg className="w-5 h-5 ml-2 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h18M3 12h18M3 20h18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Filter Panel */}
+        <AnimatePresence>
+          {showFilters && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden border-t border-gray-200"
+            >
+              <div className="px-4 py-3 space-y-2">
+                {categories.map((category) => {
+                  const count = getCategoryCount(category.id);
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => {
+                        setSelectedCategory(category.id);
+                        setShowFilters(false);
+                      }}
+                      disabled={count === 0}
+                      className={`w-full px-3 py-2 text-sm font-medium rounded-md text-left ${
+                        selectedCategory === category.id
+                          ? 'bg-gray-100 text-black'
+                          : count === 0
+                          ? 'text-gray-300 cursor-not-allowed'
+                          : 'text-gray-500 hover:bg-gray-50'
+                      }`}
+                    >
+                      {category.name} ({count})
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+
+      {/* Products Grid */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {loading ? (
+          <div className="flex justify-center items-center min-h-[400px]">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
+          </div>
+        ) : (
+          <>
+            {!isShopifyConfigured && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+                <p className="text-blue-700 text-sm">
+                  <strong>Demo Mode:</strong> You're viewing sample products. Configure Shopify credentials to enable real purchasing.
                 </p>
               </div>
             )}
-          </div>
-          <div className="relative">
-            {/* Preview panel for hovered product */}
-            {hoveredIdx !== null && products[hoveredIdx].previewImages && (
-              <div
-                className={`hidden md:flex flex-col gap-4 absolute z-30`}
-                style={{
-                  top: getCardOffset(hoveredIdx),
-                  left:
-                    hoveredIdx % 2 === 0
-                      ? '-410px'
-                      : undefined,
-                  right:
-                    hoveredIdx % 2 === 1
-                      ? '-410px'
-                      : undefined,
-                  height: cardRefs.current[hoveredIdx]?.offsetHeight || 'auto',
-                }}
-              >
-                {products[hoveredIdx].previewImages.map((img, i) => (
-                  <div key={i} className="w-96 h-96 rounded-xl overflow-hidden shadow-lg bg-black/80">
-                    <Image src={img} alt="" width={384} height={384} className="object-cover w-full h-full" />
-                  </div>
-                ))}
-              </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 rounded-2xl p-8" style={{ background: 'linear-gradient(135deg, #181818 0%, #232323 100%)' }}>
-              {products.map((product, idx) => (
-                <div
-                  key={product.id || product.name}
-                  ref={el => (cardRefs.current[idx] = el)}
-                  className="bg-white/95 rounded-xl shadow-lg overflow-hidden relative flex flex-col max-w-sm mx-auto"
-                  style={{ minHeight: '520px', width: '100%' }}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                >
-                  <div className="relative h-80 md:h-1000 w-full">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      className="w-full h-full"
-                    />
-                    {product.badge && (
-                      <span
-                        className={`absolute top-3 right-3 px-3 py-1 text-xs font-bold text-white rounded-full ${product.badgeColor}`}
-                      >
-                        {product.badge}
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex-1 flex flex-col justify-between p-6">
-                    <div>
-                      <h3 className="text-lg font-bold mb-2 text-gray-900">{product.name}</h3>
-                      <p className="text-gray-700 mb-4 text-base">{product.description}</p>
-                    </div>
-                    <div className="flex items-end justify-between mt-2">
-                      <span className="text-lg font-bold text-orange-600">{product.price}</span>
-                      <button 
-                        onClick={() => handleAddToCart(product)}
-                        disabled={cartLoading}
-                        className="bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold px-5 py-2 rounded-lg shadow transition-colors"
-                      >
-                        {cartLoading ? 'Adding...' : (usingShopify && isShopifyConfigured) ? 'Add to Cart' : 'Demo Product'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={addToCart}
+                />
               ))}
             </div>
-          </div>
-        </div>
-      </div>
+
+            {filteredProducts.length === 0 && (
+              <div className="text-center py-12">
+                <h3 className="text-lg font-medium text-gray-900">No products found</h3>
+                <p className="mt-2 text-sm text-gray-500">Try selecting a different category.</p>
+              </div>
+            )}
+          </>
+        )}
+      </main>
+
+      {/* Email Capture Modal */}
+      <AnimatePresence>
+        {showEmailModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowEmailModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl p-8 max-w-md w-full relative shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setShowEmailModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              {!emailSubmitted ? (
+                <>
+                  {/* Header */}
+                  <div className="text-center mb-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Stay in the Loop! 🏀</h3>
+                    <p className="text-gray-600">
+                      Get exclusive updates on new drops, academy events, and special offers from WeGotNext.
+                    </p>
+                  </div>
+
+                  {/* Email Form */}
+                  <form onSubmit={handleEmailSubmit} className="space-y-4">
+                    <div>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email address"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                        required
+                      />
+                    </div>
+                    
+                    <button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all transform hover:scale-105 shadow-lg"
+                    >
+                      Get Updates
+                    </button>
+                  </form>
+
+                  {/* Privacy Note */}
+                  <p className="text-xs text-gray-500 text-center mt-4">
+                    We respect your privacy. Unsubscribe at any time.
+                  </p>
+                </>
+              ) : (
+                /* Success Message */
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">You're All Set! 🎉</h3>
+                  <p className="text-gray-600">
+                    Thanks for joining the WeGotNext family. You'll be the first to know about our latest drops and events!
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 } 

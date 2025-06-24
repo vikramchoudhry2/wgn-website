@@ -62,7 +62,7 @@ export default function UpcomingEvents() {
           ×
         </button>
         <div className="text-4xl md:text-5xl mb-4 flex items-center justify-center">{events[openIdx].emoji}</div>
-        <div className="text-2xl md:text-3xl font-extrabold text-white mb-4" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>{events[openIdx].title}</div>
+        <div className="text-2xl md:text-3xl font-extrabold text-white mb-4" style={{fontFamily: 'Playfair Display, serif'}}>{events[openIdx].title}</div>
         <div className="text-white text-base md:text-lg leading-relaxed mb-2">{events[openIdx].details}</div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default function UpcomingEvents() {
   return (
     <section className="w-full mt-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-12 flex items-center gap-4 text-[#FFC24B] tracking-tight" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-12 flex items-center gap-4 text-[#FFC24B] tracking-tight" style={{fontFamily: 'Playfair Display, serif'}}>
           <span role="img" aria-label="basketball">🏀</span> UPCOMING EVENTS & KEY DATES
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -82,9 +82,9 @@ export default function UpcomingEvents() {
               onClick={() => setOpenIdx(idx)}
               style={{ minHeight: '180px' }}
             >
-              <div className="text-lg font-bold text-[#FFC24B] mb-4" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>{event.date}</div>
+              <div className="text-lg font-bold text-[#FFC24B] mb-4" style={{fontFamily: 'Playfair Display, serif'}}>{event.date}</div>
               <div className="text-2xl md:text-3xl mb-2">{event.emoji}</div>
-              <div className="text-xl md:text-2xl font-extrabold text-white text-center" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>{event.title}</div>
+              <div className="text-xl md:text-2xl font-extrabold text-white text-center" style={{fontFamily: 'Playfair Display, serif'}}>{event.title}</div>
             </button>
           ))}
         </div>

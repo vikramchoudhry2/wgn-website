@@ -12,6 +12,55 @@ const Cart = ({ isOpen, onClose }) => {
     isLoading 
   } = useCart();
 
+  // Color-to-image mapping for cart display
+  const getCartItemImage = (item) => {
+    const productTitle = item.title.toLowerCase();
+    const variantTitle = item.variant.title.toLowerCase();
+    
+    // Parse variant title to extract color - matches ProductCard logic
+    const parseVariantTitle = (title) => {
+      const parts = title.split(' / ');
+      if (productTitle.includes('short')) {
+        // Shorts format: "l / white / blue" -> color="white / blue"
+        return parts.length > 2 ? `${parts[1]} / ${parts[2]}` : parts[1];
+      } else {
+        // Hoodie format: "l / army green" -> color="army green"
+        return parts[1];
+      }
+    };
+
+    const color = parseVariantTitle(variantTitle);
+    
+    if (productTitle.includes('hoodie') && color) {
+      const hoodieImages = {
+        'mustard': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/ScreenShot2022-02-14at9.01.19PM.png',
+        'black': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/anamika_black.png',
+        'pale pink': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/Salmon_Pink.png',
+        'pink': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/anamika_pink.png',
+        'chestnut': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/chestnut_brown.png',
+        'army green': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/olive_green.png',
+        'heather grey': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/heather_gray.png',
+        'blue mist': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/products/blue_mist.png',
+      };
+      const imageUrl = hoodieImages[color.toLowerCase()];
+      return imageUrl || item.variant.image?.src;
+    }
+    
+    if (productTitle.includes('short') && color) {
+      const shortsImages = {
+        'white / red': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/files/red_white_shorts.jpg',
+        'white / blue': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/files/white_blue_shorts.jpg',
+        'yellow / blue': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/files/blue_yellow_shorts.jpg',
+        'black / gold': 'https://cdn.shopify.com/s/files/1/0025/6085/2017/files/black_shorts.jpg',
+      };
+      const imageUrl = shortsImages[color.toLowerCase()];
+      return imageUrl || item.variant.image?.src;
+    }
+    
+    // Fallback to variant image or placeholder
+    return item.variant.image?.src || '/assets/placeholder.png';
+  };
+
   const handleCheckout = () => {
     if (checkout && checkout.webUrl) {
       window.open(checkout.webUrl, '_blank');
@@ -59,7 +108,7 @@ const Cart = ({ isOpen, onClose }) => {
                   <div key={item.id} className="flex items-center space-x-4">
                     <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <Image
-                        src={item.variant.image?.src || '/assets/placeholder.png'}
+                        src={getCartItemImage(item)}
                         alt={item.title}
                         width={64}
                         height={64}

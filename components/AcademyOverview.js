@@ -12,7 +12,7 @@ export default function AcademyOverview() {
   return (
     <div className="container-center max-w-7xl mx-auto px-4">
       <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl p-8 md:p-20 flex flex-col gap-10 min-h-[28rem] md:min-h-[34rem] mt-0">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-2 text-left text-[#FFC24B] tracking-tight" style={{fontFamily: 'Roxboroughcf, sans-serif'}}>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-2 text-left text-[#FFC24B] tracking-tight" style={{fontFamily: 'Playfair Display, serif'}}>
           <span role="img" aria-label="basketball">🏀</span> ACADEMY OVERVIEW
         </h2>
         <div className="text-base md:text-lg text-white leading-relaxed text-left font-medium">
@@ -27,7 +27,7 @@ export default function AcademyOverview() {
               <div
                 key={value}
                 className="px-8 py-3 rounded-full bg-[#2d2237] text-white text-lg font-semibold shadow-md border border-white/10 whitespace-nowrap"
-                style={{fontFamily: 'Roxboroughcf, sans-serif'}}
+                style={{fontFamily: 'Playfair Display, serif'}}
               >
                 {value}
               </div>

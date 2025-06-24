@@ -37,34 +37,57 @@ const HorizontalScroll = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Calculate translation so text starts off-screen and moves to center
-  const startX = windowWidth / 2 + 500; // 400px buffer for even farther movement
-  const topTextX = startX * (1 - scrollPosition);
-  const bottomTextX = -startX * (1 - scrollPosition);
+  // Calculate translation with increased movement
+  const startX = windowWidth / 2 + 1500; // Increased from 500 to 1500 for more movement
+  const topTextX = startX * (1 - scrollPosition * 1.5); // Multiply by 1.5 to allow crossing over
+  const bottomTextX = -startX * (1 - scrollPosition * 1.5); // Multiply by 1.5 to allow crossing over
+  const textOpacity = 0.3 + (scrollPosition * 0.7); // Add opacity effect
 
   return (
-    <div ref={containerRef} className="relative bg-black py-20 overflow-hidden">
-      <div className="flex flex-col items-center justify-center min-h-[40vh] space-y-2">
+    <div ref={containerRef} className="relative bg-black py-10 overflow-hidden">
+      <div className="flex flex-col items-center justify-center min-h-[30vh] space-y-0">
         {/* Top Text */}
         <div 
-          className="text-right w-full"
+          className="text-right w-full -mb-2"
           style={{
             transform: `translateX(${topTextX}px)`,
-            transition: 'transform 0.15s ease-out'
+            transition: 'transform 0.15s ease-out',
+            position: 'relative',
+            zIndex: scrollPosition > 0.5 ? 1 : 2 // Change z-index when crossing over
           }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold" style={{ fontFamily: 'Roxboroughcf, sans-serif', color: '#e0e0e0' }}>We Got Next</h1>
+          <h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold" 
+            style={{ 
+              fontFamily: 'Playfair Display, serif', 
+              color: '#808080', // Changed to medium grey
+              opacity: textOpacity
+            }}
+          >
+            We Got Next
+          </h1>
         </div>
         
         {/* Bottom Text */}
         <div 
-          className="text-left w-full"
+          className="text-left w-full -mt-2"
           style={{
             transform: `translateX(${bottomTextX}px)`,
-            transition: 'transform 0.15s ease-out'
+            transition: 'transform 0.15s ease-out',
+            position: 'relative',
+            zIndex: scrollPosition > 0.5 ? 2 : 1 // Change z-index when crossing over
           }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold" style={{ fontFamily: 'Roxboroughcf, sans-serif', color: '#e0e0e0' }}>We Got Next</h1>
+          <h1 
+            className="text-5xl md:text-7xl lg:text-8xl font-bold" 
+            style={{ 
+              fontFamily: 'Playfair Display, serif', 
+              color: '#808080', // Changed to medium grey
+              opacity: textOpacity
+            }}
+          >
+            We Got Next
+          </h1>
         </div>
       </div>
     </div>

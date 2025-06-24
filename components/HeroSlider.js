@@ -76,13 +76,11 @@ const HeroSlider = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4">We Got Next</h1>
-                <Image 
-                  src="/assets/swoosh.png"
-                  alt="Swoosh"
-                  width={200}
-                  height={50}
-                  className="mx-auto"
-                />
+                {/* Clean elegant animated line */}
+                <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
+                </div>
               </div>
             </div>
           </div>

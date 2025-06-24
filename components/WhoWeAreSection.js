@@ -63,17 +63,14 @@ const WhoWeAreSection = () => {
   }, []);
   
   return (
-    <section ref={sectionRef} className="bg-black py-20 md:py-28 overflow-hidden">
-      <div className="container-center mb-12">
+    <section ref={sectionRef} className="bg-black py-8 md:py-20 overflow-hidden">
+      <div className="container-center mb-8">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">Who We Are</h2>
-          <Image 
-            src="/assets/swoosh.png"
-            alt="Divider"
-            width={200}
-            height={50}
-            className="mx-auto"
-          />
+          <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
+          </div>
         </div>
       </div>
       

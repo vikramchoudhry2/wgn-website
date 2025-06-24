@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Head from 'next/head';
+import { roxborough } from '@/utils/fonts';
 
 const Layout = ({ children, title = 'We Got Next' }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Layout = ({ children, title = 'We Got Next' }) => {
   }, []);
   
   return (
-    <div>
+    <div className={`${roxborough.variable}`}>
       <Head>
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -10,13 +10,10 @@ export default function Donation() {
           <div className="container-center">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">Support Our Mission</h1>
-              <Image 
-                src="/assets/swoosh.png"
-                alt="Swoosh"
-                width={200}
-                height={50}
-                className="mx-auto"
-              />
+              <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
