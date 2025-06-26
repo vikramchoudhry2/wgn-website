@@ -91,7 +91,7 @@ const Cart = ({ isOpen, onClose }) => {
       
       {/* Cart Panel */}
       <div 
-        className={`fixed right-0 top-0 h-screen w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
+        className={`fixed right-0 top-0 h-screen w-full sm:max-w-md bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ 
@@ -101,13 +101,14 @@ const Cart = ({ isOpen, onClose }) => {
           border: 'none',
           opacity: 1,
           height: '100vh',
-          minHeight: '100vh'
+          minHeight: '100vh',
+          maxWidth: '100vw'
         }}
       >
-        <div className="flex h-full flex-col" style={{ backgroundColor: '#ffffff' }}>
+        <div className="flex h-full flex-col w-full" style={{ backgroundColor: '#ffffff' }}>
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-6 bg-gray-50" style={{ backgroundColor: '#f9fafb' }}>
-            <h2 className="text-lg font-medium text-gray-900">
+          <div className="flex items-center justify-between border-b border-gray-200 px-3 sm:px-4 py-4 sm:py-6 bg-gray-50" style={{ backgroundColor: '#f9fafb' }}>
+            <h2 className="text-base sm:text-lg font-medium text-gray-900">
               Shopping Cart {cartTotal > 0 && `(${cartTotal})`}
             </h2>
             <button
@@ -123,7 +124,7 @@ const Cart = ({ isOpen, onClose }) => {
 
           {/* Loading State */}
           {isLoading && (
-            <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: '#ffffff' }}>
+            <div className="flex-1 flex items-center justify-center px-3 sm:px-4" style={{ backgroundColor: '#ffffff' }}>
               <div className="text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto"></div>
                 <p className="mt-2 text-sm text-gray-500">Loading cart...</p>
@@ -133,7 +134,7 @@ const Cart = ({ isOpen, onClose }) => {
 
           {/* Cart Items */}
           {!isLoading && (
-            <div className="flex-1 overflow-y-auto px-4 py-6" style={{ backgroundColor: '#ffffff' }}>
+            <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 sm:py-6" style={{ backgroundColor: '#ffffff' }}>
               {cartItems.length === 0 ? (
                 <div className="text-center">
                   <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -143,10 +144,10 @@ const Cart = ({ isOpen, onClose }) => {
                   <p className="mt-1 text-sm text-gray-500">Start shopping to add items to your cart.</p>
                 </div>
               ) : (
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {cartItems.map((item) => (
-                    <div key={item.id} className="flex items-center space-x-4">
-                      <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                    <div key={item.id} className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="h-12 w-12 sm:h-16 sm:w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <Image
                           src={getCartItemImage(item)}
                           alt={item.title}
@@ -155,39 +156,39 @@ const Cart = ({ isOpen, onClose }) => {
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-sm font-medium text-gray-900">{item.title}</h3>
-                        <p className="text-sm text-gray-500">{item.variant.title}</p>
-                        <p className="text-sm font-medium text-gray-900">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xs sm:text-sm font-medium text-gray-900 truncate">{item.title}</h3>
+                        <p className="text-xs sm:text-sm text-gray-500 truncate">{item.variant.title}</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-900">
                           ${item.variant.price.amount}
                         </p>
                       </div>
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-1 sm:space-x-2">
                         <button
                           onClick={() => updateCartItem(item.id, item.quantity - 1)}
                           disabled={isLoading || item.quantity <= 1}
-                          className="text-gray-400 hover:text-gray-500 disabled:opacity-50"
+                          className="text-gray-400 hover:text-gray-500 disabled:opacity-50 p-1"
                         >
-                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                           </svg>
                         </button>
-                        <span className="text-sm text-gray-900">{item.quantity}</span>
+                        <span className="text-xs sm:text-sm text-gray-900 min-w-[20px] text-center">{item.quantity}</span>
                         <button
                           onClick={() => updateCartItem(item.id, item.quantity + 1)}
                           disabled={isLoading}
-                          className="text-gray-400 hover:text-gray-500 disabled:opacity-50"
+                          className="text-gray-400 hover:text-gray-500 disabled:opacity-50 p-1"
                         >
-                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
                         </button>
                         <button
                           onClick={() => removeFromCart(item.id)}
                           disabled={isLoading}
-                          className="text-red-400 hover:text-red-500 disabled:opacity-50 ml-2"
+                          className="text-red-400 hover:text-red-500 disabled:opacity-50 ml-1 sm:ml-2 p-1"
                         >
-                          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
                         </button>
@@ -201,19 +202,19 @@ const Cart = ({ isOpen, onClose }) => {
 
           {/* Footer */}
           {cartItems.length > 0 && (
-            <div className="border-t border-gray-200 px-4 py-6" style={{ backgroundColor: '#ffffff' }}>
-              <div className="flex justify-between text-base font-medium text-gray-900 mb-4">
+            <div className="border-t border-gray-200 px-3 sm:px-4 py-4 sm:py-6" style={{ backgroundColor: '#ffffff' }}>
+              <div className="flex justify-between text-sm sm:text-base font-medium text-gray-900 mb-3 sm:mb-4">
                 <p>Subtotal ({cartTotal} items)</p>
                 <p>${subtotal}</p>
               </div>
               <button
                 onClick={handleCheckout}
                 disabled={isLoading}
-                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors"
+                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
               >
                 {isLoading ? 'Processing...' : 'Checkout'}
               </button>
-              <p className="mt-2 text-center text-sm text-gray-500">
+              <p className="mt-2 text-center text-xs sm:text-sm text-gray-500">
                 Secure checkout powered by Shopify
               </p>
             </div>
