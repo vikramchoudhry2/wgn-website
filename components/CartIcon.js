@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '@/utils/CartContext';
 import Cart from './Cart';
 
 const CartIcon = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { getCartTotal } = useCart();
+  const { getCartTotal, checkout } = useCart();
 
   const cartTotal = getCartTotal();
+
+  // Mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Cart button clicked, opening cart...');
+    if (isMobile && checkout && checkout.webUrl) {
+      window.open(checkout.webUrl, '_blank');
+      return;
+    }
     setIsCartOpen(true);
   };
 
   const handleCartClose = () => {
-    console.log('Closing cart...');
     setIsCartOpen(false);
   };
 
@@ -47,7 +58,7 @@ const CartIcon = () => {
           </span>
         )}
       </button>
-      {isCartOpen && (
+      {isCartOpen && !isMobile && (
         <Cart isOpen={isCartOpen} onClose={handleCartClose} />
       )}
     </>
