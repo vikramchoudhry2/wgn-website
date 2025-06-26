@@ -103,13 +103,13 @@ export default function Academy() {
     },
     {
       name: 'Armaan Saini',
-      image: '/assets/saini.jpg',
+      image: '/assets/saini.JPG',
       role: 'Shooting Guard',
       stats: 'Season Averages: 12.2 PPG, 3.5 RPG, 2.8 APG'
     },
     {
       name: 'Shabd Thind',
-      image: '/assets/shabd.jpg',
+      image: '/assets/shabd.JPG',
       role: 'Forward',
       stats: 'Season Averages: 11.8 PPG, 5.3 RPG, 1.7 APG'
     },

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const slides = [
   {
@@ -21,143 +22,134 @@ const slides = [
     id: 4,
     bgImage: '/assets/anamika2.png',
     bgImageMobile: '/assets/anamika2.png',
-  },
+  }
 ];
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    setIsLoaded(true);
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-    
-    return () => clearInterval(interval);
+
+    return () => clearInterval(timer);
   }, []);
-  
+
   const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
-  
+
   const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
-  
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-  
+
+  if (!isLoaded) {
+    // Loading skeleton
+    return (
+      <section className="relative h-screen bg-black">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-black animate-pulse" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-white text-2xl">Loading...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <div className="relative h-screen overflow-hidden">
-      {/* Slides */}
-      <div className="relative h-full">
+    <section className="relative h-screen overflow-hidden bg-black">
+      {/* Background Images */}
+      <div className="absolute inset-0">
         {slides.map((slide, index) => (
-          <div 
-            key={slide.id} 
+          <div
+            key={slide.id}
             className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* Desktop Image */}
-            <div className="hidden md:block h-full">
-              <div 
-                className={`h-full bg-cover bg-no-repeat ${index === 1 ? 'bg-bottom' : index === 3 ? 'bg-top' : 'bg-center'}`}
-                style={{ backgroundImage: `url(${slide.bgImage})` }}
-              />
-            </div>
-            {/* Mobile Image */}
-            <div className="block md:hidden h-full">
-              <div 
-                className={`h-full bg-cover bg-no-repeat ${index === 1 ? 'bg-bottom' : index === 3 ? 'bg-top' : 'bg-center'}`}
-                style={{ backgroundImage: `url(${slide.bgImageMobile})` }}
-              />
-            </div>
-            {/* Slide Content */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4">We Got Next</h1>
-                {/* Clean elegant animated line */}
-                <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
-                </div>
-              </div>
-            </div>
+            <Image
+              src={slide.bgImage}
+              alt="WeGotNext"
+              fill
+              className="object-cover"
+              priority={index === 0} // Only prioritize first slide
+              sizes="100vw"
+              quality={85}
+            />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}
       </div>
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex items-center justify-center">
+        <div className="text-center text-white px-4 max-w-4xl">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+            WeGotNext
+          </h1>
+          {/* Gold accent line like Who We Are section */}
+          <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation Arrows */}
-      <button 
+      <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 z-20 transform -translate-y-1/2 bg-black bg-opacity-30 hover:bg-opacity-50 rounded-full p-2 text-white focus:outline-none transition-all"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Previous slide"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
-      <button 
+
+      <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 z-20 transform -translate-y-1/2 bg-black bg-opacity-30 hover:bg-opacity-50 rounded-full p-2 text-white focus:outline-none transition-all"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+        aria-label="Next slide"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
-      {/* Dots */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-2">
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full focus:outline-none transition-all ${
-              index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? 'bg-orange-500 scale-125' : 'bg-white/50 hover:bg-white/70'
             }`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
-      {/* Social/Watch Button and Social Icons at Bottom Left */}
-      <div className="absolute bottom-8 left-8 z-30 flex flex-col items-start space-y-4">
-        <a 
-          href="https://www.instagram.com/p/DApSS2Lv4r0/" 
-          className="flex items-center space-x-3 text-white hover:text-orange-400 transition-all group text-lg md:text-xl font-semibold shadow-lg bg-black/70 px-5 py-3 rounded-full border-2 border-white/30 hover:border-orange-400"
+
+      {/* Social Media Link */}
+      <div className="absolute bottom-8 right-8 z-20">
+        <Link
+          href="https://instagram.com/wegotnext"
           target="_blank"
           rel="noopener noreferrer"
+          className="bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all duration-300"
         >
-          <div className="bg-black bg-opacity-70 rounded-full p-3 group-hover:bg-orange-400 transition-all">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <span>Watch Our Story</span>
-        </a>
-        <div className="flex space-x-6 mt-2">
-          <a 
-            href="https://www.instagram.com/wegotnext_hoops/?hl=en" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-orange-400 transition-all bg-black/70 p-3 rounded-full border-2 border-white/30 hover:border-orange-400 shadow-lg"
-          >
-            <Image 
-              src="/assets/insta-white.png"
-              alt="Instagram"
-              width={32}
-              height={32}
-            />
-          </a>
-          <a 
-            href="https://www.facebook.com/WegotnextHoops/" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white hover:text-orange-400 transition-all bg-black/70 p-3 rounded-full border-2 border-white/30 hover:border-orange-400 shadow-lg"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-            </svg>
-          </a>
-        </div>
+          <Image 
+            src="/assets/insta-white.png" 
+            alt="Instagram" 
+            width={24} 
+            height={24}
+            className="w-6 h-6"
+          />
+        </Link>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -145,7 +145,7 @@ const WhoWeAreSection = () => {
       <div className="relative overflow-hidden cursor-grab active:cursor-grabbing">
         <div 
           ref={contentRef}
-          className="flex transition-transform duration-300 ease-out pl-8 md:pl-12"
+          className="flex transition-transform duration-300 ease-out pl-4 md:pl-12"
           style={{ 
             willChange: 'transform',
             touchAction: 'pan-y pinch-zoom' // Allow vertical scroll but handle horizontal
@@ -155,7 +155,7 @@ const WhoWeAreSection = () => {
             <Link 
               key={card.id}
               href={card.link}
-              className="relative flex-shrink-0 mx-4 group"
+              className="relative flex-shrink-0 mx-2 md:mx-4 group"
               onClick={(e) => {
                 // Prevent navigation if user was dragging
                 if (isDragging) {
@@ -163,17 +163,18 @@ const WhoWeAreSection = () => {
                 }
               }}
             >
-              <div className="relative overflow-hidden rounded-lg" style={{ width: '600px', height: '500px' }}>
+              {/* Mobile: smaller cards, Desktop: larger cards */}
+              <div className="relative overflow-hidden rounded-lg w-[280px] h-[320px] md:w-[500px] md:h-[420px] lg:w-[600px] lg:h-[500px]">
                 <div className="absolute inset-0 bg-black bg-opacity-25 group-hover:bg-opacity-0 transition-all duration-300" />
                 <Image 
                   src={card.image}
                   alt={card.title}
-                  width={600}
-                  height={500}
-                  className="w-[600px] h-[360px] object-cover pointer-events-none"
+                  fill
+                  className="object-cover pointer-events-none"
+                  sizes="(max-width: 768px) 280px, (max-width: 1024px) 500px, 600px"
                   draggable={false}
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent h-16 md:h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </Link>
           ))}
@@ -187,7 +188,7 @@ const WhoWeAreSection = () => {
             key={index}
             className="w-2 h-2 rounded-full bg-gray-600 transition-colors duration-300"
             style={{
-              backgroundColor: Math.abs(currentTranslateX) > (index * 500) ? '#fb923c' : '#4b5563'
+              backgroundColor: Math.abs(currentTranslateX) > (index * 300) ? '#fb923c' : '#4b5563'
             }}
           />
         ))}

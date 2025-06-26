@@ -53,23 +53,33 @@ const Layout = ({ children, title = 'We Got Next' }) => {
   }, []);
   
   return (
-    <div>
+    <div className="min-h-screen bg-black">
       <Head>
         <title>{title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
-        <meta name="description" content="We Got Next - Basketball Community" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="format-detection" content="telephone=no" />
+        <meta name="description" content="WeGotNext - Basketball Academy, Community & Shop" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        
+        {/* Preload critical assets */}
+        <link
+          rel="preload"
+          href="/assets/WGN.png"
+          as="image"
+          type="image/png"
+        />
+        
+        {/* Optimize loading */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        
+        {/* Performance hints */}
+        <meta name="theme-color" content="#000000" />
       </Head>
       
       <Navbar />
-      
-      <main>
+      <main className="relative">
         {children}
       </main>
-      
       <Footer />
     </div>
   );

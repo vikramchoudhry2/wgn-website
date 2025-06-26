@@ -1,47 +1,87 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const ShopHero = () => {
   const videoRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    // Check if desktop on mount
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = videoRef.current?.parentElement;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
     // Optional: Add subtle zoom effect on scroll
     const handleScroll = () => {
       if (videoRef.current) {
         const scrolled = window.scrollY;
-        const scale = 1 + (scrolled * 0.0005); // Subtle zoom effect
+        const scale = 1 + (scrolled * 0.0003); // More subtle zoom effect
         videoRef.current.style.transform = `scale(${scale})`;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isVisible]);
 
   return (
     <div className="relative h-[80vh] min-h-[600px] overflow-hidden bg-black">
-      {/* Video Background with Fallback Image */}
+      {/* Video Background with Lazy Loading */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
-          poster="/assets/shop-hero-fallback.jpg"
-        >
-          <source src="/assets/shop-hero.mp4" type="video/mp4" />
-        </video>
-        {/* Fallback Image */}
+        {isVisible && (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+            poster="/assets/wgn5.png"
+            preload="metadata"
+          >
+            <source src="/assets/shop-hero.mp4" type="video/mp4" />
+          </video>
+        )}
+        
+        {/* Fallback Image - Always loaded for LCP */}
         <Image
           src="/assets/wgn5.png"
           alt="WeGotNext Lifestyle"
           fill
           priority
           className="object-cover opacity-90"
+          sizes="100vw"
         />
       </div>
 
@@ -50,93 +90,131 @@ const ShopHero = () => {
 
       {/* Content Container */}
       <div className="relative h-full flex flex-col items-start px-4">
-        {/* Shorts Main Image - leftmost */}
-        <div className="absolute left-[42%] top-28 transform -translate-x-1/2 rotate-12 w-72 h-72 md:w-96 md:h-96 z-10">
-          <div className="relative w-full h-full">
-            <Image
-              src="/assets/shorts.png"
-              alt="WeGotNext Shorts"
-              fill
-              className="object-contain drop-shadow-2xl"
-              style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
-            />
-          </div>
-        </div>
-        {/* Britt Shorts Image - middle */}
-        <div className="absolute left-[64%] top-32 transform -translate-x-1/2 -rotate-6 w-72 h-72 md:w-96 md:h-96 z-10">
-          <div className="relative w-full h-full">
-            <Image
-              src="/assets/britt-shorts.png"
-              alt="Britt Shorts"
-              fill
-              className="object-contain drop-shadow-2xl"
-              style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
-            />
-          </div>
-        </div>
-        {/* Rise Image - rightmost */}
-        <div className="absolute left-[84%] top-32 transform -translate-x-1/2 rotate-12 w-100 h-100 md:w-96 md:h-96 z-10">
-          <div className="relative w-full h-full">
-            <Image
-              src="/assets/rise.png"
-              alt="Shorts Rise"
-              fill
-              className="object-contain drop-shadow-2xl"
-              style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
-            />
-          </div>
-        </div>
-        {/* Text Content with Creative Layout */}
-        <div className="max-w-5xl mx-auto relative mt-32 ml-20 md:ml-10 z-18" style={{ zIndex: 20 }}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight text-left space-y-2">
-            <span className="block">Built for</span>
-            <span className="block relative">Hoopers
-              <span className="inline-block align-baseline ml-2 w-6 h-6 md:w-8 md:h-8 relative" style={{ transform: 'translateY(6px)' }}>
-                <Image src="/assets/BALL.png" alt="Ball" fill className="object-contain" />
-              </span>
-            </span>
-            <span className="block mt-2">Worn</span>
-            <span className="block relative">Everywhere
-              <span className="inline-block align-baseline ml-2 w-6 h-6 md:w-8 md:h-8 relative" style={{ transform: 'translateY(6px)' }}>
-                <Image src="/assets/BALL.png" alt="Ball" fill className="object-contain" />
-              </span>
-            </span>
-          </h1>
-          <div className="mt-8">
-            <a
-              href="#products"
-              className="inline-flex items-center text-lg md:text-xl text-white hover:text-orange-400 transition-colors duration-300"
+        {/* Product Images - 3 images positioned for desktop */}
+        {isDesktop && (
+          <>
+            {/* Shorts Main Image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+              animate={{ opacity: 1, scale: 1, rotate: 12 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="absolute right-[45%] top-28 transform -translate-x-1/2 w-80 h-80 lg:w-96 lg:h-96 z-10"
             >
-              Shop the Drop
-              <svg
-                className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+              <div className="relative w-full h-full">
+                <Image
+                  src="/assets/shorts.png"
+                  alt="WeGotNext Shorts"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
+                  sizes="(max-width: 1024px) 320px, 384px"
+                  quality={85}
+                  priority={false}
                 />
-              </svg>
-            </a>
-          </div>
+              </div>
+            </motion.div>
+            
+            {/* Britt Shorts Image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+              animate={{ opacity: 1, scale: 1, rotate: -6 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="absolute right-[25%] top-32 transform -translate-x-1/2 w-80 h-80 lg:w-96 lg:h-96 z-10"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src="/assets/britt-shorts.png"
+                  alt="Britt Shorts"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
+                  sizes="(max-width: 1024px) 320px, 384px"
+                  quality={85}
+                  priority={false}
+                />
+              </div>
+            </motion.div>
+            
+            {/* Rise Image - Added back */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+              animate={{ opacity: 1, scale: 1, rotate: 12 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="absolute right-[5%] top-32 transform -translate-x-1/2 w-80 h-80 lg:w-96 lg:h-96 z-10"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src="/assets/rise.png"
+                  alt="Rise Shorts"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
+                  sizes="(max-width: 1024px) 320px, 384px"
+                  quality={85}
+                  priority={false}
+                />
+              </div>
+            </motion.div>
+          </>
+        )}
+
+        {/* Text Content - Left on desktop, right on mobile */}
+        <div className={`absolute top-1/2 transform -translate-y-1/2 max-w-md z-20 ${
+          isDesktop 
+            ? 'left-8 text-left' 
+            : 'right-8 text-right'
+        }`}>
+          <motion.h1 
+            initial={{ opacity: 0, x: isDesktop ? -50 : 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-6xl md:text-8xl font-black text-white leading-none mb-4"
+          >
+            Built for<br />
+            <span className="text-orange-500">Hoopers.</span><br />
+            Worn<br />
+            Everywhere.
+          </motion.h1>
         </div>
 
-        {/* Category Badges */}
-        <div className="absolute bottom-12 left-0 right-0 flex justify-center gap-6 md:gap-8 lg:gap-12 flex-wrap px-4">
-          {['Shorts', 'Hoodies', 'Tees', 'Backpacks', 'Essentials'].map((category) => (
-            <Link
-              key={category}
-              href={`/shop?category=${category.toLowerCase()}`}
-              className="px-4 py-2 md:px-6 md:py-2 text-sm md:text-lg text-white/90 hover:text-white border border-white/30 hover:border-white/60 rounded-full transition-colors duration-300 font-semibold shadow-lg bg-black/40 backdrop-blur-md"
+        {/* Floating Basketball Icons - Optimized */}
+        {isVisible && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="absolute right-12 top-20 w-12 h-12 animate-bounce z-10" 
+              style={{ animationDelay: '0.5s' }}
             >
-              {category}
-            </Link>
-          ))}
-        </div>
+              <Image 
+                src="/assets/BALL.png" 
+                alt="Basketball" 
+                fill 
+                className="object-contain" 
+                sizes="48px"
+                quality={75}
+              />
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="absolute right-32 bottom-32 w-8 h-8 animate-pulse z-10" 
+              style={{ animationDelay: '1s' }}
+            >
+              <Image 
+                src="/assets/BALL.png" 
+                alt="Basketball" 
+                fill 
+                className="object-contain" 
+                sizes="32px"
+                quality={75}
+              />
+            </motion.div>
+          </>
+        )}
       </div>
     </div>
   );
