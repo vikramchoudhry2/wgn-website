@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar - Only visible on desktop */}
-      <nav className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'}`}>
+      <nav className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -60,8 +60,8 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Navbar - Only visible on mobile */}
-      <nav className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-black/50 backdrop-blur-sm'}`}>
+      {/* Mobile Navbar - Only visible on mobile and tablets */}
+      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-black/50 backdrop-blur-sm'}`}>
         <div className="px-3 py-2">
           <div className="flex items-center justify-between h-12">
             {/* Mobile Logo - Smaller */}
@@ -154,7 +154,7 @@ const Navbar = () => {
       {/* Mobile Menu Backdrop */}
       {isMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
           onClick={() => setIsMenuOpen(false)}
         />
       )}

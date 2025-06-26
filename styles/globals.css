@@ -34,6 +34,42 @@ body {
   scroll-behavior: smooth;
 }
 
+/* Force mobile navbar on all mobile devices */
+@media (max-width: 1023px), 
+       (max-device-width: 812px), 
+       (orientation: portrait) and (max-width: 1024px),
+       (hover: none) and (pointer: coarse) {
+  .force-mobile-nav .hidden.lg\\:block {
+    display: none !important;
+  }
+  
+  .force-mobile-nav .lg\\:hidden {
+    display: block !important;
+  }
+}
+
+/* Specific iPhone targeting */
+@media only screen 
+  and (device-width: 375px) 
+  and (device-height: 812px) 
+  and (-webkit-device-pixel-ratio: 3),
+  only screen 
+  and (device-width: 414px) 
+  and (device-height: 896px) 
+  and (-webkit-device-pixel-ratio: 2),
+  only screen 
+  and (device-width: 390px) 
+  and (device-height: 844px) 
+  and (-webkit-device-pixel-ratio: 3) {
+  .force-mobile-nav .hidden.lg\\:block {
+    display: none !important;
+  }
+  
+  .force-mobile-nav .lg\\:hidden {
+    display: block !important;
+  }
+}
+
 @layer components {
   .container-center {
     @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
