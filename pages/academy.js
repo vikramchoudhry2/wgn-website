@@ -343,7 +343,7 @@ export default function Academy() {
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
               <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl p-3 border border-orange-500/30 group-hover:border-orange-500/60 transition-all duration-500">
                 <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                  <Image
+                <Image
                     src="/assets/family-moment.jpg"
                     alt="Basketball teammates helping each other up - Basketball is Family"
                     width={600}
@@ -547,8 +547,8 @@ export default function Academy() {
                 </AnimatePresence>
               </motion.div>
             ))}
-          </div>
-        </div>
+              </div>
+            </div>
       </section>
 
       {/* Meet the Coaches */}
@@ -654,8 +654,8 @@ export default function Academy() {
                              radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
                              radial-gradient(circle at 40% 40%, rgba(34, 197, 94, 0.2) 0%, transparent 50%)`
           }}></div>
-        </div>
-        
+      </div>
+
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
