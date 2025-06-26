@@ -135,7 +135,7 @@ const HeroSlider = () => {
       {/* Social Media Link */}
       <div className="absolute bottom-8 right-8 z-20">
         <Link
-          href="https://instagram.com/wegotnext"
+          href="https://instagram.com/wegotnextacademy"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-black/50 hover:bg-black/70 p-3 rounded-full transition-all duration-300"
