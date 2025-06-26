@@ -167,7 +167,7 @@ export default function Shop() {
       <ShopHero />
       
       {/* Category Navigation */}
-      <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <nav className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Desktop Categories */}
@@ -287,7 +287,7 @@ export default function Shop() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 z-40 flex items-center justify-center p-4"
             onClick={() => setShowEmailModal(false)}
           >
             <motion.div

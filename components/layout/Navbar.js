@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navbar - Only visible on desktop */}
-      <nav className={`hidden lg:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'}`}>
+      <nav className={`hidden lg:block fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -61,32 +61,32 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Navbar - Only visible on mobile and tablets */}
-      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-black/98 backdrop-blur-lg' : 'bg-black/80 backdrop-blur-md'} shadow-lg`}>
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Mobile Logo - Larger */}
+      <nav className={`lg:hidden fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-black/50 backdrop-blur-sm'}`}>
+        <div className="px-3 py-2">
+          <div className="flex items-center justify-between h-12">
+            {/* Mobile Logo - Smaller */}
             <Link href="/" className="flex-shrink-0">
               <Image 
                 src="/assets/WGN.png" 
                 alt="We Got Next logo" 
-                width={100} 
-                height={40} 
-                className="h-10 w-auto" 
+                width={60} 
+                height={24} 
+                className="h-6 w-auto" 
               />
             </Link>
             
             {/* Mobile Right Side - Cart and Menu */}
-            <div className="flex items-center space-x-4">
-              <div className="scale-110">
+            <div className="flex items-center space-x-2">
+              <div className="scale-90">
                 <CartIcon />
               </div>
               <button 
-                className="p-3 rounded-xl bg-white/15 hover:bg-white/25 transition-all duration-200 active:scale-95 border border-white/20"
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-200 active:scale-95"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle mobile menu"
               >
                 <svg 
-                  className={`w-7 h-7 text-white transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`}
+                  className={`w-5 h-5 text-white transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`}
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -110,38 +110,38 @@ const Navbar = () => {
             : 'max-h-0 opacity-0'
         }`}>
           <div className="bg-black/98 backdrop-blur-lg border-t border-white/10 shadow-2xl">
-            <div className="px-4 py-6 space-y-2">
+            <div className="px-3 py-4 space-y-1">
               <Link 
                 href="/" 
-                className="flex items-center px-6 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-4 py-3 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/shop" 
-                className="flex items-center px-6 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-4 py-3 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Shop
               </Link>
               <Link 
                 href="/academy" 
-                className="flex items-center px-6 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-4 py-3 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Academy
               </Link>
               <Link 
                 href="/celebs" 
-                className="flex items-center px-6 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-4 py-3 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Community
               </Link>
               <Link 
                 href="/donation" 
-                className="flex items-center px-6 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-4 py-3 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Donate
@@ -154,7 +154,7 @@ const Navbar = () => {
       {/* Mobile Menu Backdrop */}
       {isMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-30"
           onClick={() => setIsMenuOpen(false)}
         />
       )}

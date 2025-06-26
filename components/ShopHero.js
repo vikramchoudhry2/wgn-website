@@ -31,6 +31,7 @@ const ShopHero = () => {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover opacity-90"
+          poster="/assets/shop-hero-fallback.jpg"
         >
           <source src="/assets/shop-hero.mp4" type="video/mp4" />
         </video>

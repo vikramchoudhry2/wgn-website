@@ -4,23 +4,20 @@ import Cart from './Cart';
 
 const CartIcon = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { getCartTotal, checkout, isShopifyConfigured, error } = useCart();
+  const { getCartTotal } = useCart();
 
   const cartTotal = getCartTotal();
 
-  // Debug logging
-  const handleCartClick = () => {
-    console.log('🛒 Cart clicked');
-    console.log('📊 Cart total:', cartTotal);
-    console.log('🏪 Shopify configured:', isShopifyConfigured);
-    console.log('🛍️ Checkout object:', checkout);
-    console.log('❌ Error:', error);
-    
-    if (checkout && checkout.lineItems) {
-      console.log('📦 Cart items:', checkout.lineItems);
-    }
-    
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Cart button clicked, opening cart...');
     setIsCartOpen(true);
+  };
+
+  const handleCartClose = () => {
+    console.log('Closing cart...');
+    setIsCartOpen(false);
   };
 
   return (
@@ -29,6 +26,7 @@ const CartIcon = () => {
         onClick={handleCartClick}
         className="relative p-2 text-white hover:text-orange-300 transition-colors"
         aria-label="Shopping cart"
+        type="button"
       >
         <svg
           className="h-6 w-6"
@@ -49,7 +47,9 @@ const CartIcon = () => {
           </span>
         )}
       </button>
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      {isCartOpen && (
+        <Cart isOpen={isCartOpen} onClose={handleCartClose} />
+      )}
     </>
   );
 };

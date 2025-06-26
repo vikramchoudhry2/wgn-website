@@ -134,15 +134,11 @@ const ProductCard = ({ product, onAddToCart }) => {
   }, [hasValidColors, actualColors, selectedColor]);
 
   const handleAddToCart = () => {
-    console.log('🛍️ Add to cart clicked for:', name);
-    console.log('🏷️ Available variants:', variants.length);
-    
     if (variants.length > 0) {
       // For single variant products, just use the only variant
       if (isSingleVariantProduct) {
         const selectedVariant = variants[0];
         console.log('✅ Using single variant for', name, ':', selectedVariant.title);
-        console.log('🆔 Variant ID:', selectedVariant.id);
         onAddToCart(selectedVariant.id, 1);
         setShowQuickView(false);
         return;
@@ -167,7 +163,7 @@ const ProductCard = ({ product, onAddToCart }) => {
       };
       
       // Find the variant that matches selected color and size
-      let selectedVariant = variants[0];
+      let selectedVariant = variants[0]; // Default to first variant
       
       if (selectedSize || selectedColor) {
         // Try to find exact match by parsing variant titles
@@ -208,14 +204,8 @@ const ProductCard = ({ product, onAddToCart }) => {
         }
       }
       
-      console.log('🎯 Final selected variant:', selectedVariant.title);
-      console.log('🆔 Final variant ID:', selectedVariant.id);
-      console.log('🔢 Quantity:', 1);
-      
       onAddToCart(selectedVariant.id, 1);
       setShowQuickView(false); // Close modal after adding to cart
-    } else {
-      console.log('❌ No variants available for', name);
     }
   };
 

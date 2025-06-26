@@ -28,8 +28,6 @@ body {
   color: var(--foreground);
   font-family: 'Playfair Display', serif;
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .smooth-scroll {
@@ -72,6 +70,16 @@ body {
   }
 }
 
+/* Ensure cart always appears above everything */
+[class*="z-[99999]"],
+[class*="z-[100000]"],
+[style*="z-index: 99999"],
+[style*="z-index: 100000"] {
+  z-index: 100000 !important;
+  position: fixed !important;
+  isolation: isolate;
+}
+
 @layer components {
   .container-center {
     @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
@@ -87,18 +95,5 @@ body {
   
   .section-container {
     @apply py-12 md:py-16 lg:py-20;
-  }
-}
-
-/* Ensure content starts right after navbar on mobile */
-@media (max-width: 1023px) {
-  main {
-    padding-top: 96px; /* Account for larger mobile navbar */
-  }
-}
-
-@media (min-width: 1024px) {
-  main {
-    padding-top: 64px; /* Account for desktop navbar */
   }
 }
