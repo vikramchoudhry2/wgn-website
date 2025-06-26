@@ -158,14 +158,10 @@ const ShopHero = () => {
           </>
         )}
 
-        {/* Text Content - Left on desktop, right on mobile */}
-        <div className={`absolute top-1/2 transform -translate-y-1/2 max-w-md z-20 ${
-          isDesktop 
-            ? 'left-8 text-left' 
-            : 'right-8 text-right'
-        }`}>
+        {/* Text Content - Left on both desktop and mobile */}
+        <div className="absolute left-8 top-1/2 transform -translate-y-1/2 max-w-md z-20 text-left">
           <motion.h1 
-            initial={{ opacity: 0, x: isDesktop ? -50 : 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-black text-white leading-none mb-4"
