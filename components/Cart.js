@@ -101,11 +101,10 @@ const Cart = ({ isOpen, onClose }) => {
           border: 'none',
           opacity: 1,
           height: '100vh',
-          minHeight: '100vh',
-          maxWidth: '100vw'
+          minHeight: '100vh'
         }}
       >
-        <div className="flex h-full flex-col w-full" style={{ backgroundColor: '#ffffff' }}>
+        <div className="flex h-full flex-col" style={{ backgroundColor: '#ffffff' }}>
           {/* Header */}
           <div className="flex items-center justify-between border-b border-gray-200 px-3 sm:px-4 py-4 sm:py-6 bg-gray-50" style={{ backgroundColor: '#f9fafb' }}>
             <h2 className="text-base sm:text-lg font-medium text-gray-900">
@@ -116,7 +115,7 @@ const Cart = ({ isOpen, onClose }) => {
               className="text-gray-400 hover:text-gray-500 p-2 rounded-md hover:bg-gray-100 transition-colors"
             >
               <span className="sr-only">Close</span>
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -124,7 +123,7 @@ const Cart = ({ isOpen, onClose }) => {
 
           {/* Loading State */}
           {isLoading && (
-            <div className="flex-1 flex items-center justify-center px-3 sm:px-4" style={{ backgroundColor: '#ffffff' }}>
+            <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: '#ffffff' }}>
               <div className="text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500 mx-auto"></div>
                 <p className="mt-2 text-sm text-gray-500">Loading cart...</p>
@@ -137,11 +136,11 @@ const Cart = ({ isOpen, onClose }) => {
             <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-4 sm:py-6" style={{ backgroundColor: '#ffffff' }}>
               {cartItems.length === 0 ? (
                 <div className="text-center">
-                  <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="mx-auto h-10 w-10 sm:h-12 sm:w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                   <h3 className="mt-2 text-sm font-medium text-gray-900">Your cart is empty</h3>
-                  <p className="mt-1 text-sm text-gray-500">Start shopping to add items to your cart.</p>
+                  <p className="mt-1 text-xs sm:text-sm text-gray-500">Start shopping to add items to your cart.</p>
                 </div>
               ) : (
                 <div className="space-y-4 sm:space-y-6">
@@ -158,7 +157,7 @@ const Cart = ({ isOpen, onClose }) => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xs sm:text-sm font-medium text-gray-900 truncate">{item.title}</h3>
-                        <p className="text-xs sm:text-sm text-gray-500 truncate">{item.variant.title}</p>
+                        <p className="text-xs text-gray-500 truncate">{item.variant.title}</p>
                         <p className="text-xs sm:text-sm font-medium text-gray-900">
                           ${item.variant.price.amount}
                         </p>
@@ -210,7 +209,7 @@ const Cart = ({ isOpen, onClose }) => {
               <button
                 onClick={handleCheckout}
                 disabled={isLoading}
-                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-2 sm:py-3 px-4 rounded-lg transition-colors text-sm sm:text-base"
               >
                 {isLoading ? 'Processing...' : 'Checkout'}
               </button>
