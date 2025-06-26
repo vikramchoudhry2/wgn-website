@@ -24,46 +24,16 @@ const cards = [
 ];
 
 const WhoWeAreSection = () => {
-  const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [currentTranslateX, setCurrentTranslateX] = useState(0);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
   
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !contentRef.current || isUserInteracting) return;
-      
-      const { top, height } = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const contentWidth = contentRef.current.scrollWidth - window.innerWidth;
-      
-      // Check if section is in viewport
-      if (top < windowHeight && top > -height) {
-        // Calculate scroll progress within the section
-        const scrollPosition = window.scrollY;
-        const sectionTop = sectionRef.current.offsetTop;
-        const sectionHeight = height;
-        
-        // Calculate progress (0 to 1)
-        const progress = Math.min(
-          1,
-          Math.max(0, (scrollPosition - sectionTop + windowHeight) / (sectionHeight + windowHeight))
-        );
-        
-        // Apply transform to content
-        const translateX = -contentWidth * progress;
-        setCurrentTranslateX(translateX);
-        contentRef.current.style.transform = `translateX(${translateX}px)`;
-      }
-    };
-
     // Touch/Mouse event handlers
     const handleStart = (clientX) => {
       setIsDragging(true);
-      setIsUserInteracting(true);
       setStartX(clientX);
       setScrollLeft(currentTranslateX);
       if (contentRef.current) {
@@ -91,11 +61,6 @@ const WhoWeAreSection = () => {
       if (contentRef.current) {
         contentRef.current.style.transition = 'transform 0.3s ease-out';
       }
-      
-      // Reset user interaction after a delay to allow scroll-based animation to resume
-      setTimeout(() => {
-        setIsUserInteracting(false);
-      }, 1000);
     };
 
     // Mouse events
@@ -126,9 +91,6 @@ const WhoWeAreSection = () => {
       handleEnd();
     };
 
-    // Add event listeners
-    window.addEventListener('scroll', handleScroll);
-    
     const contentElement = contentRef.current;
     if (contentElement) {
       // Mouse events
@@ -146,12 +108,7 @@ const WhoWeAreSection = () => {
       contentElement.style.webkitUserSelect = 'none';
     }
     
-    // Initial check
-    handleScroll();
-    
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      
       if (contentElement) {
         contentElement.removeEventListener('mousedown', handleMouseDown);
         window.removeEventListener('mousemove', handleMouseMove);
@@ -162,10 +119,10 @@ const WhoWeAreSection = () => {
         contentElement.removeEventListener('touchend', handleTouchEnd);
       }
     };
-  }, [isDragging, startX, scrollLeft, currentTranslateX, isUserInteracting]);
+  }, [isDragging, startX, scrollLeft, currentTranslateX]);
   
   return (
-    <section ref={sectionRef} className="bg-black py-8 md:py-12 overflow-hidden">
+    <section className="bg-black py-8 md:py-12 overflow-hidden">
       <div className="container-center mb-8">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">Who We Are</h2>
@@ -176,10 +133,10 @@ const WhoWeAreSection = () => {
         </div>
       </div>
       
-      {/* Swipe indicator */}
+      {/* Drag indicator */}
       <div className="text-center mb-4">
         <p className="text-gray-400 text-sm">
-          <span className="hidden md:inline">Scroll or drag</span>
+          <span className="hidden md:inline">Drag</span>
           <span className="md:hidden">Swipe</span>
           {' '}to explore
         </p>
