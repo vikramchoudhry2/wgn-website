@@ -4,14 +4,29 @@ import Cart from './Cart';
 
 const CartIcon = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { getCartTotal } = useCart();
+  const { getCartTotal, checkout, isShopifyConfigured, error } = useCart();
 
   const cartTotal = getCartTotal();
+
+  // Debug logging
+  const handleCartClick = () => {
+    console.log('🛒 Cart clicked');
+    console.log('📊 Cart total:', cartTotal);
+    console.log('🏪 Shopify configured:', isShopifyConfigured);
+    console.log('🛍️ Checkout object:', checkout);
+    console.log('❌ Error:', error);
+    
+    if (checkout && checkout.lineItems) {
+      console.log('📦 Cart items:', checkout.lineItems);
+    }
+    
+    setIsCartOpen(true);
+  };
 
   return (
     <>
       <button
-        onClick={() => setIsCartOpen(true)}
+        onClick={handleCartClick}
         className="relative p-2 text-white hover:text-orange-300 transition-colors"
         aria-label="Shopping cart"
       >

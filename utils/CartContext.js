@@ -54,43 +54,57 @@ export const CartProvider = ({ children }) => {
   // Initialize checkout on mount
   useEffect(() => {
     const initializeCheckout = async () => {
+      console.log('🚀 Initializing cart checkout...');
       dispatch({ type: 'SET_LOADING', payload: true });
       
       // Check if Shopify is configured
       if (!isShopifyConfigured()) {
-        console.log('Shopify not configured - running in demo mode');
+        console.log('❌ Shopify not configured - running in demo mode');
+        console.log('   Domain:', process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN);
+        console.log('   Token:', process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN ? 'Present' : 'Missing');
         dispatch({ type: 'SET_SHOPIFY_AVAILABLE', payload: false });
         return;
       }
+
+      console.log('✅ Shopify is configured, creating checkout...');
 
       // Check if there's an existing checkout in localStorage
       const existingCheckoutId = localStorage.getItem('shopify_checkout_id');
       
       if (existingCheckoutId) {
+        console.log('🔍 Found existing checkout ID:', existingCheckoutId);
         try {
           const existingCheckout = await fetchCheckout(existingCheckoutId);
           if (existingCheckout && !existingCheckout.completedAt) {
+            console.log('✅ Using existing checkout:', existingCheckout.id);
+            console.log('📦 Existing cart items:', existingCheckout.lineItems?.length || 0);
             dispatch({ type: 'SET_CHECKOUT', payload: existingCheckout });
             dispatch({ type: 'SET_SHOPIFY_AVAILABLE', payload: true });
             return;
+          } else {
+            console.log('⚠️ Existing checkout is completed or invalid, creating new one');
+            localStorage.removeItem('shopify_checkout_id');
           }
         } catch (error) {
-          console.error('Error fetching existing checkout:', error);
+          console.error('❌ Error fetching existing checkout:', error);
+          localStorage.removeItem('shopify_checkout_id');
         }
       }
       
       // Create new checkout if none exists or existing one is completed
       try {
+        console.log('🆕 Creating new checkout...');
         const newCheckout = await createCheckout();
-        if (newCheckout) {
+        if (newCheckout && newCheckout.id) {
+          console.log('✅ New checkout created:', newCheckout.id);
           localStorage.setItem('shopify_checkout_id', newCheckout.id);
           dispatch({ type: 'SET_CHECKOUT', payload: newCheckout });
           dispatch({ type: 'SET_SHOPIFY_AVAILABLE', payload: true });
         } else {
-          throw new Error('Failed to create checkout');
+          throw new Error('Failed to create checkout - no ID returned');
         }
       } catch (error) {
-        console.error('Shopify checkout creation failed:', error);
+        console.error('❌ Shopify checkout creation failed:', error);
         dispatch({ type: 'SET_ERROR', payload: 'Shopify unavailable - running in demo mode' });
         dispatch({ type: 'SET_SHOPIFY_AVAILABLE', payload: false });
       }
@@ -100,8 +114,14 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   const addToCart = async (variantId, quantity = 1) => {
+    console.log('🛒 addToCart called with:', { variantId, quantity });
+    console.log('🏪 Shopify available:', state.shopifyAvailable);
+    console.log('🛍️ Current checkout:', state.checkout?.id);
+    
     if (!state.shopifyAvailable || !state.checkout) {
-      console.log('Demo mode - cart functionality disabled');
+      console.log('❌ Demo mode - cart functionality disabled');
+      console.log('   - Shopify available:', state.shopifyAvailable);
+      console.log('   - Checkout exists:', !!state.checkout);
       return;
     }
 
@@ -113,9 +133,18 @@ export const CartProvider = ({ children }) => {
         quantity,
       }];
 
+      console.log('📦 Adding line items:', lineItemsToAdd);
       const updatedCheckout = await addToCheckout(state.checkout.id, lineItemsToAdd);
+      console.log('✅ Updated checkout received:', updatedCheckout);
+      
+      if (updatedCheckout && updatedCheckout.lineItems) {
+        console.log('📦 New cart items count:', updatedCheckout.lineItems.length);
+        console.log('📦 Line items:', updatedCheckout.lineItems);
+      }
+      
       dispatch({ type: 'SET_CHECKOUT', payload: updatedCheckout });
     } catch (error) {
+      console.error('❌ Error adding to cart:', error);
       dispatch({ type: 'SET_ERROR', payload: error.message });
     }
   };
