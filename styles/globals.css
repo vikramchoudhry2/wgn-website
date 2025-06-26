@@ -28,6 +28,8 @@ body {
   color: var(--foreground);
   font-family: 'Playfair Display', serif;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .smooth-scroll {
@@ -85,5 +87,18 @@ body {
   
   .section-container {
     @apply py-12 md:py-16 lg:py-20;
+  }
+}
+
+/* Ensure content starts right after navbar on mobile */
+@media (max-width: 1023px) {
+  main {
+    padding-top: 96px; /* Account for larger mobile navbar */
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    padding-top: 64px; /* Account for desktop navbar */
   }
 }
