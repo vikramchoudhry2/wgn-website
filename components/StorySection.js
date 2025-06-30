@@ -69,34 +69,34 @@ const StorySection = () => {
         />
       )}
 
-      {/* Content */}
-      <div className="relative z-10 h-full w-full flex items-center justify-center">
+      {/* Content - Responsive for mobile */}
+      <div className="relative z-10 h-full w-full flex items-center justify-center px-2 sm:px-4">
         <div 
-          className="text-center px-4 transition-all duration-300 ease-out max-w-4xl"
+          className="text-center transition-all duration-300 ease-out max-w-2xl sm:max-w-3xl md:max-w-4xl mx-auto bg-black/40 rounded-xl py-4 px-2 sm:px-8"
           style={{
             transform: `translateY(${textTranslateY}px)`,
             opacity: textOpacity,
           }}
         >
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
             Our Story
           </h2>
           
           {/* Gold accent line like Who We Are section */}
-          <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden mb-12">
+          <div className="mx-auto w-24 sm:w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden mb-6 sm:mb-12">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
           </div>
           
-          <div className="text-lg md:text-xl text-gray-200 leading-relaxed">
+          <div className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed sm:leading-relaxed md:leading-relaxed">
             <p>
               We Got Next began as an app connecting basketball players to find games efficiently. Over the years, we saw the impact of our platform and expanded into running youth basketball clinics. What started as a one-day event quickly grew into weekly clinics, starting with 15 kids and now serving over 150 in San Jose and Sacramento.
             </p>
-            <br /><br />
+            <br />
             <p>
               We realized it's about more than just basketball; it's a community initiative providing a safe space for youth to learn, grow, and be themselves. Through the We Got Next camp, we've had the chance to give back to the community.
             </p>
-            <br /><br />
+            <br />
             <p>
               As our journey evolves, so do our goals. That's why we're excited to officially introduce WeGotNext—a mindset focused on trusting the journey, not just the results. WeGotNext transcends basketball; it inspires everyone chasing their next opportunity—small business owners, students, teachers, athletes, and minorities breaking through. We recognize that our time is now. We Got Next!
             </p>

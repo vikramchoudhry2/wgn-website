@@ -158,13 +158,13 @@ const ShopHero = () => {
           </>
         )}
 
-        {/* Text Content - Left on both desktop and mobile */}
+        {/* Text Content - Left on both desktop and mobile with proper mobile text sizes */}
         <div className="absolute left-8 top-1/2 transform -translate-y-1/2 max-w-md z-20 text-left">
           <motion.h1 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-8xl font-black text-white leading-none mb-4"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-tight mb-4"
           >
             Built for<br />
             <span className="text-orange-500">Hoopers.</span><br />

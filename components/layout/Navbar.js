@@ -29,7 +29,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <Image 
-                src="/assets/WGN.png" 
+                src="/assets/WeGotNext-logo.png" 
                 alt="We Got Next logo" 
                 width={80} 
                 height={32} 
@@ -60,33 +60,33 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Navbar - Bigger size for mobile and tablets */}
+      {/* Mobile Navbar - Much bigger logo and proper touch targets */}
       <nav className={`lg:hidden fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-md' : 'bg-black/50 backdrop-blur-sm'}`}>
         <div className="px-4 py-3">
-          <div className="flex items-center justify-between h-16">
-            {/* Mobile Logo - Bigger */}
+          <div className="flex items-center justify-between h-20">
+            {/* Mobile Logo - Much bigger for readability */}
             <Link href="/" className="flex-shrink-0">
               <Image 
-                src="/assets/WGN.png" 
+                src="/assets/WeGotNext-logo.png" 
                 alt="We Got Next logo" 
-                width={80} 
-                height={32} 
-                className="h-8 w-auto" 
+                width={120} 
+                height={48} 
+                className="h-12 w-auto" 
               />
             </Link>
             
-            {/* Mobile Right Side - Cart and Menu */}
+            {/* Mobile Right Side - Proper touch targets (44px minimum) */}
             <div className="flex items-center space-x-3">
-              <div className="scale-100">
+              <div className="min-w-[44px] min-h-[44px] flex items-center justify-center">
                 <CartIcon />
               </div>
               <button 
-                className="p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-200 active:scale-95"
+                className="min-w-[44px] min-h-[44px] p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-200 active:scale-95 flex items-center justify-center"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle mobile menu"
               >
                 <svg 
-                  className={`w-6 h-6 text-white transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`}
+                  className={`w-7 h-7 text-white transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`}
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -113,35 +113,35 @@ const Navbar = () => {
             <div className="px-4 py-6 space-y-2">
               <Link 
                 href="/" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/shop" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Shop
               </Link>
               <Link 
                 href="/academy" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Academy
               </Link>
               <Link 
                 href="/celebs" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Community
               </Link>
               <Link 
                 href="/donation" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Donate
