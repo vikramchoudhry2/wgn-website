@@ -45,7 +45,7 @@ const HorizontalScroll = () => {
 
   return (
     <div ref={containerRef} className="relative bg-black py-10 overflow-hidden">
-      <div className="flex flex-col items-center justify-center min-h-[30vh] space-y-0">
+      <div className="hidden md:flex flex-col items-center justify-center min-h-[30vh] space-y-0">
         {/* Top Text */}
         <div 
           className="text-right w-full -mb-2"

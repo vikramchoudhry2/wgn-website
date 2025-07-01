@@ -78,7 +78,7 @@ const StorySection = () => {
             opacity: textOpacity,
           }}
         >
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
             Our Story
           </h2>
           
@@ -88,7 +88,7 @@ const StorySection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
           </div>
           
-          <div className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed sm:leading-relaxed md:leading-relaxed">
+          <div className="text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed sm:leading-relaxed md:leading-relaxed">
             <p>
               We Got Next began as an app connecting basketball players to find games efficiently. Over the years, we saw the impact of our platform and expanded into running youth basketball clinics. What started as a one-day event quickly grew into weekly clinics, starting with 15 kids and now serving over 150 in San Jose and Sacramento.
             </p>
