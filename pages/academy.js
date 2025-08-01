@@ -174,8 +174,8 @@ export default function Academy() {
             className="heading-hero text-white mb-6"
             style={{fontFamily: 'Playfair Display, serif'}}
           >
-            Where Legends<br />
-            <span className="text-orange-500">Are Born</span>
+            WeGotNext<br />
+            <span className="text-orange-500">Academy</span>
           </motion.h1>
           
           <motion.p 
@@ -184,8 +184,7 @@ export default function Academy() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-body text-gray-200 mb-8 max-w-2xl"
           >
-            Join WeGotNext Academy - where passion meets precision, and dreams transform into reality. 
-            Our world-class training programs are designed to elevate your game to professional levels.
+            Join WeGotNext Academy, where basketball is more than just a game. It's a family.
           </motion.p>
           <motion.button
             initial={{ opacity: 0, y: 30 }}
