@@ -170,18 +170,22 @@ export default function Academy() {
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="heading-hero text-white mb-6"
+            style={{fontFamily: 'Playfair Display, serif'}}
           >
-            WeGotNext Academy
+            Where Legends<br />
+            <span className="text-orange-500">Are Born</span>
           </motion.h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-body text-gray-200 mb-8 max-w-2xl"
           >
-            Built for Players. Driven by Purpose.
+            Join WeGotNext Academy - where passion meets precision, and dreams transform into reality. 
+            Our world-class training programs are designed to elevate your game to professional levels.
           </motion.p>
           <motion.button
             initial={{ opacity: 0, y: 30 }}
@@ -241,40 +245,30 @@ export default function Academy() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 relative">
-                WeGotNext Academy
-                <div className="absolute -bottom-2 left-0 w-32 h-1.5 bg-gradient-to-r from-orange-500 to-purple-500 rounded-full"></div>
+              <h2 className="heading-section text-white mb-8 relative">
+                <span className="relative z-10">
+                  What We're About
+                  <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-orange-500 to-yellow-500"></div>
+                </span>
               </h2>
               
-              {/* First Paragraph */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-3 h-3 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full mt-2 flex-shrink-0 animate-pulse"></div>
-                  <p className="text-lg text-gray-200 leading-relaxed">
-                    WeGotNext Basketball Academy offers a fun and innovative approach for players to enhance their basketball skills while learning new techniques and strategies. Enjoyment is key to mastering new skills, and our basketball camps provide an engaging environment where players can develop their abilities. These camps blend learning with enjoyment, focusing on all facets of the game and the overall development of each player. Key skills taught at our camps include ball handling, shooting, competitive league play, and much more.
-                  </p>
-              </div>
-              </motion.div>
-              
-              {/* Second Paragraph */}
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-2 flex-shrink-0 animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                  <p className="text-lg text-gray-200 leading-relaxed">
-                    In addition to skill development, basketball camps serve as excellent social environments for players. Participants share common goals and interests, fostering opportunities to build lifelong friendships and connections that might not otherwise occur. These new relationships also present challenges, as players compete against others with varying skill levels. Throughout the experience, players will learn the importance of teamwork and collaboration with teammates of diverse talents, gaining a deeper appreciation for sportsmanship and becoming effective team players.
+              <div className="space-y-8">
+                <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/20">
+                  <p className="text-body text-gray-200 leading-relaxed">
+                    WeGotNext Academy isn't just about basketball training – it's about building character, 
+                    discipline, and the mindset of a champion. Our comprehensive programs combine elite-level 
+                    skill development with life lessons that extend far beyond the court.
                   </p>
                 </div>
-              </motion.div>
+                
+                <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/20">
+                  <p className="text-body text-gray-200 leading-relaxed">
+                    Whether you're just starting your basketball journey or looking to take your game to the 
+                    next level, our experienced coaches provide personalized training that adapts to your 
+                    unique strengths and goals. We believe every player has untapped potential waiting to be unleashed.
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>

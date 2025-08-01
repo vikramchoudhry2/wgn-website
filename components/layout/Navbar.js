@@ -113,35 +113,35 @@ const Navbar = () => {
             <div className="px-4 py-6 space-y-2">
               <Link 
                 href="/" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
                 href="/shop" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Shop
               </Link>
               <Link 
                 href="/academy" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Academy
               </Link>
               <Link 
                 href="/celebs" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Community
               </Link>
               <Link 
                 href="/donation" 
-                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-xl min-h-[44px]"
+                className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Donate

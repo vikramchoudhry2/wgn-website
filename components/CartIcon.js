@@ -35,12 +35,12 @@ const CartIcon = () => {
     <>
       <button
         onClick={handleCartClick}
-        className="relative p-2 text-white hover:text-orange-300 transition-colors"
+        className="relative p-3 text-white hover:text-orange-300 transition-all duration-200 active:scale-95 rounded-lg hover:bg-white/10"
         aria-label="Shopping cart"
         type="button"
       >
         <svg
-          className="h-6 w-6"
+          className="h-7 w-7"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -48,12 +48,12 @@ const CartIcon = () => {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            strokeWidth={2}
+            strokeWidth={2.5}
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           />
         </svg>
         {cartTotal > 0 && (
-          <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
             {cartTotal}
           </span>
         )}
