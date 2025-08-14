@@ -9,7 +9,7 @@ import ScrollScript from '@/components/ScrollScript';
 
 export default function Home() {
   return (
-    <Layout title="We Got Next - Home">
+    <Layout title="WeGotNext - Home">
       {/* Hero Slider */}
       <HeroSlider />
       

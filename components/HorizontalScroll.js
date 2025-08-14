@@ -56,16 +56,16 @@ const HorizontalScroll = () => {
             zIndex: scrollPosition > 0.5 ? 1 : 2 // Change z-index when crossing over
           }}
         >
-          <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold" 
+          <div 
+            className="heading-hero" 
             style={{ 
               fontFamily: 'Playfair Display, serif', 
               color: '#808080', // Changed to medium grey
               opacity: textOpacity
             }}
           >
-            We Got Next
-          </h1>
+            WeGotNext
+          </div>
         </div>
         
         {/* Bottom Text */}
@@ -78,16 +78,16 @@ const HorizontalScroll = () => {
             zIndex: scrollPosition > 0.5 ? 2 : 1 // Change z-index when crossing over
           }}
         >
-          <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-bold" 
+          <div 
+            className="heading-hero" 
             style={{ 
               fontFamily: 'Playfair Display, serif', 
               color: '#808080', // Changed to medium grey
               opacity: textOpacity
             }}
           >
-            We Got Next
-          </h1>
+            WeGotNext
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import styles from './RollingGallery.module.css';
 const CARDS = [
   { img: "/assets/SHOP.png", link: "/shop", alt: "Shop" },
   { img: "/assets/sac.png", link: "/academy", alt: "Academy" },
-  { img: "/assets/community.png", link: "/celebs", alt: "Community" },
+  { img: "/assets/community.png", link: "/community", alt: "Community" },
 ];
 
 const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {

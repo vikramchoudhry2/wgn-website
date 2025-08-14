@@ -30,7 +30,7 @@ const Navbar = () => {
             <Link href="/" className="flex-shrink-0">
               <Image 
                 src="/assets/WeGotNext-logo.png" 
-                alt="We Got Next logo" 
+                alt="WeGotNext logo" 
                 width={80} 
                 height={32} 
                 className="h-8 w-auto" 
@@ -48,7 +48,7 @@ const Navbar = () => {
               <Link href="/academy" className="text-white hover:text-orange-400 font-medium transition-colors duration-200">
                 Academy
               </Link>
-              <Link href="/celebs" className="text-white hover:text-orange-400 font-medium transition-colors duration-200">
+              <Link href="/community" className="text-white hover:text-orange-400 font-medium transition-colors duration-200">
                 Community
               </Link>
               <Link href="/donation" className="text-white hover:text-orange-400 font-medium transition-colors duration-200">
@@ -68,7 +68,7 @@ const Navbar = () => {
             <Link href="/" className="flex-shrink-0">
               <Image 
                 src="/assets/WeGotNext-logo.png" 
-                alt="We Got Next logo" 
+                alt="WeGotNext logo" 
                 width={120} 
                 height={48} 
                 className="h-12 w-auto" 
@@ -133,7 +133,7 @@ const Navbar = () => {
                 Academy
               </Link>
               <Link 
-                href="/celebs" 
+                href="/community" 
                 className="flex items-center px-5 py-4 text-white hover:text-orange-400 hover:bg-white/10 rounded-xl font-medium transition-all duration-200 text-responsive-xl min-h-[44px]"
                 onClick={() => setIsMenuOpen(false)}
               >

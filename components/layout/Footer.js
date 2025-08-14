@@ -22,7 +22,7 @@ const Footer = () => {
             <Link href="/">
               <Image 
                 src="/assets/WeGotNext-logo.png" 
-                alt="We Got Next Logo" 
+                alt="WeGotNext Logo" 
                 width={80} 
                 height={80}
               />
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-col items-center md:items-start space-y-4">
-            <Link href="/celebs" className="text-white hover:text-gray-300 transition-all">Community</Link>
+            <Link href="/community" className="text-white hover:text-gray-300 transition-all">Community</Link>
             <Link href="/donation" className="text-white hover:text-gray-300 transition-all">Donate</Link>
           </div>
         </div>

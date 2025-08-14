@@ -198,7 +198,45 @@ body {
   }
   
   .section-container {
-    @apply py-12 md:py-16 lg:py-20;
+    @apply py-section md:py-section-lg;
+  }
+
+  /* Button Kit - Consistent CTA styling */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-button font-semibold text-fluid-base transition-all duration-200 shadow-button hover:shadow-button-hover focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 focus:ring-brand-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white text-brand-600 border-2 border-brand-500 hover:bg-brand-50 focus:ring-brand-500;
+  }
+  
+  .btn-tertiary {
+    @apply btn bg-transparent text-brand-500 border-2 border-brand-500 hover:bg-brand-500 hover:text-white focus:ring-brand-500;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-white border-2 border-white/30 hover:bg-white/10 hover:border-white/60 focus:ring-white;
+  }
+  
+  .btn-sm {
+    @apply px-4 py-2 text-fluid-sm;
+  }
+  
+  .btn-lg {
+    @apply px-8 py-4 text-fluid-lg;
+  }
+
+  /* Card Kit - Consistent card styling */
+  .card {
+    @apply bg-neutral-800/90 backdrop-blur-sm rounded-card p-card-padding shadow-card border border-neutral-700/50 hover:border-brand-500/50 hover:shadow-card-hover transition-all duration-300;
+  }
+  
+  .card-image {
+    @apply aspect-[16/9] overflow-hidden rounded-card;
   }
 
   /* Fluid typography utilities */
@@ -243,6 +281,15 @@ body {
   .text-small {
     font-size: clamp(0.875rem, 1vw + 0.125rem, 1rem);
     line-height: 1.5;
+  }
+
+  /* Section spacing utilities */
+  .section-spacing {
+    @apply py-section md:py-section-lg;
+  }
+  
+  .container-spacing {
+    @apply max-w-7xl mx-auto px-container-padding md:px-6 lg:px-8;
   }
 }
 

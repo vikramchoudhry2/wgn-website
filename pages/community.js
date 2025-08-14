@@ -113,7 +113,7 @@ export default function Celebs() {
   };
 
   return (
-    <Layout title="We Got Next - Community">
+    <Layout title="WeGotNext - Community">
       {/* Enhanced Video Header Section */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
         <video

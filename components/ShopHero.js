@@ -76,7 +76,7 @@ const ShopHero = () => {
         
         {/* Fallback Image - Always loaded for LCP */}
         <Image
-          src="/assets/wgn5.png"
+          src="/assets/wgn6.png"
           alt="WeGotNext Lifestyle"
           fill
           priority
@@ -212,6 +212,13 @@ const ShopHero = () => {
           </>
         )}
       </div>
+      <style jsx global>{`
+        /* Hide any slider arrows that may overlap this banner */
+        button[aria-label="Previous slide"],
+        button[aria-label="Next slide"] {
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 };

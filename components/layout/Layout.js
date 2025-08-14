@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Head from 'next/head';
 
-const Layout = ({ children, title = 'We Got Next' }) => {
+const Layout = ({ children, title = 'WeGotNext' }) => {
   useEffect(() => {
     // Add smooth scroll class to body
     document.body.classList.add('smooth-scroll');

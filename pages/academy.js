@@ -78,20 +78,20 @@ export default function Academy() {
       bio: 'Former college player, specializes in fundamentals'
     },
     {
-        name: 'Coach Manny',
-        image: '/assets/manny.jpg',
-        bio: 'Former college player, specializes in fundamentals'
-      },
+      name: 'Coach Manny',
+      image: '/assets/manny.jpg',
+      bio: 'Former college player, specializes in fundamentals'
+    },
     {
       name: 'Coach Mandeep',
       image: '/assets/mandeep.png',
       bio: 'Elite trainer focusing on skill development'
     },
     {
-        name: 'Coach Manny',
-        image: '/assets/manny1.jpg',
-        bio: 'Organizer/Coordinator'
-      }
+      name: 'Coach Manny K.',
+      image: '/assets/manny1.jpg',
+      bio: 'Program organizer and coordinator'
+    }
   ];
 
   const players = [
@@ -99,60 +99,51 @@ export default function Academy() {
       name: 'Harji Atwal',
       image: '/assets/harji.png',
       role: 'Point Guard',
-      stats: 'Season Averages: 10.5 PPG, 3.2 RPG, 2.1 APG'
     },
     {
       name: 'Armaan Saini',
       image: '/assets/saini.JPG',
       role: 'Shooting Guard',
-      stats: 'Season Averages: 12.2 PPG, 3.5 RPG, 2.8 APG'
     },
     {
       name: 'Shabd Thind',
       image: '/assets/shabd.JPG',
       role: 'Forward',
-      stats: 'Season Averages: 11.8 PPG, 5.3 RPG, 1.7 APG'
     },
     {
       name: 'Nishan Hayer',
       image: '/assets/nishan.jpg',
       role: 'Center',
-      stats: 'Season Averages: 10.2 PPG, 8.5 RPG, 1.3 APG'
     },
     {
         name: 'Jasmeet Singh',
         image: '/assets/jasmeet.jpg',
         role: 'Point Guard',
-        stats: 'Season Averages: 12.5 PPG, 3.2 RPG, 2.1 APG'
       },
       {
         name: 'Gurkaran Singh',
         image: '/assets/saini.jpg',
         role: 'Shooting Guard',
-        stats: 'Season Averages: 5.2 PPG, 1.8 RPG, 2.5 APG'
       },
       {
         name: 'Prabhroop Singh',
         image: '/assets/roop.jpg',
         role: 'Forward',
-        stats: 'Season Averages: 3.2 PPG, 2.3 RPG, 1.3 APG'
       },
       {
         name: 'Aaron Gidda',
         image: '/assets/gidda.jpg',
         role: 'Center',
-        stats: 'Season Averages: 2.1 PPG, 1.2 RPG, 1 APG'
       },
       {
         name: 'Jaskaran Singh',
         image: '/assets/jaskaran.jpg',
         role: 'Point Guard',
-        stats: 'Season Averages: 2.2 PPG, 2 RPG, 0.7 APG'
       },
   ];
 
   return (
-    <Layout title="We Got Next - Academy">
+    <Layout title="WeGotNext - Academy">
       {/* Hero Banner */}
       <section className="relative h-[80vh] min-h-[600px] overflow-hidden bg-black">
         <div className="absolute inset-0">
@@ -191,7 +182,7 @@ export default function Academy() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             onClick={() => window.open('https://form.jotform.com/251317338623152', '_blank')}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full text-lg font-semibold transition-colors duration-300 flex items-center gap-2"
+            className="btn-primary btn-lg"
           >
             Register Now
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
