@@ -54,7 +54,7 @@ export default function Academy() {
     },
     {
       question: 'When and where is the camp held?',
-      answer: 'Camps are held on weekends at local community centers and schools. Specific locations and times are provided upon registration.'
+      answer: 'Camps are held on Sunday 4:30-7PM at Pickup USA in Rancho Cordova. Beginner sessions are 4:30-5:30PM and Advanced sessions are 5:30-7PM.'
     },
     {
       question: 'What should my child bring?',
@@ -143,7 +143,19 @@ export default function Academy() {
   ];
 
   return (
-    <Layout title="WeGotNext - Academy">
+    <Layout
+      title="Academy — WeGotNext"
+      description="Train with WeGotNext Academy. Elite coaching, character development, and a community-first program for youth hoopers."
+      canonical="/academy"
+      ogImage="/assets/coach.png"
+      structuredData={{
+        '@context': 'https://schema.org',
+        '@type': 'SportsOrganization',
+        name: 'WeGotNext Academy',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/academy`,
+        sport: 'Basketball',
+      }}
+    >
       {/* Hero Banner */}
       <section className="relative h-[80vh] min-h-[600px] overflow-hidden bg-black">
         <div className="absolute inset-0">

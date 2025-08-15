@@ -1,9 +1,22 @@
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import Head from 'next/head';
 
-const Layout = ({ children, title = 'WeGotNext' }) => {
+const Layout = ({
+  children,
+  title = 'WeGotNext',
+  description = 'WeGotNext - Basketball Academy, Community & Shop',
+  ogImage,
+  canonical,
+  noIndex = false,
+  structuredData,
+}) => {
+  const router = useRouter();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const canonicalUrl = canonical || (siteUrl ? `${siteUrl}${router.asPath || ''}` : undefined);
+  const socialImage = ogImage || '/assets/WGN.png';
   useEffect(() => {
     // Add smooth scroll class to body
     document.body.classList.add('smooth-scroll');
@@ -56,9 +69,15 @@ const Layout = ({ children, title = 'WeGotNext' }) => {
     <div className="min-h-screen bg-black">
       <Head>
         <title>{title}</title>
-        <meta name="description" content="WeGotNext - Basketball Academy, Community & Shop" />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content={noIndex ? 'noindex, nofollow' : 'index, follow'} />
         <link rel="icon" href="/favicon.ico" />
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        {canonicalUrl && <link rel="alternate" hrefLang="en" href={canonicalUrl} />}
+        {/* Preconnects for performance */}
+        <link rel="preconnect" href="https://cdn.shopify.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//cdn.shopify.com" />
         
         {/* Preload critical assets */}
         <link
@@ -74,6 +93,48 @@ const Layout = ({ children, title = 'WeGotNext' }) => {
         
         {/* Performance hints */}
         <meta name="theme-color" content="#000000" />
+
+        {/* Open Graph / Twitter */}
+        <meta property="og:type" content="website" />
+        {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:site_name" content="WeGotNext" />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:image:alt" content="WeGotNext" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImage} />
+
+        {/* JSON-LD structured data */}
+        {structuredData ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
+        ) : (
+          siteUrl && (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'Organization',
+                  name: 'WeGotNext',
+                  url: siteUrl,
+                  logo: `${siteUrl}/assets/WeGotNext-logo.png`,
+                  sameAs: [
+                    'https://www.instagram.com/wegotnextacademy',
+                    'https://www.tiktok.com/@wegotnextacademy',
+                    'https://www.youtube.com/@wegotnextacademy',
+                    'https://twitter.com/wegotnextacademy',
+                  ],
+                }),
+              }}
+            />
+          )
+        )}
       </Head>
       
       <Navbar />

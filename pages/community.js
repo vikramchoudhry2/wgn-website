@@ -23,8 +23,8 @@ const celebrities = [
     id: 3,
     name: 'Phil Handy',
     image: '/assets/phil.png',
-    description: 'Basketball Influencer',
-    category: 'Influencer'
+    description: 'Basketball Coach',
+    category: 'NBA Coach'
   },
   {
     id: 4,
@@ -113,7 +113,18 @@ export default function Celebs() {
   };
 
   return (
-    <Layout title="WeGotNext - Community">
+    <Layout
+      title="Community — WeGotNext"
+      description="Highlights, partnerships, and stories from the WeGotNext community. Explore our events, champions, and culture."
+      canonical="/community"
+      ogImage="/assets/celebs.png"
+      structuredData={{
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'WeGotNext Community',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/community`,
+      }}
+    >
       {/* Enhanced Video Header Section */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
         <video

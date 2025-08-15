@@ -45,7 +45,22 @@ export default function Donation() {
   };
 
   return (
-    <Layout title="WeGotNext - Donate">
+    <Layout
+      title="Donate — WeGotNext"
+      description="Support WeGotNext programs and youth development. Your donation funds scholarships, facilities, mentors, and community events."
+      canonical="/donation"
+      ogImage="/assets/donation.png"
+      structuredData={{
+        '@context': 'https://schema.org',
+        '@type': 'DonateAction',
+        name: 'Donate to WeGotNext',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/donation`,
+        recipient: {
+          '@type': 'Organization',
+          name: 'WeGotNext',
+        },
+      }}
+    >
       <div className="pt-20">
         <div className="bg-black text-white py-20">
           <div className="container-center">

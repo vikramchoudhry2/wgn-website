@@ -163,7 +163,18 @@ export default function Shop() {
   };
 
   return (
-    <Layout title="WeGotNext - Shop">
+    <Layout
+      title="Shop — WeGotNext"
+      description="Shop premium WeGotNext shorts, tees, hoodies, and essentials. Limited drops, performance gear, everyday wear."
+      canonical="/shop"
+      ogImage="/assets/wgn5.png"
+      structuredData={{
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'WeGotNext Shop',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/shop`,
+      }}
+    >
       <ShopHero />
       
       {/* Category Navigation */}
