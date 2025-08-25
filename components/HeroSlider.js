@@ -83,6 +83,9 @@ const HeroSlider = () => {
         ))}
       </div>
 
+      {/* Smooth bottom fade to next section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-black/95" />
+
       {/* Content */}
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="text-center text-white px-4 max-w-4xl">

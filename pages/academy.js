@@ -75,12 +75,12 @@ export default function Academy() {
     {
       name: 'Coach Rob',
       image: '/assets/rob.jpeg',
-      bio: 'Former college player, specializes in fundamentals'
+      bio: 'Youth Basketball Coach'
     },
     {
       name: 'Coach Manny',
-      image: '/assets/manny.jpg',
-      bio: 'Former college player, specializes in fundamentals'
+      image: '/assets/manny1.png',
+      bio: 'Youth Basketball Coach'
     },
     {
       name: 'Coach Mandeep',
@@ -89,7 +89,7 @@ export default function Academy() {
     },
     {
       name: 'Coach Manny K.',
-      image: '/assets/manny1.jpg',
+      image: '/assets/mannyk.png',
       bio: 'Program organizer and coordinator'
     }
   ];
@@ -98,48 +98,64 @@ export default function Academy() {
     {
       name: 'Harji Atwal',
       image: '/assets/harji.png',
-      role: 'Point Guard',
     },
     {
       name: 'Armaan Saini',
       image: '/assets/saini.JPG',
-      role: 'Shooting Guard',
     },
     {
       name: 'Shabd Thind',
       image: '/assets/shabd.JPG',
-      role: 'Forward',
+
     },
     {
       name: 'Nishan Hayer',
       image: '/assets/nishan.jpg',
-      role: 'Center',
     },
     {
         name: 'Jasmeet Singh',
         image: '/assets/jasmeet.jpg',
-        role: 'Point Guard',
       },
       {
         name: 'Gurkaran Singh',
         image: '/assets/saini.jpg',
-        role: 'Shooting Guard',
       },
       {
         name: 'Prabhroop Singh',
         image: '/assets/roop.jpg',
-        role: 'Forward',
       },
       {
         name: 'Aaron Gidda',
         image: '/assets/gidda.jpg',
-        role: 'Center',
       },
       {
-        name: 'Jaskaran Singh',
-        image: '/assets/jaskaran.jpg',
-        role: 'Point Guard',
+        name: 'Abhijot Bajwa',
+        image: '/assets/aj.png',
       },
+      {
+        name: 'Sahib Randhawa',
+        image: '/assets/sahib3.png',
+      },
+      {
+        name: 'Rohin Purewal',
+        image: '/assets/rohin.png',
+      },
+      {
+        name: 'Jaskaran Klotia',
+        image: '/assets/klotia.png',
+      },
+      {
+        name: 'Taranjit Sanghera',
+        image: '/assets/tj1.png',
+      },
+      {
+        name: 'Karam Sekhon',
+        image: '/assets/karm.png',
+      },
+      {
+        name: 'Haafiz M.',
+        image: '/assets/haafiz1.png',
+      }
   ];
 
   return (
@@ -401,81 +417,7 @@ export default function Academy() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-blue-900 relative overflow-hidden">
-        {/* Dynamic geometric background patterns */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), 
-                             radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
-                             radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%)`
-          }}></div>
-          
-          {/* Animated lines */}
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500/50 to-transparent animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-blue-500/50 to-transparent animate-pulse" style={{animationDelay: '1s'}}></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold text-white text-center mb-12 relative"
-          >
-            Upcoming Events
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {upcomingEvents.map((event, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30, rotateY: -15 }}
-                whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                whileHover={{ y: -10, rotateY: 5 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`${event.color} text-white p-6 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 backdrop-blur-sm border border-white/20 relative overflow-hidden group`}
-              >
-                <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-semibold bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm border border-white/30">
-                      {event.date}
-                    </span>
-                    <motion.svg 
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                      className="w-6 h-6" 
-                      fill="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                    </motion.svg>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                  <p className="text-white/90 mb-4">{event.description}</p>
-                  {event.hasRegistration && (
-                    <motion.button 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => {
-                        if (event.title === 'Spring Camp') {
-                          window.open('https://form.jotform.com/251317338623152', '_blank');
-                        } else {
-                          setIsRegistrationModalOpen(true);
-                        }
-                      }}
-                      className="bg-white/20 backdrop-blur-sm text-white border border-white/30 px-4 py-2 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
-                    >
-                      Register
-                    </motion.button>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Upcoming Events section removed per request */}
 
       {/* Basketball Camp FAQs */}
       <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">

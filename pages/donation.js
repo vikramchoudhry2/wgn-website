@@ -74,13 +74,12 @@ export default function Donation() {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
               <div>
-                <div className="relative h-96 rounded-xl overflow-hidden mb-6">
+                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-black">
                   <Image
-                    src="/assets/donation.png"
+                    src="/assets/donation1.png"
                     alt="Donation impact"
-                    width={1200}
-                    height={700}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 

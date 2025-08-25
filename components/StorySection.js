@@ -69,6 +69,9 @@ const StorySection = () => {
         />
       )}
 
+      {/* Top gradient for smooth transition from previous section */}
+      <div className="pointer-events-none absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-black/0 to-black" />
+
       {/* Content - Responsive for mobile */}
       <div className="relative z-10 h-full w-full flex items-center justify-center px-2 sm:px-4">
         <div 
@@ -103,6 +106,9 @@ const StorySection = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom gradient to blend into next section */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-black" />
     </section>
   );
 };

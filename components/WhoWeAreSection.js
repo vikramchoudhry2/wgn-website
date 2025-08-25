@@ -3,7 +3,9 @@ import RollingGallery from './RollingGallery';
 
 const WhoWeAreSection = () => {
   return (
-    <section className="bg-black py-8 md:py-12 overflow-hidden">
+    <section className="relative bg-black py-8 md:py-12 overflow-hidden">
+      {/* Subtle top gradient for smoother transition from previous section */}
+      <div className="pointer-events-none absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-black/0 to-black" />
       <div className="container-center mb-8">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">Who We Are</h2>

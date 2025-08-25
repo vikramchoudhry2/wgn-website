@@ -54,6 +54,9 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
 
   return (
     <div className={styles.gallery2dContainer}>
+      {/* Smooth fades to blend with surrounding sections */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-black to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black to-transparent" />
       <div ref={scrollRef} className={styles.gallery2dTrack} tabIndex={0}>
         {CARDS.map((card, i) => (
           <Link key={i} href={card.link} className={styles.gallery2dItem} tabIndex={0}>
