@@ -142,6 +142,15 @@ export default function Academy() {
       }
   ];
 
+  // Sort players by requested priority order, then keep the rest
+  const priorityNames = ['harji','jasmeet','shabd','jaskaran','nishan','abhi','sahib','nirwaan','roop','aaron','rohin','harvin'];
+  const rankedPlayers = players.map((player, index) => {
+    const lower = player.name.toLowerCase();
+    const rankIndex = priorityNames.findIndex((key) => lower.includes(key));
+    return { player, index, rank: rankIndex === -1 ? 1000 + index : rankIndex };
+  });
+  const sortedPlayers = rankedPlayers.sort((a, b) => a.rank - b.rank || a.index - b.index).map((x) => x.player);
+
   return (
     <Layout
       title="Academy — WeGotNext"
@@ -589,7 +598,7 @@ export default function Academy() {
             <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full"></div>
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {players.map((player, index) => (
+            {sortedPlayers.map((player, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
