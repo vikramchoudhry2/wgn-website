@@ -12,7 +12,7 @@ export default function ParallaxSlider() {
   const sliderRef = useRef(null);
 
   return (
-    <section className="w-full bg-black py-24">
+    <section className="w-full relative bg-gradient-to-br from-black via-gray-950 to-slate-900 text-white py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center" style={{fontFamily: 'Playfair Display, serif'}}>Our Stories & Highlights</h2>
         <div
