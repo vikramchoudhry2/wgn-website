@@ -11,7 +11,8 @@ const cards = [
 export default function ParallaxSlider() {
   const sliderRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  // Default right arrow to visible so users see affordance immediately; corrected after first measure
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const updateScrollState = () => {
     const el = sliderRef.current;
@@ -71,8 +72,8 @@ export default function ParallaxSlider() {
             aria-label="Scroll left"
             onClick={scrollLeftBy}
             disabled={!canScrollLeft}
-            className={`hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full transition-opacity ${
-              canScrollLeft ? 'bg-black/40 hover:bg-black/60 opacity-90' : 'bg-black/20 opacity-30 cursor-not-allowed'
+            className={`hidden md:flex items-center justify-center absolute left-0 -translate-x-1/2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full backdrop-blur-sm border transition-opacity ${
+              canScrollLeft ? 'bg-black/50 hover:bg-black/70 opacity-100 border-white/20' : 'bg-black/30 opacity-70 cursor-not-allowed border-white/10'
             }`}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
@@ -85,8 +86,8 @@ export default function ParallaxSlider() {
             aria-label="Scroll right"
             onClick={scrollRightBy}
             disabled={!canScrollRight}
-            className={`hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full transition-opacity ${
-              canScrollRight ? 'bg-black/40 hover:bg-black/60 opacity-90' : 'bg-black/20 opacity-30 cursor-not-allowed'
+            className={`hidden md:flex items-center justify-center absolute right-0 translate-x-1/2 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full backdrop-blur-sm border transition-opacity ${
+              canScrollRight ? 'bg-black/50 hover:bg-black/70 opacity-100 border-white/20' : 'bg-black/30 opacity-70 cursor-not-allowed border-white/10'
             }`}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
