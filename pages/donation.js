@@ -62,8 +62,15 @@ export default function Donation() {
       }}
     >
       <div className="pt-20">
-        <div className="bg-black text-white py-20">
-          <div className="container-center">
+        {/* Match the Community page's section background (below its video) */}
+        <section className="bg-gradient-to-br from-black via-gray-950 to-slate-900 text-white py-20 relative overflow-hidden">
+          {/* Subtle background orbs for depth */}
+          <div className="absolute inset-0">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" style={{animationDuration: '4s'}}></div>
+            <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/15 rounded-full blur-3xl animate-pulse" style={{animationDuration: '6s', animationDelay: '1s'}}></div>
+            <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-orange-500/25 rounded-full blur-xl animate-pulse" style={{animationDuration: '3s', animationDelay: '2s'}}></div>
+          </div>
+          <div className="container-center relative z-10">
             <div className="text-center mb-12">
               <h1 className="heading-hero text-white font-bold mb-4">{campaign.title || 'Support Our Mission'}</h1>
               <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
@@ -76,7 +83,7 @@ export default function Donation() {
               <div>
                 <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-black">
                   <Image
-                    src="/assets/donation1.png"
+                    src="/assets/dono1.png"
                     alt="Donation impact"
                     fill
                     className="object-contain"
@@ -162,7 +169,7 @@ export default function Donation() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );

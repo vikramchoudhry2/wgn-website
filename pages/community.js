@@ -10,28 +10,32 @@ const celebrities = [
     name: 'Fateh',
     image: '/assets/fateh1.png',
     description: 'Music Artist & Basketball Enthusiast',
-    category: 'Artist'
+    category: 'Artist',
+    posY: 10,
   },
   {
     id: 2,
     name: 'JTA',
     image: '/assets/jta.png',
     description: 'Professional Basketball Player',
-    category: 'Athlete'
+    category: 'Athlete',
+    posY: 10,
   },
   {
     id: 3,
     name: 'Phil Handy',
     image: '/assets/phil.png',
     description: 'Basketball Coach',
-    category: 'NBA Coach'
+    category: 'NBA Coach',
+    posY: 50,
   },
   {
     id: 4,
     name: 'Bone Collector',
     image: '/assets/bone-collector.png',
     description: 'Streetball Legend',
-    category: 'AND 1'
+    category: 'AND 1',
+    posY: 20,
   }
 ];
 
@@ -407,12 +411,8 @@ export default function Celebs() {
                       src={celeb.image}
                       alt={celeb.name}
                       fill
-                      className={`transition-transform duration-700 group-hover:scale-110 ${
-                        celeb.image.includes('fateh1.png') ? 'object-cover object-[center_0%]' :
-                        celeb.image.includes('jta.png') ? 'object-cover object-[center_10%]' :
-                        celeb.image.includes('bone-collector.png') ? 'object-cover object-[center_20%]' :
-                        'object-cover'
-                      }`}
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      style={{ objectPosition: `center ${celeb.posY ?? 50}%` }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/95 transition-all duration-500" />
                     

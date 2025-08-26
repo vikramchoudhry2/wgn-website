@@ -45,6 +45,9 @@ const HorizontalScroll = () => {
 
   return (
     <div ref={containerRef} className="relative bg-black py-10 overflow-hidden">
+      {/* Top/Bottom shadow gradients for smooth overlap like home hero */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent z-10" />
       <div className="hidden md:flex flex-col items-center justify-center min-h-[30vh] space-y-0">
         {/* Top Text */}
         <div 

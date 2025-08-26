@@ -89,7 +89,7 @@ export default function Academy() {
     },
     {
       name: 'Coach Manny K.',
-      image: '/assets/mannyk.png',
+      image: '/assets/mannyk1.png',
       bio: 'Program organizer and coordinator'
     }
   ];
@@ -98,63 +98,78 @@ export default function Academy() {
     {
       name: 'Harji Atwal',
       image: '/assets/harji.png',
+      posY: 10,
     },
     {
       name: 'Armaan Saini',
       image: '/assets/saini.JPG',
+      posY: 5,
     },
     {
       name: 'Shabd Thind',
       image: '/assets/shabd.JPG',
+      posY: 10,
 
     },
     {
       name: 'Nishan Hayer',
       image: '/assets/nishan.jpg',
+      posY: 40,
     },
     {
         name: 'Jasmeet Singh',
         image: '/assets/jasmeet.jpg',
+        posY: 60,
       },
       {
         name: 'Gurkaran Singh',
         image: '/assets/saini.jpg',
+        posY: 60,
       },
       {
         name: 'Prabhroop Singh',
         image: '/assets/roop.jpg',
+        posY: 60,
       },
       {
         name: 'Aaron Gidda',
         image: '/assets/gidda.jpg',
+        posY: 60,
       },
       {
         name: 'Abhijot Bajwa',
         image: '/assets/aj.png',
+        posY: 55,
       },
       {
         name: 'Sahib Randhawa',
         image: '/assets/sahib3.png',
+        posY: 35,
       },
       {
         name: 'Rohin Purewal',
         image: '/assets/rohin.png',
+        posY: 30,
       },
       {
         name: 'Jaskaran Klotia',
         image: '/assets/klotia.png',
+        posY: 30,
       },
       {
         name: 'Taranjit Sanghera',
-        image: '/assets/tj1.png',
+        image: '/assets/tj2.png',
+        posY: 35,
       },
       {
         name: 'Karam Sekhon',
         image: '/assets/karm.png',
+        posY: 45,
       },
       {
         name: 'Haafiz M.',
         image: '/assets/haafiz1.png',
+        posY: 35,
       }
   ];
 
@@ -628,6 +643,7 @@ export default function Academy() {
                     alt={player.name}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    style={{ objectPosition: `center ${player.posY || 50}%` }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-emerald-500/20 opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
                   
