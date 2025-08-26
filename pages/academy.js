@@ -16,37 +16,6 @@ export default function Academy() {
     { name: 'Community', color: 'bg-yellow-500 hover:bg-yellow-600' }
   ];
 
-  const upcomingEvents = [
-    {
-      date: 'May 25',
-      title: 'Spring Camp',
-      description: 'Intensive training weekend',
-      color: 'bg-gradient-to-br from-blue-500 to-blue-700',
-      hasRegistration: true
-    },
-    {
-      date: 'May 11',
-      title: '3v3 Tournament',
-      description: 'Street basketball competition',
-      color: 'bg-gradient-to-br from-green-500 to-green-700',
-      hasRegistration: false
-    },
-    {
-      date: 'June 6-8',
-      title: 'PBA LA',
-      description: 'Professional Basketball Academy',
-      color: 'bg-gradient-to-br from-purple-500 to-purple-700',
-      hasRegistration: false
-    },
-    {
-      date: 'July',
-      title: 'All-Star Game',
-      description: 'Annual showcase event',
-      color: 'bg-gradient-to-br from-orange-500 to-orange-700',
-      hasRegistration: false
-    }
-  ];
-
   const faqs = [
     {
       question: 'Who can join the camp?',
@@ -432,7 +401,6 @@ export default function Academy() {
         </div>
       </section>
 
-      {/* Upcoming Events section removed per request */}
 
       {/* Basketball Camp FAQs */}
       <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">
