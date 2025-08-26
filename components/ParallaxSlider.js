@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 const cards = [
   { id: 1, image: '/assets/phil.png', title: 'Phil Handy', posY: 50, text: "A Moment We'll Never Forget - We were deeply honored to welcome Coach Phil Handy to our basketball academy — a true legend in the game, a world-class mentor, and an even better human being. Our program is built for the youth in our Punjabi community, many of whom come from blue-collar families and don't often have access to opportunities like this. For Coach Handy to take the time to pour into our kids, to teach, inspire, and uplift — it meant the world. This wasn't just a visit. It was a moment of impact. Coach Handy brought a level of knowledge, energy, and mentorship that most only dream of experiencing. His presence gave our players a glimpse of what's possible, both on and off the court. We are beyond grateful for the relationship we've built with Coach Handy. It's one of those rare and special connections that will stay with our kids forever — because when someone of his caliber steps into your gym and believes in your potential, it changes everything. Thank you, Coach Handy. You're not just a mentor — you're now part of our family."},
@@ -10,16 +10,95 @@ const cards = [
 
 export default function ParallaxSlider() {
   const sliderRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const updateScrollState = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 1);
+  };
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    updateScrollState();
+    const onScroll = () => updateScrollState();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    const onResize = () => updateScrollState();
+    window.addEventListener('resize', onResize);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  const getStep = () => {
+    const el = sliderRef.current;
+    if (!el) return 300;
+    const first = el.firstElementChild;
+    if (first && first.getBoundingClientRect) {
+      const rect = first.getBoundingClientRect();
+      const styles = getComputedStyle(el);
+      const gap = parseFloat(styles.columnGap || styles.gap || '0');
+      return rect.width + (isNaN(gap) ? 0 : gap);
+    }
+    return Math.max(300, Math.floor(el.clientWidth * 0.8));
+  };
+
+  const scrollLeftBy = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    el.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  };
+
+  const scrollRightBy = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    el.scrollBy({ left: getStep(), behavior: 'smooth' });
+  };
 
   return (
     <section className="w-full relative bg-gradient-to-br from-black via-gray-950 to-slate-900 text-white py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-10 text-center" style={{fontFamily: 'Playfair Display, serif'}}>Our Stories & Highlights</h2>
-        <div
-          ref={sliderRef}
-          className="overflow-x-auto flex gap-8 scrollbar-hide snap-x snap-mandatory"
-          style={{ WebkitOverflowScrolling: 'touch' }}
-        >
+        <div className="relative">
+          {/* Desktop arrows */}
+          <button
+            type="button"
+            aria-label="Scroll left"
+            onClick={scrollLeftBy}
+            disabled={!canScrollLeft}
+            className={`hidden md:flex items-center justify-center absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full transition-opacity ${
+              canScrollLeft ? 'bg-black/40 hover:bg-black/60 opacity-90' : 'bg-black/20 opacity-30 cursor-not-allowed'
+            }`}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            aria-label="Scroll right"
+            onClick={scrollRightBy}
+            disabled={!canScrollRight}
+            className={`hidden md:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full transition-opacity ${
+              canScrollRight ? 'bg-black/40 hover:bg-black/60 opacity-90' : 'bg-black/20 opacity-30 cursor-not-allowed'
+            }`}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+          <div
+            ref={sliderRef}
+            className="overflow-x-auto flex gap-8 scrollbar-hide snap-x snap-mandatory"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
           {cards.map((card) => (
             <div
               key={card.id}
@@ -41,6 +120,7 @@ export default function ParallaxSlider() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
       <style jsx>{`
