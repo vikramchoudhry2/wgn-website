@@ -451,6 +451,7 @@ export default function Academy() {
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-4xl font-bold text-white text-center mb-12 relative"
           >
@@ -625,6 +626,7 @@ export default function Academy() {
                 key={index}
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 whileHover={{ y: -10, rotateX: 5, scale: 1.02 }}
                 transition={{ 
                   duration: 0.6, 

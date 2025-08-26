@@ -231,6 +231,7 @@ export default function Celebs() {
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
@@ -238,6 +239,7 @@ export default function Celebs() {
                 <motion.h2 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight" 
                   style={{fontFamily: 'Playfair Display, serif'}}
@@ -249,6 +251,7 @@ export default function Celebs() {
                 <motion.div
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
+                  viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 1, delay: 0.6 }}
                   className="h-1 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full max-w-md"
                 />
@@ -257,6 +260,7 @@ export default function Celebs() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.4 }}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="relative group cursor-pointer"
@@ -276,6 +280,7 @@ export default function Celebs() {
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="space-y-8"
             >
@@ -283,6 +288,7 @@ export default function Celebs() {
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300"
                 >
@@ -294,6 +300,7 @@ export default function Celebs() {
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.6, delay: 0.7 }}
                   className="bg-gradient-to-br from-gray-800/60 to-gray-900/60 backdrop-blur-sm rounded-2xl p-6 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300"
                 >
@@ -359,12 +366,14 @@ export default function Celebs() {
           <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-5xl font-extrabold text-white mb-6"
               style={{fontFamily: 'Playfair Display, serif'}}
@@ -375,6 +384,7 @@ export default function Celebs() {
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: '200px' }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 1, delay: 0.6 }}
               className="h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-8"
             />
@@ -395,6 +405,7 @@ export default function Celebs() {
                 key={celeb.id}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 whileHover={{ y: -10, scale: 1.02 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group cursor-pointer"
