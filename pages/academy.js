@@ -47,7 +47,7 @@ export default function Academy() {
       bio: 'Youth Basketball Coach'
     },
     {
-      name: 'Coach Manny',
+      name: 'Coach Manny Sekhon',
       image: '/assets/manny1.png',
       bio: 'Youth Basketball Coach'
     },
@@ -57,7 +57,7 @@ export default function Academy() {
       bio: 'Elite trainer focusing on skill development'
     },
     {
-      name: 'Coach Manny K.',
+      name: 'Coach Manny Purewal',
       image: '/assets/mannyk1.png',
       bio: 'Program organizer and coordinator'
     }
@@ -112,7 +112,7 @@ export default function Academy() {
       },
       {
         name: 'Sahib Randhawa',
-        image: '/assets/sahib3.png',
+        image: '/assets/sahib1.jpeg',
         posY: 35,
       },
       {
@@ -139,11 +139,31 @@ export default function Academy() {
         name: 'Haafiz M.',
         image: '/assets/haafiz1.png',
         posY: 35,
+      },
+      {
+        name: 'Gurvin Chahal',
+        image: '/assets/gurvin.png',
+        posY: 50,
+      },
+      {
+        name: 'Gurshan Singh',
+        image: '/assets/gurshan.jpg',
+        posY: 50,
+      },
+      {
+        name: 'Sahibjit Nagra',
+        image: '/assets/sahibjit.jpg',
+        posY: 50,
+      },
+      {
+        name: 'Harvin Chahal',
+        image: '/assets/harvin.jpg',
+        posY: 50,
       }
   ];
 
   // Sort players by requested priority order, then keep the rest
-  const priorityNames = ['harji','jasmeet','shabd','jaskaran','nishan','abhi','sahib','nirwaan','roop','aaron','rohin','harvin'];
+  const priorityNames = ['harji','jasmeet','shabd','jaskaran','nishan','abhi','sahib','nirwaan','roop','aaron','rohin','harvin','gurvin','gurshan','sahibjit'];
   const rankedPlayers = players.map((player, index) => {
     const lower = player.name.toLowerCase();
     const rankIndex = priorityNames.findIndex((key) => lower.includes(key));
