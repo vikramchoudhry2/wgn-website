@@ -211,7 +211,7 @@ const ProductCard = ({ product, onAddToCart }) => {
 
   return (
     <>
-      <div className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+      <div className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 h-full flex flex-col">
         {/* Product Image */}
         <div className="relative aspect-[3/4] w-full overflow-hidden">
           <Image
@@ -236,7 +236,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         </div>
 
         {/* Product Info */}
-        <div className="p-4 bg-white">
+        <div className="p-4 bg-white flex-1 flex flex-col">
           <h3 className="text-lg font-medium text-gray-900 mb-1">{name}</h3>
           <p className="text-gray-500 text-sm mb-2">{description}</p>
           
@@ -279,13 +279,14 @@ const ProductCard = ({ product, onAddToCart }) => {
             </div>
           )}
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
             <span className="text-lg font-semibold text-gray-900">{price}</span>
             <button
-              onClick={handleAddToCart}
+              onClick={() => setShowQuickView(true)}
               className="px-4 py-2 bg-black text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
+              aria-label={`View ${name}`}
             >
-              Add to Cart
+              View Product
             </button>
           </div>
         </div>
