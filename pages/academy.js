@@ -91,11 +91,6 @@ export default function Academy() {
         posY: 60,
       },
       {
-        name: 'Gurkaran Singh',
-        image: '/assets/saini.jpg',
-        posY: 60,
-      },
-      {
         name: 'Prabhroop Singh',
         image: '/assets/roop.jpg',
         posY: 60,
