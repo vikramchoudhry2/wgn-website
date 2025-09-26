@@ -217,7 +217,7 @@ export default function Academy() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            onClick={() => window.open('https://form.jotform.com/251317338623152', '_blank')}
+            onClick={() => window.open('https://form.jotform.com/252560649100148', '_blank')}
             className="btn-primary btn-lg"
           >
             Register Now
