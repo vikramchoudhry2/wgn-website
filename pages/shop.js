@@ -26,6 +26,7 @@ export default function Shop() {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [email, setEmail] = useState('');
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { addToCart, isLoading: cartLoading, isShopifyConfigured } = useCart();
 
   // Show email modal after 3 seconds, but only if not already submitted
@@ -42,8 +43,9 @@ export default function Shop() {
   // Handle email submission
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || isSubmitting) return;
 
+    setIsSubmitting(true);
     try {
       // Send email to Mailchimp API
       const response = await fetch('/api/mailchimp', {
@@ -72,6 +74,8 @@ export default function Shop() {
     } catch (error) {
       console.error('Error submitting email:', error);
       alert('Failed to subscribe. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -381,8 +385,9 @@ export default function Shop() {
                     <button
                       type="submit"
                       className="btn-primary w-full"
+                      disabled={isSubmitting}
                     >
-                      Get Updates
+                      {isSubmitting ? 'Subscribing...' : 'Get Updates'}
                     </button>
                   </form>
 

@@ -20,8 +20,8 @@ const slides = [
   },
   {
     id: 4,
-    bgImage: '/assets/anamika2.png',
-    bgImageMobile: '/assets/anamika2.png',
+    bgImage: '/assets/anamika.png',
+    bgImageMobile: '/assets/anamika.png',
   }
 ];
 
