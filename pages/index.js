@@ -13,7 +13,7 @@ export default function Home() {
       title="WeGotNext — Basketball Academy, Community & Shop"
       description="WeGotNext empowers youth through basketball training, community events, and premium apparel. Join the academy, explore our community, and shop the latest drops."
       canonical="/"
-      ogImage="/assets/WGN.png"
+      ogImage="/assets/WeGotNext-logo.png"
       structuredData={{
         '@context': 'https://schema.org',
         '@type': 'WebSite',

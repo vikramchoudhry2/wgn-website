@@ -171,7 +171,7 @@ export default function Academy() {
       title="Academy — WeGotNext"
       description="Train with WeGotNext Academy. Elite coaching, character development, and a community-first program for youth hoopers."
       canonical="/academy"
-      ogImage="/assets/coach.png"
+      ogImage="/assets/WeGotNext-logo.png"
       structuredData={{
         '@context': 'https://schema.org',
         '@type': 'SportsOrganization',

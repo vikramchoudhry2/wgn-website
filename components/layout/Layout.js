@@ -16,7 +16,8 @@ const Layout = ({
   const router = useRouter();
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
   const canonicalUrl = canonical || (siteUrl ? `${siteUrl}${router.asPath || ''}` : undefined);
-  const socialImage = ogImage || '/assets/WGN.png';
+  const socialImage = ogImage || '/assets/WeGotNext-logo.png';
+  const socialImageUrl = siteUrl ? `${siteUrl}${socialImage}` : socialImage;
   useEffect(() => {
     // Add smooth scroll class to body
     document.body.classList.add('smooth-scroll');
@@ -100,12 +101,12 @@ const Layout = ({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:site_name" content="WeGotNext" />
-        <meta property="og:image" content={socialImage} />
+        <meta property="og:image" content={socialImageUrl} />
         <meta property="og:image:alt" content="WeGotNext" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={socialImage} />
+        <meta name="twitter:image" content={socialImageUrl} />
 
         {/* JSON-LD structured data */}
         {structuredData ? (
