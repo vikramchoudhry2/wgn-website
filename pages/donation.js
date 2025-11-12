@@ -158,10 +158,6 @@ export default function Donation() {
                     <p className="text-xs text-gray-400 mt-2 text-center">Payments are securely processed via Givebutter.</p>
                   </div>
                   
-                  <button onClick={openGivebutterCheckout} className="btn-tertiary w-full">
-                    Donate Now {amountValue ? `(USD $${amountValue})` : ''}
-                  </button>
-                  
                   <p className="text-sm text-gray-400 text-center">
                     Your donation may be tax-deductible. We'll send a receipt to your email.
                   </p>
