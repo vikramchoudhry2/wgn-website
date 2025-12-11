@@ -101,7 +101,35 @@ const HeroSlider = () => {
       </div>
 
       {/* Navigation Arrows */}
-      {/* Arrows removed per design request */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm p-3 md:p-4 rounded-full border border-white/20 hover:border-orange-500/60 transition-all duration-300 group"
+        aria-label="Previous slide"
+      >
+        <svg 
+          className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-400 transition-colors duration-300" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/60 hover:bg-black/80 backdrop-blur-sm p-3 md:p-4 rounded-full border border-white/20 hover:border-orange-500/60 transition-all duration-300 group"
+        aria-label="Next slide"
+      >
+        <svg 
+          className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-orange-400 transition-colors duration-300" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">

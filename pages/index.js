@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import Layout from '@/components/layout/Layout';
 import HeroSlider from '@/components/HeroSlider';
-import HorizontalScroll from '@/components/HorizontalScroll';
-import StorySection from '@/components/StorySection';
 import WhoWeAreSection from '@/components/WhoWeAreSection';
-import ScrollScript from '@/components/ScrollScript';
+import FeatureCards from '@/components/FeatureCards';
 
 export default function Home() {
   return (
@@ -26,21 +23,14 @@ export default function Home() {
         },
       }}
     >
-      {/* Hero Slider */}
+      {/* Hero Image Carousel - Full-width, responsive with autoplay and manual controls */}
       <HeroSlider />
       
-      {/* Horizontal Scroll Sections */}
-      <HorizontalScroll />
-      
-      {/* Our Story Section */}
-      <StorySection />
-      
-      
-      {/* Who We Are Section */}
+      {/* Who We Are Section - Two-column layout with fade-in animations */}
       <WhoWeAreSection />
       
-      {/* Scroll Script for animations */}
-      <ScrollScript />
+      {/* Three Feature Cards - Shop, Academy, Community */}
+      <FeatureCards />
     </Layout>
   );
 }
