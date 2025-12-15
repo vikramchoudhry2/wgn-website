@@ -32,7 +32,7 @@ const FeatureCards = () => {
   ];
 
   return (
-    <section className="relative py-12 md:py-24 bg-gradient-to-br from-black via-gray-900 to-slate-900 overflow-hidden">
+    <section className="relative py-12 md:py-24 bg-gradient-to-b from-slate-900 via-gray-900 to-black overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
@@ -81,3 +81,4 @@ const FeatureCards = () => {
 };
 
 export default FeatureCards;
+

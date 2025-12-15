@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Donation() {
   const [selectedAmount, setSelectedAmount] = useState('');
@@ -61,112 +62,187 @@ export default function Donation() {
         },
       }}
     >
-      <div className="pt-20">
-        {/* Match the Community page's section background (below its video) */}
-        <section className="bg-gradient-to-br from-black via-gray-950 to-slate-900 text-white py-20 relative overflow-hidden">
-          {/* Subtle background orbs for depth */}
-          <div className="absolute inset-0">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" style={{animationDuration: '4s'}}></div>
-            <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/15 rounded-full blur-3xl animate-pulse" style={{animationDuration: '6s', animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-orange-500/25 rounded-full blur-xl animate-pulse" style={{animationDuration: '3s', animationDelay: '2s'}}></div>
-          </div>
-          <div className="container-center relative z-10">
-            <div className="text-center mb-12">
-              <h1 className="heading-hero text-white font-bold mb-4">{campaign.title || 'Support Our Mission'}</h1>
-              <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-orange-300 to-transparent animate-ping opacity-50"></div>
-              </div>
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-black overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/assets/dono1.png"
+            alt="Support WeGotNext"
+            fill
+            className="object-cover opacity-70"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black" />
+        </div>
+        
+        <div className="relative z-10 text-center px-4 py-20">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="heading-hero text-white mb-6"
+          >
+            {campaign.title || 'Support Our Mission'}
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="mx-auto w-40 h-0.5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg relative overflow-hidden mb-6">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse opacity-30"></div>
             </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-              <div>
-                <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-6 bg-black">
-                  <Image
-                    src="/assets/dono1.png"
-                    alt="Donation impact"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                
-                <h2 className="text-3xl font-bold mb-4">Why Donate?</h2>
-                <div className="text-gray-300 text-lg leading-relaxed mb-6 space-y-4">
-                  <h3 className="text-white text-2xl font-semibold">Support WeGotNext Basketball</h3>
-                  <p>
-                    At <strong>WeGotNext Basketball</strong>, we believe in more than just building basketball players — we’re building future leaders. Our program provides young athletes with the tools they need to succeed on the court and in life, focusing on skill development, academic excellence, teamwork, and character.
-                  </p>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+              Help us empower the next generation through basketball, mentorship, and community.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-                  <h4 className="text-white text-xl font-semibold">Your support helps us:</h4>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li>Provide scholarships for players in need</li>
-                    <li>Cover gym rental fees and equipment costs</li>
-                    <li>Bring in special guest coaches and mentors</li>
-                    <li>Offer academic tutoring and life skills workshops</li>
-                    <li>Fund travel expenses for tournaments and competitions</li>
-                  </ul>
+      {/* Main Content Section */}
+      <section className="relative bg-gradient-to-b from-black via-gray-900 to-slate-900 text-white py-16 md:py-24 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl animate-pulse" style={{animationDuration: '4s'}}></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-500/15 rounded-full blur-3xl animate-pulse" style={{animationDuration: '6s', animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-500/25 rounded-full blur-xl animate-pulse" style={{animationDuration: '3s', animationDelay: '2s'}}></div>
+        </div>
 
-                  <h4 className="text-white text-xl font-semibold">Why Your Donation Matters</h4>
-                  <p>
-                    Every contribution, no matter the size, makes a direct impact. By donating, you’re helping ensure that every child has the opportunity to learn, grow, and play in a positive, supportive environment — regardless of their financial situation.
-                  </p>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Impact Info */}
+            <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white relative">
+                  Why Your Support Matters
+                  <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-orange-500 to-yellow-500" />
+                </h2>
+                <p className="text-lg text-gray-300 leading-relaxed mb-6">
+                  At <strong className="text-white">WeGotNext Basketball</strong>, we believe in more than just building basketball players — we're building future leaders. Our program provides young athletes with the tools they need to succeed on the court and in life.
+                </p>
+              </motion.div>
 
-                  <h4 className="text-white text-xl font-semibold">Ways to Give</h4>
-                  <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>One-Time Gift</strong> – Make a difference today with a single donation</li>
-                    <li><strong>Monthly Support</strong> – Join our community of ongoing supporters</li>
-                    <li><strong>Sponsorship Opportunities</strong> – Partner with us to fund teams, events, or player scholarships</li>
-                  </ul>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  
-                </div>
+              {/* Impact Cards */}
+              <div className="space-y-4">
+                {[
+                  { icon: '🏟️', title: 'Facilities & Equipment', desc: 'Cover gym rentals and training gear' },
+                  { icon: '👨‍🏫', title: 'Expert Coaching', desc: 'Bring in special guest coaches and mentors' },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-orange-500/40 transition-all duration-300 group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="text-4xl group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                        <p className="text-gray-300">{item.desc}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-              
-              <div className="bg-gray-900 p-8 rounded-xl">
-                <h2 className="text-2xl font-bold mb-6 text-center">Make Your Donation</h2>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="bg-gradient-to-br from-orange-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/30"
+              >
+                <h3 className="text-2xl font-bold text-white mb-4">Every Dollar Counts</h3>
+                <p className="text-gray-200 leading-relaxed">
+                  Every contribution, no matter the size, makes a direct impact. By donating, you're helping ensure that every child has the opportunity to learn, grow, and play in a positive, supportive environment — regardless of their financial situation.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Right Column - Donation Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="sticky top-24"
+            >
+              <div className="bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-orange-500/30 shadow-2xl">
+                <h2 className="text-3xl font-bold mb-8 text-center text-white">Make Your Donation</h2>
                 
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Donation Amount</label>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">Select Amount</label>
                     <div className="grid grid-cols-3 gap-3 mb-4">
-                      <button onClick={() => setSelectedAmount('25')} className={`bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-md ${selectedAmount === '25' ? 'ring-2 ring-brand-500' : ''}`}>$25</button>
-                      <button onClick={() => setSelectedAmount('50')} className={`bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-md ${selectedAmount === '50' ? 'ring-2 ring-brand-500' : ''}`}>$50</button>
-                      <button onClick={() => setSelectedAmount('100')} className={`bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-md ${selectedAmount === '100' ? 'ring-2 ring-brand-500' : ''}`}>$100</button>
+                      {['25', '50', '100'].map((amount) => (
+                        <button
+                          key={amount}
+                          onClick={() => setSelectedAmount(amount)}
+                          className={`py-3 rounded-xl font-semibold transition-all duration-300 ${
+                            selectedAmount === amount
+                              ? 'bg-orange-500 text-white ring-2 ring-orange-400 scale-105'
+                              : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:scale-105'
+                          }`}
+                        >
+                          ${amount}
+                        </button>
+                      ))}
                     </div>
-                    <div className="flex items-center rounded-md overflow-hidden">
-                      <span className="bg-gray-800 px-3 py-2 text-gray-300">$</span>
+                    <div className="flex items-center rounded-xl overflow-hidden border border-gray-700 focus-within:border-orange-500 transition-all duration-300">
+                      <span className="bg-gray-800 px-4 py-3 text-gray-300 font-semibold">$</span>
                       <input 
                         type="text" 
                         inputMode="decimal"
                         value={customAmount}
                         onChange={(e) => { setCustomAmount(e.target.value); setSelectedAmount(''); }}
-                        placeholder="Other amount" 
-                        className="bg-gray-800 flex-1 py-2 px-3 outline-none text-white"
+                        placeholder="Custom amount" 
+                        className="bg-gray-800 flex-1 py-3 px-4 outline-none text-white placeholder-gray-500"
                       />
                     </div>
                   </div>
                   
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Payment Method</label>
-                    <div className="space-y-2">
-                      <button onClick={openGivebutterCheckout} className="btn-primary w-full">
-                        Donate with Givebutter
-                      </button>
+                  <div className="pt-4">
+                    <button
+                      onClick={openGivebutterCheckout}
+                      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center gap-3"
+                    >
+                      <span>Donate with Givebutter</span>
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </button>
+                    <p className="text-xs text-gray-400 mt-3 text-center">
+                      🔒 Secure payment processing via Givebutter
+                    </p>
+                  </div>
+
+                  <div className="border-t border-gray-700 pt-6">
+                    <div className="bg-black/40 rounded-xl p-4 space-y-2">
+                      <h4 className="font-semibold text-white mb-3">Ways to Give:</h4>
+                      <div className="space-y-2 text-sm text-gray-300">
+                        <p>💚 <strong>One-Time Gift</strong> – Make an impact today</p>
+                        <p>📅 <strong>Monthly Support</strong> – Join our recurring supporters</p>
+                        <p>🤝 <strong>Sponsorships</strong> – Partner with us long-term</p>
+                      </div>
                     </div>
-                    <p className="text-xs text-gray-400 mt-2 text-center">Payments are securely processed via Givebutter.</p>
                   </div>
                   
-                  <p className="text-sm text-gray-400 text-center">
-                    Your donation may be tax-deductible. We'll send a receipt to your email.
+                  <p className="text-sm text-gray-400 text-center pt-4">
+                    Your donation may be tax-deductible. Receipt will be sent to your email.
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </Layout>
   );
-} 
+}

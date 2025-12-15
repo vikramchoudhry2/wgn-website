@@ -229,7 +229,7 @@ export default function Academy() {
       </section>
 
       {/* Academy Overview */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-gray-900 via-black to-slate-900 relative overflow-hidden">
         {/* Dynamic animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/20 rounded-full opacity-60 blur-3xl animate-pulse"></div>
@@ -258,11 +258,6 @@ export default function Academy() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-orange-500/20"></div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-black/60 backdrop-blur-sm rounded-lg p-3">
-                  <p className="text-white text-sm font-semibold">WeGotNext Academy in Action</p>
-                </div>
-              </div>
             </motion.div>
             
             <motion.div 
@@ -301,7 +296,7 @@ export default function Academy() {
       </section>
 
       {/* Core Values */}
-      <section className="py-16 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-slate-900 via-gray-900 to-black relative overflow-hidden">
         {/* Enhanced animated background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -343,7 +338,7 @@ export default function Academy() {
       </section>
 
       {/* Basketball is Family */}
-      <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-black via-gray-900 to-slate-900 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-48 h-48 bg-orange-500/15 rounded-full blur-3xl animate-pulse" style={{animationDuration: '5s'}}></div>
@@ -427,7 +422,7 @@ export default function Academy() {
 
 
       {/* Basketball Camp FAQs */}
-      <section className="py-16 bg-gradient-to-br from-black via-gray-900 to-slate-900 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-slate-900 via-gray-900 to-black relative overflow-hidden">
         {/* Subtle animated pattern background */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0" style={{
@@ -498,7 +493,7 @@ export default function Academy() {
       </section>
 
       {/* Meet the Coaches */}
-      <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-slate-900 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-black via-gray-900 to-slate-900 relative overflow-hidden">
         {/* Enhanced dark background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-40 h-40 bg-orange-500/15 rounded-full blur-2xl animate-pulse" style={{animationDuration: '4s'}}></div>
@@ -579,7 +574,7 @@ export default function Academy() {
       </section>
 
       {/* Meet the Players */}
-      <section className="py-16 bg-gradient-to-br from-slate-900 via-gray-900 to-emerald-900 relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-slate-900 via-gray-900 to-black relative overflow-hidden">
         {/* Dynamic floating elements with enhanced animations */}
         <div className="absolute inset-0">
           {/* Large animated orbs */}

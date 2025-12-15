@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const WhoWeAreSection = () => {
   return (
-    <section className="relative py-16 md:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-gradient-to-b from-gray-900 via-black to-slate-900 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/20 rounded-full opacity-60 blur-3xl animate-pulse" />
