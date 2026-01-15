@@ -3,6 +3,9 @@ import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+// Stable viewport config to prevent Safari double-firing
+const viewportConfig = { once: true, amount: 0.2, margin: "-50px" };
+
 export default function Donation() {
   const [selectedAmount, setSelectedAmount] = useState('');
   const [customAmount, setCustomAmount] = useState('');
@@ -115,7 +118,7 @@ export default function Donation() {
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={viewportConfig}
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white relative">
@@ -137,7 +140,7 @@ export default function Donation() {
                     key={item.title}
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
+                    viewport={viewportConfig}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-orange-500/40 transition-all duration-300 group"
                   >
@@ -155,7 +158,7 @@ export default function Donation() {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={viewportConfig}
                 transition={{ duration: 0.8 }}
                 className="bg-gradient-to-br from-orange-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-8 border border-orange-500/30"
               >
@@ -170,7 +173,7 @@ export default function Donation() {
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={viewportConfig}
               transition={{ duration: 0.8 }}
               className="sticky top-24"
             >
