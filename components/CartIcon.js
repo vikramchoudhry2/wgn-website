@@ -1,29 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useCart } from '@/utils/CartContext';
 import Cart from './Cart';
 
 const CartIcon = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { getCartTotal, checkout } = useCart();
+  const { getCartTotal } = useCart();
 
   const cartTotal = getCartTotal();
-
-  // Mobile detection
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
 
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (isMobile && checkout && checkout.webUrl) {
-      window.open(checkout.webUrl, '_blank');
-      return;
-    }
+    // Always show cart UI so users can view/remove items before checkout
     setIsCartOpen(true);
   };
 
@@ -58,7 +46,7 @@ const CartIcon = () => {
           </span>
         )}
       </button>
-      {isCartOpen && !isMobile && (
+      {isCartOpen && (
         <Cart isOpen={isCartOpen} onClose={handleCartClose} />
       )}
     </>
