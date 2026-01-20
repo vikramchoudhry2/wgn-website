@@ -4,6 +4,9 @@ import Image from 'next/image';
 import ParallaxSlider from '@/components/ParallaxSlider';
 import { motion } from 'framer-motion';
 
+// Stable viewport config to prevent Safari animation issues
+const viewportOnce = { once: true, amount: 0.2, margin: "-50px" };
+
 const celebrities = [
   {
     id: 1,
@@ -314,6 +317,7 @@ export default function Celebs() {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportOnce}
                 transition={{ duration: 0.8, delay: 0.9 }}
                 className="bg-gradient-to-br from-orange-500/10 to-yellow-500/10 backdrop-blur-sm rounded-2xl p-6 border border-orange-500/30"
               >
@@ -327,6 +331,7 @@ export default function Celebs() {
                       key={member}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
+                      viewport={viewportOnce}
                       transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
                       className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-500/10 transition-colors duration-300"
                     >
@@ -337,6 +342,7 @@ export default function Celebs() {
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
+                    viewport={viewportOnce}
                     transition={{ duration: 0.4, delay: 1 + supportTeam.length * 0.1 }}
                     className="flex items-center gap-3 p-2 rounded-lg"
                   >
@@ -391,6 +397,7 @@ export default function Celebs() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportOnce}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto"
             >
@@ -443,6 +450,7 @@ export default function Celebs() {
                       <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: '100%' }}
+                        viewport={viewportOnce}
                         transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
                         className="mt-3 h-px bg-gradient-to-r from-blue-500 to-purple-500"
                       />
@@ -462,6 +470,7 @@ export default function Celebs() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportOnce}
               transition={{ duration: 0.8 }}
               className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/30 hover:border-orange-500/30 transition-all duration-500"
             >
@@ -469,6 +478,7 @@ export default function Celebs() {
                 <motion.div 
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  viewport={viewportOnce}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="relative group"
                 >
@@ -484,6 +494,7 @@ export default function Celebs() {
                 <motion.div 
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  viewport={viewportOnce}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="space-y-6"
                 >
@@ -521,6 +532,7 @@ export default function Celebs() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportOnce}
               transition={{ duration: 0.8 }}
               className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/30 hover:border-purple-500/30 transition-all duration-500"
             >
@@ -528,6 +540,7 @@ export default function Celebs() {
                 <motion.div 
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  viewport={viewportOnce}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="lg:order-2 relative group"
                 >
@@ -543,6 +556,7 @@ export default function Celebs() {
                 <motion.div 
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  viewport={viewportOnce}
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="lg:order-1 space-y-6"
                 >

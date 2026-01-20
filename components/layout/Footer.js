@@ -111,7 +111,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center space-y-2">
+          <p className="text-xs text-gray-500">
+            WeGotNext is a 501(c)(3) nonprofit organization • EIN: 41-2963574
+          </p>
           <p className="text-sm text-gray-400">© {new Date().getFullYear()} WeGotNext - All Rights Reserved</p>
         </div>
       </div>

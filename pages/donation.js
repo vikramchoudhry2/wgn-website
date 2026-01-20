@@ -51,7 +51,7 @@ export default function Donation() {
   return (
     <Layout
       title="Donate — WeGotNext"
-      description="Support WeGotNext programs and youth development. Your donation funds scholarships, facilities, mentors, and community events."
+      description="Support WeGotNext, a 501(c)(3) nonprofit. Your tax-deductible donation funds scholarships, facilities, mentors, and youth basketball programs."
       canonical="/donation"
       ogImage="/assets/donation.png"
       structuredData={{
@@ -60,8 +60,10 @@ export default function Donation() {
         name: 'Donate to WeGotNext',
         url: `${process.env.NEXT_PUBLIC_SITE_URL || ''}/donation`,
         recipient: {
-          '@type': 'Organization',
+          '@type': 'NGO',
           name: 'WeGotNext',
+          taxID: '41-2963574',
+          nonprofitStatus: '501c3',
         },
       }}
     >
@@ -237,9 +239,14 @@ export default function Donation() {
                     </div>
                   </div>
                   
-                  <p className="text-sm text-gray-400 text-center pt-4">
-                    Your donation may be tax-deductible. Receipt will be sent to your email.
-                  </p>
+                  <div className="text-center pt-4 space-y-2">
+                    <p className="text-sm text-gray-300">
+                      <span className="text-green-400 font-medium">✓ Tax-Deductible</span> — WeGotNext is a registered 501(c)(3) nonprofit
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      EIN: 41-2963574 • Receipt will be sent to your email
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
