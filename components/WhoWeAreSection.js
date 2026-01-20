@@ -63,7 +63,7 @@ const WhoWeAreSection = () => {
                 className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300"
               >
                 <p className="text-base md:text-lg text-gray-200 leading-relaxed">
-                  We Got Next began as an app connecting basketball players to find games efficiently. Over the years, we saw the impact of our platform and expanded into running youth basketball clinics. What started as a one-day event quickly grew into weekly clinics, starting with 15 kids and now serving over 150 in San Jose and Sacramento.
+                  We Got Next is a non-profit organization that began as an app connecting basketball players to find games efficiently. Over the years, we saw the impact of our platform and expanded into running youth basketball clinics. What started as a one-day event quickly grew into weekly clinics, starting with 15 kids and now serving over 150 in San Jose and Sacramento.
                 </p>
               </motion.div>
 
@@ -75,7 +75,7 @@ const WhoWeAreSection = () => {
                 className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300"
               >
                 <p className="text-base md:text-lg text-gray-200 leading-relaxed">
-                  We realized it's about more than just basketball; it's a community initiative providing a safe space for youth to learn, grow, and be themselves. Through the We Got Next camp, we've had the chance to give back to the community.
+                  We realized it's about more than just basketball; it's a community initiative providing a safe space for youth to learn, grow, and be themselves. Through the We Got Next camp, we've had the chance to give back to the community and expand our reach through being a registed 501(c)(3) organization.
                 </p>
               </motion.div>
 
