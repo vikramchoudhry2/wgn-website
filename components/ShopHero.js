@@ -93,7 +93,7 @@ const ShopHero = () => {
         {/* Product Images - 3 images positioned for desktop */}
         {isDesktop && (
           <>
-            {/* Shorts Main Image */}
+            {/* Shop header image 1 - WeGotNext lifestyle */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
               animate={{ opacity: 1, scale: 1, rotate: 12 }}
@@ -102,10 +102,10 @@ const ShopHero = () => {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/assets/shorts.png"
-                  alt="WeGotNext Shorts"
+                  src="/assets/shop-header-1.png"
+                  alt="WeGotNext lifestyle"
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl rounded-lg"
                   style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
                   sizes="(max-width: 1024px) 320px, 384px"
                   quality={85}
@@ -114,7 +114,7 @@ const ShopHero = () => {
               </div>
             </motion.div>
             
-            {/* Britt Shorts Image */}
+            {/* Shop header image 2 - WeGotNext in store */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
               animate={{ opacity: 1, scale: 1, rotate: -6 }}
@@ -123,10 +123,10 @@ const ShopHero = () => {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/assets/britt-shorts.png"
-                  alt="Britt Shorts"
+                  src="/assets/shop-header-2.png"
+                  alt="WeGotNext apparel"
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl rounded-lg"
                   style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
                   sizes="(max-width: 1024px) 320px, 384px"
                   quality={85}
@@ -135,7 +135,7 @@ const ShopHero = () => {
               </div>
             </motion.div>
             
-            {/* Rise Image - Added back */}
+            {/* Shop header image 3 - WeGotNext hoodie back */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
               animate={{ opacity: 1, scale: 1, rotate: 12 }}
@@ -144,10 +144,10 @@ const ShopHero = () => {
             >
               <div className="relative w-full h-full">
                 <Image
-                  src="/assets/rise.png"
-                  alt="Rise Shorts"
+                  src="/assets/shop-header-3.png"
+                  alt="WeGotNext hoodie"
                   fill
-                  className="object-contain drop-shadow-2xl"
+                  className="object-contain drop-shadow-2xl rounded-lg"
                   style={{ filter: 'drop-shadow(0 0 20px rgba(0,0,0,0.3))' }}
                   sizes="(max-width: 1024px) 320px, 384px"
                   quality={85}
