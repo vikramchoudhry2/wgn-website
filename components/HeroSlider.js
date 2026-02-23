@@ -15,8 +15,8 @@ const slides = [
   },
   {
     id: 3,
-    bgImage: '/assets/celebs.png',
-    bgImageMobile: '/assets/celebs.png',
+    bgImage: '/assets/celeb.png',
+    bgImageMobile: '/assets/celeb.png',
   },
   {
     id: 4,
