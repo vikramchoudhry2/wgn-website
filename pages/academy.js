@@ -19,11 +19,11 @@ export default function Academy() {
   const faqs = [
     {
       question: 'Who can join the camp?',
-      answer: 'Our camp is open to players of all skill levels, ages 8-18. We welcome beginners to advanced players looking to improve their game.'
+      answer: 'Our camp is open to players of all skill levels, ages 5-18. We welcome beginners to advanced players looking to improve their game.'
     },
     {
       question: 'When and where is the camp held?',
-      answer: 'Camps are held on Sunday 4:30-7PM at Pickup USA in Rancho Cordova. Beginner sessions are 4:30-5:30PM and Advanced sessions are 5:30-7PM.'
+      answer: 'Camps are held on Sunday 4:00-7PM in Natomas, Sacramento. Beginner sessions are 4:00-5:00 PM, 14U sessions are 5:00-6:30PM, and 18U sessions are 6:30-8PM.'
     },
     {
       question: 'What should my child bring?',
@@ -217,7 +217,7 @@ export default function Academy() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            onClick={() => window.open('https://form.jotform.com/252560649100148', '_blank')}
+            onClick={() => window.open('https://registration.teamsnap.com/form/68596', '_blank')}
             className="btn-primary btn-lg"
           >
             Register Now
